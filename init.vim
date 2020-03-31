@@ -23,6 +23,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'aymericbeaumet/vim-symlink'
 call plug#end()
