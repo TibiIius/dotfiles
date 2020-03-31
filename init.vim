@@ -26,6 +26,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'aymericbeaumet/vim-symlink'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 " Airline config
