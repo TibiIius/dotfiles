@@ -12,11 +12,8 @@ set smartcase
 set incsearch
 
 " Tab sizes
-set softtabstop=4
+set tabstop=4
 set shiftwidth=4
-set shiftround
-set expandtab
-set smarttab
 
 "Plug init
 call plug#begin('~/.vim/plugged')
