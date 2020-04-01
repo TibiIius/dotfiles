@@ -15,7 +15,7 @@ set incsearch
 set tabstop=4
 set shiftwidth=4
 
-"Plug init
+" Plug init
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
