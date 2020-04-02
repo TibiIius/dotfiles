@@ -50,6 +50,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec tilix
 
+# start browser
+bindsym $mod+F2 exec firefox
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
