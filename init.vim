@@ -24,7 +24,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'ap/vim-css-color'
+Plug 'morhetz/gruvbox'
 call plug#end()
+
+" Set colorscheme
+colorscheme gruvbox
 
 " Airline config
 let g:airline_theme='angr'
