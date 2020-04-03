@@ -159,6 +159,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Autostart
 exec_always --no-startup-id nitrogen --restore; sleep 1
+exec_always --no-startup-id picom &
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
