@@ -117,14 +117,14 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 "
 set $ws2 "2 "
-set $ws3 "3 "
+set $ws3 "3 "
 set $ws4 "4 "
 set $ws5 "5 "
 set $ws6 "6 "
 set $ws7 "7 "
 set $ws8 "8 "
 set $ws9 "9 "
-set $ws10 "10 "
+set $ws10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -161,6 +161,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 exec_always --no-startup-id nitrogen --restore; sleep 1
 exec_always --no-startup-id picom &
 
+# Bind windows to workspaces
+for_window [class="Spotify"] move to workspace $ws10 --no-auto-back-and-forth
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
