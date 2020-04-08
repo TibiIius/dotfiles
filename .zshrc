@@ -49,7 +49,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -107,14 +107,6 @@ source $ZSH/oh-my-zsh.sh
 
 eval $(thefuck --alias)
 
-
-#################################################################
-#								#
-#								#
-#		EVERYTHING NOT ZSH OR OMZ			#
-#								#
-#								#
-#################################################################
 
 # neovim as default editor
 export EDITOR=nvim
