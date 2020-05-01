@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:hack nerd font 10
+font pango:droid sans mono 12
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 5 
@@ -194,7 +194,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font pango:hack, FontAwesome 12
+    font pango:droid sans mono, FontAwesome, hack nerd font 12
     position top
     status_command i3status-rs ~/.i3status-rs.conf
     colors {
