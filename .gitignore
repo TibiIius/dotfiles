@@ -1,2 +1,2 @@
 .directory
-ranger/plugins/__pycache__/
+ranger/plugins/__pycache__/**
