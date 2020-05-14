@@ -25,15 +25,16 @@ Plug 'preservim/nerdtree'
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'ap/vim-css-color'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " Set colorscheme
-colorscheme gruvbox
+colorscheme nord
 
 " Airline config
-let g:airline_theme='angr'
+let g:airline_theme='nord'
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#nerdtree_status = 1
