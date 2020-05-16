@@ -38,5 +38,3 @@ let g:airline_theme='nord'
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#nerdtree_status = 1
-
-" zu dumm für git KEKW
