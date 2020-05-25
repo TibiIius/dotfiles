@@ -28,6 +28,10 @@ Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'ryanoasis/vim-devicons'
+Plug 'lervag/vimtex'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 " Set colorscheme
@@ -38,3 +42,24 @@ let g:airline_theme='nord'
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#nerdtree_status = 1
+
+" UltiSnippets
+let g:UltiSnipsExpandTrigger="<s-q>"
+let g:UltiSnipsJumpForwardTrigger = '<s-q>'
+
+" General config
+let g:tex_flavor = "latex"
+
+" Auto brackets etc
+inoremap " ""<left>
+"inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+
+" YCM snippets
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
