@@ -37,6 +37,9 @@ call plug#end()
 " Set colorscheme
 colorscheme nord
 
+" General config
+let g:tex_flavor = "latex"
+
 " Airline config
 let g:airline_theme='nord'
 let g:airline#extensions#branch#enabled = 1
@@ -47,16 +50,12 @@ let g:airline#extensions#nerdtree_status = 1
 let g:UltiSnipsExpandTrigger="<s-q>"
 let g:UltiSnipsJumpForwardTrigger = '<s-q>'
 
-" General config
-let g:tex_flavor = "latex"
-
 " Auto brackets etc
-inoremap " ""<left>
+"inoremap " ""<left>
 "inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
 
 " YCM snippets
 if !exists('g:ycm_semantic_triggers')
