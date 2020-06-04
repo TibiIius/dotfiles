@@ -4,6 +4,7 @@ syntax on
 set encoding=utf-8
 set number relativenumber
 set clipboard+=unnamedplus " Ditches Vim's clipboard and uses the OS's one
+set spell
 
 " Search settings
 set hlsearch
@@ -46,6 +47,7 @@ if !exists('g:vscode')
 	let g:airline#extensions#branch#enabled = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#nerdtree_status = 1
+	let g:airline#extensions#tabline#enabled = 1
 
 	" UltiSnippets
 	let g:UltiSnipsExpandTrigger="<s-q>"
