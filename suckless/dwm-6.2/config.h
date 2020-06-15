@@ -23,7 +23,7 @@ static const char *const autostart[] = {
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/screenlayout.sh", NULL,
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/suckless/dwm-bar/dwm_bar.sh", NULL,
 	"nitrogen", "--restore", NULL,
-	"picom", NULL,
+	"picom", "--experimental-backends", "--backend", "glx", NULL,
 	"keepass", NULL,
 	"discord", NULL,
 	NULL /* terminate */
