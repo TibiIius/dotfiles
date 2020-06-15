@@ -36,13 +36,12 @@ if !exists('g:vscode')
 	call plug#end()
 	
 	" Set colorscheme
-	colorscheme gruvbox
 	
 	" General config
 	let g:tex_flavor = "latex"
 	
 	" Airline config
-	let g:airline_theme='angr'
+	let g:airline_theme='monochrome'
 	let g:airline#extensions#branch#enabled = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#nerdtree_status = 1
