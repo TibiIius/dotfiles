@@ -26,7 +26,6 @@ static const char *const autostart[] = {
 	"picom", "--experimental-backends", "--backend", "glx", NULL,
 	"keepass", NULL,
 	"nextcloud", NULL,
-	"discord", NULL,
 	NULL /* terminate */
 };
 
