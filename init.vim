@@ -4,7 +4,6 @@ syntax on
 set encoding=utf-8
 set number relativenumber
 set clipboard+=unnamedplus " Ditches Vim's clipboard and uses the OS's one
-set spell
 
 " Search settings
 set hlsearch
