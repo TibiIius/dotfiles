@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 24;       /* gaps between windows */
+static const unsigned int gappx     = 20;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -32,7 +32,7 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { " ", " ", " ", "", " ", " ", " ", " ", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -44,7 +44,7 @@ static const Rule rules[] = {
 /*{ "Firefox",  NULL,       NULL,                                    1 << 8,       0,           -1 }, */
 	{ NULL,       NULL,       "Database_KeePass.kdbx - KeePass",       1 << 8,       0,           -1 },
 	{ "discord",  NULL,       NULL,                                    1 << 7,       0,           -1 },
-	{ "spotify",  NULL,       NULL,                                    1 << 6,       0,           -1 },
+	{ "Spotify",  NULL,       "Spotify Premium",                       1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
