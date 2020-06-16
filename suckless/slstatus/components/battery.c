@@ -69,7 +69,8 @@
 				break;
 			}
 		}
-		return (i == LEN(map)) ? "?" : map[i].symbol;
+		// fix shit (should be "?" instead of charger if true)
+		return (i == LEN(map)) ? "🔌" : map[i].symbol;
 	}
 
 	const char *
