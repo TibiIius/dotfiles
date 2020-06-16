@@ -2,12 +2,12 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 75;       /* gaps between windows */
+static const unsigned int gappx     = 24;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=12" };
-static const char dmenufont[]       = "JetBrains Mono Nerd Font:size=12";
+static const char *fonts[]          = { "Hack Nerd Font:size=10" };
+static const char dmenufont[]       = "Hack Nerd Font:size=10";
 static const char normbgcolor[]     = "#2e3440";
 static const char normbordercolor[] = "#3b4252";
 static const char normfgcolor[]     = "#d8dee9";
@@ -32,7 +32,7 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { " ", " ", " ", "", " ", " ", " ", " ", "" };
+static const char *tags[] = { " ", " ", " ", "", " ", " ", " ", " ", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -74,7 +74,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *roficmd[]  = { "rofi", "-show", "drun", NULL };
+static const char *roficmd[]  = { "rofi", "-show", "drun", "-font", "Hack Nerd Font 12", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
