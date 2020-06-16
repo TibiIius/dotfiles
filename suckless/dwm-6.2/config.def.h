@@ -22,6 +22,7 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/screenlayout.sh", NULL,
+	"slstatus", NULL,
 	"nitrogen", "--restore", NULL,
 	"picom", NULL,
 	"keepass", NULL,
