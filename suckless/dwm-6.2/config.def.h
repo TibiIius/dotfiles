@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 20;       /* gaps between windows */
+static const unsigned int gappx     = 75;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -24,7 +24,7 @@ static const char *const autostart[] = {
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/screenlayout.sh", NULL,
 	"slstatus", NULL,
 	"nitrogen", "--restore", NULL,
-	"picom", NULL,
+	"picom", "--experimental-backends", "--backend", "glx", NULL,
 	"keepass", NULL,
 	"discord", NULL,
 	"spotify", NULL,
