@@ -111,6 +111,7 @@ eval $(thefuck --alias)
 # neovim as default editor
 export EDITOR=nvim
 export VISUAL=nvim
+export CM_LAUNCHER=rofi
 
 # Tilix fix
 if [[ $TILIX_ID ]]; then

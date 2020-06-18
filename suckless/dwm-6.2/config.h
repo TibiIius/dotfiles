@@ -25,10 +25,12 @@ static const char *const autostart[] = {
 	"slstatus", NULL,
 	"nitrogen", "--restore", NULL,
 	"picom", "--experimental-backends", "--backend", "glx", NULL,
-	"keepass", NULL,
+	"keepassxc", NULL,
 	"discord", NULL,
 	"spotify", NULL,
 	"dunst", NULL,
+	"nextcloud", NULL,
+	"clipmenud", NULL,
 	NULL /* terminate */
 };
 
@@ -43,7 +45,8 @@ static const Rule rules[] = {
 	/* class      instance    title                                    tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,                                    0,            1,           -1 },
 /*{ "Firefox",  NULL,       NULL,                                    1 << 8,       0,           -1 }, */
-	{ NULL,       NULL,       "Database_KeePass.kdbx - KeePass",       1 << 8,       0,           -1 },
+	{ NULL,       NULL,       "Default - KeePassXC",                   1 << 8,       0,           -1 },
+	{ "nextcloud",NULL,       NULL,                                    1 << 8,       0,           -1 },
 	{ "discord",  NULL,       NULL,                                    1 << 7,       0,           -1 },
 	{ "Spotify",  NULL,       "Spotify Premium",                       1 << 6,       0,           -1 },
 };
@@ -76,9 +79,11 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *roficmd[]  = { "rofi", "-show", "drun", "-font", "Hack Nerd Font 12", NULL };
+static const char *clipmenucmd[]  = { "clipmenu", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_c,      spawn,          {.v = clipmenucmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
