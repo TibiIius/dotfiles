@@ -70,5 +70,4 @@ static const struct arg args[] = {
 	{ ram_used, 				" %s/",       NULL                                                               },
 	{ ram_total, 				"%s] ",       NULL                                                               },
 	{ datetime, 				"[%s] ",        "%F %T"                                                            },
-	{ run_command, 			"[ %s]",        "/home/tim/Documents/GitHub/dotfiles/scripts/package_updates.sh"   },
 };
