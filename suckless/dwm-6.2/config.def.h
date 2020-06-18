@@ -23,9 +23,10 @@ static const char *const autostart[] = {
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/screenlayout.sh", NULL,
 	"slstatus", NULL,
 	"nitrogen", "--restore", NULL,
-	"picom", "--experimental-backends", "--backend", "glx", NULL,
-	"keepass", NULL,
+	"picom", NULL,
+	"keepassxc", NULL,
 	"nextcloud", NULL,
+	"dunst", NULL,
 	NULL /* terminate */
 };
 
@@ -41,7 +42,7 @@ static const Rule rules[] = {
 /*	{ "Firefox",   NULL,       NULL,                                    1 << 8,       0,           -1 }, */
 /*	{ "Gimp",      NULL,       NULL,                                    0,            1,           -1 }, */
 	{ NULL,        NULL,       "Nextcloud",                             1 << 8,       0,           -1 },
-	{ NULL,        NULL,       "Database_KeePass.kdbx - KeePass",       1 << 8,       0,           -1 },
+	{ NULL,        NULL,       "Default - KeePassXC",                   1 << 8,       0,           -1 },
 	{ "discord",   NULL,       NULL,                                    1 << 7,       0,           -1 },
 };
 

@@ -50,7 +50,7 @@
 			char *state;
 			char *symbol;
 		} map[] = {
-			{ "Charging",    "🔌" },
+			{ "Charging",    "🔌 " },
 			{ "Discharging", "  " },
 		};
 		size_t i;
@@ -70,7 +70,7 @@
 			}
 		}
 		// fix shit (should be "?" instead of charger if true)
-		return (i == LEN(map)) ? "🔌" : map[i].symbol;
+		return (i == LEN(map)) ? "🔌 " : map[i].symbol;
 	}
 
 	const char *
