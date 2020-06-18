@@ -28,6 +28,7 @@ static const char *const autostart[] = {
 	"keepass", NULL,
 	"discord", NULL,
 	"spotify", NULL,
+	"dunst", NULL,
 	NULL /* terminate */
 };
 
