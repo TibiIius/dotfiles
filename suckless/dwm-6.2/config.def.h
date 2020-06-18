@@ -17,7 +17,7 @@ static const char selbordercolor[]  = "#81a1c1";
 static const char *colors[][3]      = {
 	/*               fg             bg                border   */
 	[SchemeNorm]  = { normfgcolor,  normbgcolor,      normbordercolor },
-	[SchemeSel]   = { selfgcolor,   selbgcolor,       selbordercolor },
+	[SchemeSel]   = { selfgcolor,   normbgcolor,       selbordercolor },
 };
 
 static const char *const autostart[] = {
@@ -32,7 +32,7 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { " ", " ", " ", "", " ", " ", " ", " ", "" };
+static const char *tags[] = { " ", " ", " ", " ", " ", " ", " ", " ", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
