@@ -40,7 +40,7 @@ if !exists('g:vscode')
 
 	" General config
 	let g:tex_flavor = "latex"
-
+	let g:vimtex_view_general_viewer = 'zathura'
 	" Airline config
 	let g:airline_theme='nord'
 	let g:airline#extensions#branch#enabled = 1
