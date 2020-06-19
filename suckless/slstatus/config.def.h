@@ -63,11 +63,12 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function 				format          argument */
-
+	{ run_command,	  	"[%s] ",       "/home/tim/Documents/GitHub/dotfiles/scripts/dwm_spotify.sh"                                                          },
 	{ netspeed_rx,	  	"[ %s ",      "enp38s0"                                                          },
 	{ netspeed_tx,	  	" %s] ",      "enp38s0"                                                          },
 	{ cpu_perc, 				"[ %s%% | ",  NULL                                                               },
 	{ ram_used, 				" %s/",       NULL                                                               },
 	{ ram_total, 				"%s] ",        NULL                                                               },
+	{ run_command,	  	"[%s] ",       "/home/tim/Documents/GitHub/dotfiles/scripts/dwm_pulse.sh"                                                          },
 	{ datetime, 				"[%s] ",       "%F %T"                                                            },
 };

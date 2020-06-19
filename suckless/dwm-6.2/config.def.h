@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+/* needed for media keys to work */
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 24;       /* gaps between windows */
@@ -43,12 +46,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title                                    tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,                                    0,            1,           -1 },
-/*{ "Firefox",  NULL,       NULL,                                    1 << 8,       0,           -1 }, */
-	{ NULL,       NULL,       "Default - KeePassXC",                   1 << 8,       0,           -1 },
-	{ "nextcloud",NULL,       NULL,                                    1 << 8,       0,           -1 },
-	{ "discord",  NULL,       NULL,                                    1 << 7,       0,           -1 },
-	{ "Spotify",  NULL,       "Spotify Premium",                       1 << 6,       0,           -1 },
+	{ "Gimp",      NULL,       NULL,                                    0,            1,           -1 },
+/*{ "Firefox",   NULL,       NULL,                                    1 << 8,       0,           -1 }, */
+	{ "keepassxc", NULL,       NULL,                                    1 << 8,       0,           -1 },
+	{ NULL,        NULL,       "Nextcloud",                             1 << 8,       0,           -1 },
+	{ "discord",   NULL,       NULL,                                    1 << 7,       0,           -1 },
+	{ "spotify",   NULL,       NULL,                                    1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
@@ -76,14 +79,20 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
-static const char *termcmd[]     = { "st", NULL };
-static const char *roficmd[]     = { "rofi", "-show", "drun", "-font", "Hack Nerd Font 12", NULL };
-static const char *slockcmd[]    = { "slock" };
-static const char *clipmenucmd[] = { "clipmenu", NULL };
+static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
+static const char *termcmd[]      = { "st", NULL };
+static const char *roficmd[]      = { "rofi", "-show", "drun", "-font", "Hack Nerd Font 12", NULL };
+static const char *slockcmd[]     = { "slock" };
+static const char *clipmenucmd[]  = { "clipmenu", NULL };
+static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
+static const char *nextsongcmd[]  = { "playerctl", "next", NULL };
+static const char *prevsongcmd[]  = { "clipmenu", "previous", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ 0,                            XF86XK_AudioPlay,      spawn,          {.v = playpausecmd } },
+	{ 0,                            XF86XK_AudioNext,      spawn,          {.v = nextsongcmd } },
+	{ 0,                            XF86XK_AudioPrev,      spawn,          {.v = prevsongcmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = clipmenucmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = slockcmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
