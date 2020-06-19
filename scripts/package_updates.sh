@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/bin/bash
+
 
 while true; do
-	echo "$(checkupdates | wc -l)"
+	UPDATECOUNT="Package Updates: $(checkupdates | wc -l)\nAUR Updates: $(trizen -Syyua --show-ood | wc -l)"
+	echo -e $UPDATECOUNT
 	sleep 2
 done
