@@ -76,14 +76,16 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *roficmd[]  = { "rofi", "-show", "drun", "-font", "Hack Nerd Font 12", NULL };
-static const char *clipmenucmd[]  = { "clipmenu", NULL };
+static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
+static const char *termcmd[]     = { "st", NULL };
+static const char *roficmd[]     = { "rofi", "-show", "drun", "-font", "Hack Nerd Font 12", NULL };
+static const char *slockcmd[]    = { "slock" };
+static const char *clipmenucmd[] = { "clipmenu", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_c,      spawn,          {.v = clipmenucmd } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = slockcmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
