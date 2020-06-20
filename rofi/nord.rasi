@@ -1,11 +1,11 @@
 configuration {
   show-icons: true;
-  font: "SauceCodePro Nerd Font Medium 10";
+  font: "CodeNewRoman Nerd Font 14";
   drun-display-format: "{icon} {name}";
   display-run: " ";
   display-drun: " ";
   display-window: " ";
-  modi: "window,run,drun";
+  modi: "window,run,drun,";
 }
 
 * {
