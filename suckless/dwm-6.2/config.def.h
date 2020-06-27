@@ -38,6 +38,7 @@ static const char *const autostart[] = {
 	"dunst", NULL,
 	"nextcloud", NULL,
 	"clipmenud", NULL,
+	"polychromatic-tray-applet", NULL,
 	NULL /* terminate */
 };
 
@@ -86,7 +87,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
 static const char *termcmd[]      = { "st", NULL };
 static const char *roficmd[]      = { "rofi", "-show", "drun", NULL };
-static const char *slockcmd[]     = { "slock" };
+static const char *sysctlcmd[]    = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/syscontrol.sh", NULL };
 static const char *clipmenucmd[]  = { "clipmenu", NULL };
 static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
 static const char *nextsongcmd[]  = { "playerctl", "next", NULL };
@@ -98,8 +99,8 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioNext,      spawn,          {.v = nextsongcmd } },
 	{ 0,                            XF86XK_AudioPrev,      spawn,          {.v = prevsongcmd } },
 	{ MODKEY,                       XK_c,                  spawn,          {.v = clipmenucmd } },
-	{ MODKEY|ShiftMask,             XK_l,                  spawn,          {.v = slockcmd } },
 	{ MODKEY,                       XK_d,                  spawn,          {.v = roficmd } },
+	{ MODKEY,                       XK_BackSpace,          spawn,          {.v = sysctlcmd } },
 	{ MODKEY,                       XK_Return,             spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,                  togglebar,      {0} },
 	{ MODKEY,                       XK_j,                  focusstack,     {.i = +1 } },
