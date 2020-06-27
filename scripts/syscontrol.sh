@@ -5,5 +5,5 @@ MENU="$(rofi -sep "|" -dmenu -i -p 'What do you want to do?' <<< " Lock| R
 case "$MENU" in
 	*Lock) slock ;;
 	*Reboot) reboot ;;
-	*Shutdown) poweroff ;;
+	*Shutdown) shutdown -h now ;;
 esac
