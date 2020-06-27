@@ -1,0 +1,34 @@
+#define black #252525
+#define red #FF5252
+#define green #C3D82C
+#define yellow #FFC135
+#define blue #42A5F5
+#define purple #D81B60
+#define cyan #00ACC1
+#define white #708284
+#define brightBlack #708284
+#define background #202020
+#define foreground #A1B0B8
+
+*.foreground:   foreground
+*.background:   background
+*.cursorColor:  foreground
+*fading:        35
+*fadeColor:     brightBlack
+
+*.color0:  black
+*.color1:  red
+*.color2:  green
+*.color3:  yellow
+*.color4:  blue
+*.color5:  purple
+*.color6:  cyan
+*.color7:  white
+*.color8:  brightBlack
+*.color9:  red
+*.color10: green
+*.color11: yellow
+*.color12: blue
+*.color13: purple
+*.color14: cyan
+*.color15: white
