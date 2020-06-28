@@ -39,6 +39,7 @@ static const char *const autostart[] = {
 	"nextcloud", NULL,
 	"clipmenud", NULL,
 	"polychromatic-tray-applet", NULL,
+	"blueman-tray", NULL,
 	NULL /* terminate */
 };
 
