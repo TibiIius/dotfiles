@@ -1,5 +1,5 @@
 #!/bin/sh
 
 while true; do
-	echo "$(curl -s wttr.in/Rumohr?format="%C+%t")"
+	echo "$(curl -s wttr.in/Kiel?format="%C+%t")"
 done
