@@ -40,6 +40,7 @@ static const char *const autostart[] = {
 	"clipmenud", NULL,
 	"polychromatic-tray-applet", NULL,
 	"blueman-tray", NULL,
+	"kmix", NULL,
 	NULL /* terminate */
 };
 
@@ -89,6 +90,7 @@ static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenu
 static const char *termcmd[]       = { "st", NULL };
 static const char *roficmd[]       = { "rofi", "-show", "drun", NULL };
 static const char *sysctlcmd[]     = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/syscontrol.sh", NULL };
+static const char *scrotcmd[]      = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/scrot.sh", NULL };
 static const char *clipmenucmd[]   = { "clipmenu", NULL };
 static const char *audiolowercmd[] = { "pamixer",   "-d", "5", NULL };
 static const char *audioraisecmd[] = { "pamixer",   "-i", "5", NULL };
@@ -109,6 +111,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,                    spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_BackSpace,            spawn,          {.v = sysctlcmd } },
 	{ MODKEY,                       XK_Return,               spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_y,                    spawn,          {.v = scrotcmd } },
 	{ MODKEY,                       XK_b,                    togglebar,      {0} },
 	{ MODKEY,                       XK_j,                    focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,                    focusstack,     {.i = -1 } },
