@@ -37,7 +37,8 @@ static const char *const autostart[] = {
 	"picom", "--experimental-backends", "--backend", "glx", NULL,
 	"keepassxc", NULL,
 	"discord", NULL,
-	"spotify", NULL,
+	"geary", NULL,
+	"sh", "-c", "/usr/local/bin/spotify", NULL,
 	"dunst", NULL,
 	"nextcloud", NULL,
 	"clipmenud", NULL,
@@ -62,7 +63,7 @@ static const Rule rules[] = {
 	{ "keepassxc", NULL,       NULL,                                    1 << 8,       0,           -1 },
 	{ NULL,        NULL,       "Nextcloud",                             1 << 8,       0,           -1 },
 	{ "discord",   NULL,       NULL,                                    1 << 7,       0,           -1 },
-	{ "spotify",   NULL,       NULL,                                    1 << 6,       0,           -1 },
+	{ "Spotify",   NULL,       NULL,                                    1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
