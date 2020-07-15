@@ -69,7 +69,6 @@ static const struct arg args[] = {
 	{ cpu_perc, 				"  %s%% | ",  NULL                                                               },
 	{ ram_used, 				" %s/",        NULL                                                               },
 	{ ram_total, 				"%s  ",        NULL                                                               },
-	{ run_command,	  	" %s  ",      "/home/tim/Documents/GitHub/dotfiles/scripts/dwm_pulse.sh"         },
 	{ run_command,	  	" %s  ",      "/home/tim/Documents/GitHub/dotfiles/scripts/weather.sh"           },
 	{ datetime, 				" %s ",       "%F %T"                                                            },
 };
