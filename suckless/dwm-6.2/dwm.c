@@ -262,6 +262,8 @@ static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setgaps(int oh, int ov, int ih, int iv);
+static void getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc);
+static void getfacts(Monitor *m, int msize, int ssize, float *mf, float *sf, int *mr, int *sr);
 static void incrgaps(const Arg *arg);
 static void incrigaps(const Arg *arg);
 static void incrogaps(const Arg *arg);
@@ -315,7 +317,6 @@ static void zoom(const Arg *arg);
 static void centeredmaster(Monitor *m);
 static void centeredfloatingmaster(Monitor *m);
 static void autostart_exec(void);
-static void getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc);
 
 /* variables */
 static Systray *systray =  NULL;
@@ -1980,6 +1981,30 @@ getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc)
 }
 
 void
+getfacts(Monitor *m, int msize, int ssize, float *mf, float *sf, int *mr, int *sr)
+{
+	unsigned int n;
+	float mfacts, sfacts;
+	int mtotal = 0, stotal = 0;
+	Client *c;
+
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	mfacts = MIN(n, m->nmaster);
+	sfacts = n - m->nmaster;
+
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++)
+		if (n < m->nmaster)
+			mtotal += msize / mfacts;
+		else
+			stotal += ssize / sfacts;
+
+	*mf = mfacts; // total factor of master area
+	*sf = sfacts; // total factor of stack area
+	*mr = msize - mtotal; // the remainder (rest) of pixels after an even master split
+	*sr = ssize - stotal; // the remainder (rest) of pixels after an even stack split
+}
+
+void
 togglegaps(const Arg *arg)
 {
 	enablegaps = !enablegaps;
@@ -3053,47 +3078,52 @@ centeredmaster(Monitor *m)
 void
 centeredfloatingmaster(Monitor *m)
 {
-	unsigned int i, n, w, mh, mw, mx, mxo, my, myo, tx;
+	unsigned int i, n;
+	float mfacts, sfacts;
+	float mivf = 1.0; // master inner vertical gap factor
+	int oh, ov, ih, iv, mrest, srest;
+	int mx = 0, my = 0, mh = 0, mw = 0;
+	int sx = 0, sy = 0, sh = 0, sw = 0;
 	Client *c;
 
-	/* count number of clients in the selected monitor */
-	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	getgaps(m, &oh, &ov, &ih, &iv, &n);
 	if (n == 0)
 		return;
 
-	/* initialize nmaster area */
-	if (n > m->nmaster) {
+	sx = mx = m->wx + ov;
+	sy = my = m->wy + oh;
+	sh = mh = m->wh - 2*oh;
+	mw = m->ww - 2*ov - iv*(n - 1);
+	sw = m->ww - 2*ov - iv*(n - m->nmaster - 1);
+
+	if (m->nmaster && n > m->nmaster) {
+		mivf = 0.8;
 		/* go mfact box in the center if more than nmaster clients */
 		if (m->ww > m->wh) {
-			mw = m->nmaster ? m->ww * m->mfact : 0;
-			mh = m->nmaster ? m->wh * 0.9 : 0;
+			mw = m->ww * m->mfact - iv*mivf*(MIN(n, m->nmaster) - 1);
+			mh = m->wh * 0.9;
 		} else {
-			mh = m->nmaster ? m->wh * m->mfact : 0;
-			mw = m->nmaster ? m->ww * 0.9 : 0;
+			mw = m->ww * 0.9 - iv*mivf*(MIN(n, m->nmaster) - 1);
+			mh = m->wh * m->mfact;
 		}
-		mx = mxo = (m->ww - mw) / 2;
-		my = myo = (m->wh - mh) / 2;
-	} else {
-		/* go fullscreen if all clients are in the master area */
-		mh = m->wh;
-		mw = m->ww;
-		mx = mxo = 0;
-		my = myo = 0;
+		mx = m->wx + (m->ww - mw) / 2;
+		my = m->wy + (m->wh - mh - 2*oh) / 2;
+
+		sx = m->wx + ov;
+		sy = m->wy + oh;
+		sh = m->wh - 2*oh;
 	}
 
-	for(i = tx = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-	if (i < m->nmaster) {
-		/* nmaster clients are stacked horizontally, in the center
-		 * of the screen */
-		w = (mw + mxo - mx) / (MIN(n, m->nmaster) - i);
-		resize(c, m->wx + mx, m->wy + my, w - (2*c->bw),
-		       mh - (2*c->bw), 0);
-		mx += WIDTH(c);
-	} else {
-		/* stack clients are stacked horizontally */
-		w = (m->ww - tx) / (n - i);
-		resize(c, m->wx + tx, m->wy, w - (2*c->bw),
-		       m->wh - (2*c->bw), 0);
-		tx += WIDTH(c);
-	}
+	getfacts(m, mw, sw, &mfacts, &sfacts, &mrest, &srest);
+
+	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+		if (i < m->nmaster) {
+			/* nmaster clients are stacked horizontally, in the center of the screen */
+			resize(c, mx, my, (mw / mfacts) + (i < mrest ? 1 : 0) - (2*c->bw), mh - (2*c->bw), 0);
+			mx += WIDTH(c) + iv*mivf;
+		} else {
+			/* stack clients are stacked horizontally */
+			resize(c, sx, sy, (sw / sfacts) + ((i - m->nmaster) < srest ? 1 : 0) - (2*c->bw), sh - (2*c->bw), 0);
+			sx += WIDTH(c) + iv;
+		}
 }
