@@ -53,20 +53,21 @@ static const char *const autostart[] = {
 	"nm-applet", NULL,
 	"kmix", NULL,
 	"slstatus", NULL,
+	"light-locker", NULL,
 	"polychromatic-tray-applet", NULL,
 	"calcurse", "--daemon", NULL,
 	NULL /* terminate */
 };
 
 /* tagging */
-static const char *tags[] = { " ", " ", " ", " ", " ", " ", " ", " ", "" };
+static const char *tags[] = { " ", " ", " ", " ", " ", " ", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
+	/* class      instance    title     																tags mask     isfloating   monitor */
 	{ "Gimp",      NULL,       NULL,                                    0,            1,           -1 },
 /*{ "Firefox",   NULL,       NULL,                                    1 << 8,       0,           -1 }, */
 	{ "KeePassXC", NULL,       NULL,                                    1 << 8,       0,           -1 },
@@ -122,7 +123,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioNext,        spawn,          {.v = nextsongcmd } },
 	{ 0,                            XF86XK_AudioPrev,        spawn,          {.v = prevsongcmd } },
 	{ 0,                            XK_Print,                spawn,          {.v = scrotcmd } },
-	{ MODKEY,                       XK_c,                    spawn,          {.v = clipmenucmd } },
+	{ MODKEY,                       XK_less,                    spawn,          {.v = clipmenucmd } },
 	{ MODKEY,                       XK_d,                    spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_BackSpace,            spawn,          {.v = sysctlcmd } },
 	{ MODKEY,                       XK_Return,               spawn,          {.v = termcmd } },
