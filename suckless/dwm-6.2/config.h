@@ -39,6 +39,7 @@ static char *colors[][3] = {
 
 static const char *const autostart[] = {
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/screenlayout.sh", NULL,
+	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/conky.sh", NULL,
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/appointments.sh", NULL,
 	"nitrogen", "--restore", NULL,
 	"picom", "--experimental-backends", "--backend", "glx", NULL,
@@ -67,13 +68,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title     																tags mask     isfloating   monitor */
-	{ "Gimp",      NULL,       NULL,                                    0,            1,           -1 },
-/*{ "Firefox",   NULL,       NULL,                                    1 << 8,       0,           -1 }, */
-	{ "KeePassXC", NULL,       NULL,                                    1 << 8,       0,           -1 },
-	{ NULL,        NULL,       "Nextcloud",                             1 << 8,       0,           -1 },
-	{ "discord",   NULL,       NULL,                                    1 << 7,       0,            1 },
-	{ "Spotify",   NULL,       NULL,                                    1 << 6,       0,           -1 },
+	/* class     	          instance    title     														  	tags mask     isfloating   monitor */
+	{ "Gimp",               NULL,       NULL,                                     0,            1,           -1 },
+/*{ "Firefox",            NULL,       NULL,                                     1 << 8,       0,           -1 }, */
+	{ "KeePassXC",          NULL,       NULL,                                     1 << 8,       0,           -1 },
+	{ NULL,                 NULL,       "Nextcloud",                              1 << 8,       0,           -1 },
+	{ "discord",            NULL,       NULL,                                     1 << 7,       0,            1 },
+	{ "Spotify",            NULL,       NULL,                                     1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
