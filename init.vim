@@ -2,20 +2,20 @@
 set nocompatible
 syntax on
 set encoding=utf-8
-set number relativenumber
+set number relativenumber " Number of current line + relative number of other lines
 set clipboard+=unnamedplus " Ditches Vim's clipboard and uses the OS's one
 
 " Search settings
-set hlsearch
+set hlsearch " Highlights searched elements
 set ignorecase
-set smartcase
-set incsearch
+set smartcase " Only case-sensitive when search includes upper-case characters
+set incsearch " Start searching as you type
 
 " Tab sizes
 set tabstop=2
 set shiftwidth=2
 
-if !exists('g:vscode')
+if !exists('g:vscode') " Only do if not in VScode mode
 	" Plug init
 	call plug#begin('~/.vim/plugged')
 	Plug 'vim-airline/vim-airline'
@@ -41,6 +41,7 @@ if !exists('g:vscode')
 	" General config
 	let g:tex_flavor = "latex"
 	let g:vimtex_view_general_viewer = 'zathura'
+
 	" Airline config
 	let g:airline_theme='nord'
 	let g:airline#extensions#branch#enabled = 1
