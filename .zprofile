@@ -4,3 +4,4 @@ export VISUAL=nvim
 export BROWSER=firefox
 export CM_LAUNCHER=rofi
 export QT_QPA_PLATFORMTHEME=qt5ct
+export KRITA_NO_STYLE_OVERRIDE=1
