@@ -41,6 +41,10 @@ element {
   text-color: @fg;
 }
 
+element-icon {
+	size: 0.7em;
+}
+
 element selected {
   background-color: @bg-alt;
   text-color: @nord-blue-light;
