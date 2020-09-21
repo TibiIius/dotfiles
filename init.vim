@@ -36,6 +36,16 @@ if !exists('g:vscode')
 	call plug#end()
 	
 	" Set colorscheme
+	"colorscheme gruvbox
+	"if has("termguicolors") " set true colors
+	"	set t_8f=\[[38;2;%lu;%lu;%lum
+	"	set t_8b=\[[48;2;%lu;%lu;%lum
+	"	set termguicolors
+	"endif
+
+	" transparent background
+	"hi! Normal ctermbg=NONE guibg=NONE
+	"hi! NonText ctermbg=NONE guibg=NONE
 	
 	" General config
 	let g:tex_flavor = "latex"
