@@ -105,19 +105,19 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *roficmd[]       = { "rofi", "-show", "drun", NULL };
-static const char *sysctlcmd[]     = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/syscontrol.sh", NULL };
-static const char *scrotcmd_area[] = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/scrot.sh area", NULL };
-static const char *scrotcmd_focus[]= { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/scrot.sh focused", NULL };
-static const char *clipmenucmd[]   = { "clipmenu", NULL };
-static const char *audiolowercmd[] = { "pamixer",   "-d", "5", NULL };
-static const char *audioraisecmd[] = { "pamixer",   "-i", "5", NULL };
-static const char *audiomutecmd[]  = { "pamixer",   "-t", NULL };
-static const char *playpausecmd[]  = { "playerctl", "play-pause", NULL };
-static const char *nextsongcmd[]   = { "playerctl", "next", NULL };
-static const char *prevsongcmd[]   = { "playerctl", "previous", NULL };
+static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[]        = { "st", NULL };
+static const char *roficmd[]        = { "rofi", "-show", "drun", NULL };
+static const char *sysctlcmd[]      = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/syscontrol.sh", NULL };
+static const char *scrotcmd_area[]  = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/scrot.sh area", NULL };
+static const char *scrotcmd_focus[] = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/scrot.sh focused", NULL };
+static const char *clipmenucmd[]    = { "clipmenu", NULL };
+static const char *audiolowercmd[]  = { "pamixer",   "-d", "5", NULL };
+static const char *audioraisecmd[]  = { "pamixer",   "-i", "5", NULL };
+static const char *audiomutecmd[]   = { "pamixer",   "-t", NULL };
+static const char *playpausecmd[]   = { "playerctl", "play-pause", NULL };
+static const char *nextsongcmd[]    = { "playerctl", "next", NULL };
+static const char *prevsongcmd[]    = { "playerctl", "previous", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
