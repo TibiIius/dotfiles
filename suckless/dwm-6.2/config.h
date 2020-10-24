@@ -57,6 +57,7 @@ static const char *const autostart[] = {
 	"light-locker", NULL,
 	"polychromatic-tray-applet", NULL,
 	"calcurse", "--daemon", NULL,
+	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
 	NULL /* terminate */
 };
 
