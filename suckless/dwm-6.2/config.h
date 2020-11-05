@@ -58,6 +58,7 @@ static const char *const autostart[] = {
 	"polychromatic-tray-applet", NULL,
 	"calcurse", "--daemon", NULL,
 	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
+	"glava", NULL,
 	NULL /* terminate */
 };
 
