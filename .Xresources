@@ -6,6 +6,6 @@
 ! Repository: https://github.com/arcticicestudio/nord-xresources
 ! License:    MIT
 
-#include "/home/tim/Documents/GitHub/dotfiles/colorschemes/nord"
+#include "Documents/GitHub/dotfiles/colorschemes/nord"
 
 *font: JetBrainsMono Nerd Font-10
