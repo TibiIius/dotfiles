@@ -1,11 +1,15 @@
 configuration {
   show-icons: true;
-  font: "JetBrainsMono Nerd Font 13";
+  font: "JetBrainsMono Nerd Font 20";
   drun-display-format: "{icon} {name}";
   display-run: " ";
   display-drun: " ";
   display-window: " ";
-  modi: "window,run,drun,";
+  display-ssh: " ";
+  modi: "window,ssh,run,drun";
+	fullscreen: true;
+	me-select-entry: "";
+	me-accept-entry: "MousePrimary";
 }
 
 * {
@@ -33,21 +37,27 @@ mainbox {
 }
 
 listview {
-  columns: 1;
+  columns: 5;
 }
 
 element {
-  padding: 12;
+  padding: 24;
+  /* orientation: vertical; */
   text-color: @fg;
+  /* children: [element-icon, element-text]; */
 }
 
 element-icon {
-	size: 1.5em;
+	size: 2.5em;
 }
 
 element selected {
   background-color: @bg-alt;
   text-color: @nord-blue-light;
+}
+
+element-text {
+  padding: 22 0 0 0;
 }
 
 inputbar {
@@ -57,12 +67,13 @@ inputbar {
 
 prompt {
   enabled: true;
-  font: "SauceCodePro Nerd Font 12";
-  padding: 12 0 0 12;
+  padding: 40 0 50 720;
+  font: "JetBrainsMono Nerd Font 20";
   text-color: @nord-yellow;
 }
 
 entry {
-  padding: 12;
+  padding: 40 720 50 12;
+  font: "JetBrainsMono Nerd Font 20";
   text-color: @nord-yellow;
 }
