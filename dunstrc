@@ -416,6 +416,10 @@
 
 # Apllication-specific settings
 
+[Mail]
+appname = Geary
+format = " Mail\n<b>%s</b>\n%b"
+
 [Spotify]
 appname = Spotify
 format = " Spotify\n %s\n%b"
