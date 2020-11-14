@@ -1,13 +1,13 @@
 configuration {
   show-icons: true;
-  font: "JetBrainsMono Nerd Font 20";
+  font: "JetBrainsMono Nerd Font 15";
   drun-display-format: "{icon} {name}";
   display-run: " ";
   display-drun: " ";
   display-window: " ";
   display-ssh: " ";
   modi: "window,ssh,run,drun";
-	fullscreen: true;
+	fullscreen: false;
 	me-select-entry: "";
 	me-accept-entry: "MousePrimary";
 }
@@ -28,7 +28,7 @@ configuration {
 }
 
 window {
-  width: 30%;
+  width: 40%;
   transparency: "real";
 }
 
@@ -37,11 +37,11 @@ mainbox {
 }
 
 listview {
-  columns: 5;
+  columns: 1;
 }
 
 element {
-  padding: 24;
+  padding: 4;
   /* orientation: vertical; */
   text-color: @fg;
   /* children: [element-icon, element-text]; */
@@ -57,7 +57,7 @@ element selected {
 }
 
 element-text {
-  padding: 22 0 0 0;
+  padding: 18 0 0 0;
 }
 
 inputbar {
@@ -67,13 +67,13 @@ inputbar {
 
 prompt {
   enabled: true;
-  padding: 40 0 50 720;
-  font: "JetBrainsMono Nerd Font 20";
+  padding: 20 5 20 20;
+  font: "JetBrainsMono Nerd Font 15";
   text-color: @nord-yellow;
 }
 
 entry {
-  padding: 40 720 50 12;
-  font: "JetBrainsMono Nerd Font 20";
+  padding: 20 40 20 0;
+  font: "JetBrainsMono Nerd Font 15";
   text-color: @nord-yellow;
 }
