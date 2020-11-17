@@ -82,7 +82,7 @@
     # Set to 0 to disable.
     # A client can set the 'transient' hint to bypass this. See the rules
     # section for how to disable this if necessary
-    idle_threshold = 120
+    idle_threshold = 0
 
     ### Text ###
 
@@ -418,7 +418,7 @@
 
 [Mail]
 appname = Geary
-format = " Mail\n<b>%s</b>\n%b"
+format = " %a\n<b>%s</b>\n%b"
 
 [Spotify]
 appname = Spotify
