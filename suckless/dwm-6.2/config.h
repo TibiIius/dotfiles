@@ -57,6 +57,8 @@ static const char *const autostart[] = {
 	"slstatus", NULL,
 	"light-locker", NULL,
 	"polychromatic-tray-applet", NULL,
+	"deja-dup", NULL,
+	"steam", NULL,
 	"calcurse", "--daemon", NULL,
 	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
 	NULL /* terminate */
@@ -75,13 +77,15 @@ static const Rule rules[] = {
 /*{ "Firefox",            NULL,       NULL,                                     1 << 8,       0,           -1 }, */
 	{ "KeePassXC",          NULL,       NULL,                                     1 << 8,       0,           -1 },
 	{ "discord",            NULL,       NULL,                                     1 << 7,       0,            1 },
+	{ NULL,                 NULL,       "Org.gnome.DejaDup",                      1 << 8,       0,            1 },
+	{ "Steam",              NULL,       NULL,    								                  1 << 6,       1,            1 },
 	{ "Spotify",            NULL,       NULL,                                     1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* first entry is default */
