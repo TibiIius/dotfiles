@@ -126,6 +126,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]        = { "st", NULL };
 static const char *roficmd[]        = { "rofi", "-show", "drun", NULL };
+static const char *rofiswitcher[]   = { "rofi", "-show", "window", "-theme", "~/Documents/GitHub/dotfiles/rofi/nord-switcher.rasi", NULL };
 static const char *sysctlcmd[]      = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/syscontrol.sh", NULL };
 static const char *scrotcmd_area[]  = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/scrot.sh area", NULL };
 static const char *scrotcmd_focus[] = { "sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/scrot.sh focused", NULL };
@@ -149,6 +150,8 @@ static Key keys[] = {
 	{ 0|ShiftMask,                  XK_Print,                spawn,          {.v = scrotcmd_focus } },
 	{ MODKEY,                       XK_less,                 spawn,          {.v = clipmenucmd } },
 	{ MODKEY,                       XK_d,                    spawn,          {.v = roficmd } },
+	{ MODKEY,                       XK_Tab,                  spawn,          {.v = rofiswitcher } },
+	{ 0|Mod1Mask,                   XK_Tab,                  spawn,          {.v = rofiswitcher } },
 	{ MODKEY,                       XK_BackSpace,            spawn,          {.v = sysctlcmd } },
 	{ MODKEY,                       XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,                    togglebar,      {0} },
@@ -177,7 +180,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_y,                    incrovgaps,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_o,                    incrovgaps,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Return,               zoom,           {0} },
-	{ MODKEY,                       XK_Tab,                  view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,                    killclient,     {0} },
 	{ MODKEY,                       XK_t,                    setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_w,                    tabmode,        {-1} },

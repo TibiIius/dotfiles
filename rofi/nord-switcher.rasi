@@ -1,0 +1,77 @@
+configuration {
+  show-icons: true;
+  font: "JetBrainsMono Nerd Font 15";
+  drun-display-format: "{icon} {name}";
+  display-window: " ";
+  modi: "window";
+	fullscreen: false;
+	kb-row-down: "Alt+Tab,Super+Tab,Down";
+	kb-row-up: "Alt+ISO_Left_Tab,Super+ISO_Left_Tab,Up";
+	kb-accept-entry: "!Alt+Tab,!Super+Tab,Return";
+	me-select-entry: "";
+	me-accept-entry: "MousePrimary";
+}
+
+* {
+  background-color: #2E3440;
+  bg-alt: #3B4252;
+  fg: #ECEFF4;
+
+  nord-blue-light: #88C0D0;
+  nord-yellow: #EBCB8B;
+
+  border: 0;
+  lines: 12;
+  padding: 0;
+  margin: 0;
+  spacing: 0;
+}
+
+window {
+  width: 40%;
+  transparency: "real";
+}
+
+mainbox {
+  children: [inputbar, listview];
+}
+
+listview {
+  columns: 9;
+}
+
+element {
+  padding: 4;
+  /* orientation: vertical; */
+  text-color: @fg;
+  /* children: [element-icon, element-text]; */
+}
+
+element-icon {
+	size: 2.5em;
+}
+
+element selected {
+  background-color: @bg-alt;
+  text-color: @nord-blue-light;
+}
+
+element-text {
+  padding: 18 0 0 0;
+}
+
+inputbar {
+  background-color: @background;
+  children: [prompt, entry];
+}
+
+prompt {
+  enabled: true;
+  padding: 20 5 20 20;
+  font: "JetBrainsMono Nerd Font 15";
+  text-color: @nord-yellow;
+}
+
+entry {
+  enabled: false;
+}
