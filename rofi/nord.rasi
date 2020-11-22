@@ -4,9 +4,8 @@ configuration {
   drun-display-format: "{icon} {name}";
   display-run: " ";
   display-drun: " ";
-  display-window: " ";
   display-ssh: " ";
-  modi: "window,ssh,run,drun";
+  modi: "ssh,run,drun";
 	fullscreen: false;
 	me-select-entry: "";
 	me-accept-entry: "MousePrimary";
