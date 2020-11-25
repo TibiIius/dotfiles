@@ -820,3 +820,29 @@ tile(Monitor *m)
 			sy += HEIGHT(c) + ih;
 		}
 }
+
+
+void
+monocle(Monitor *m)
+{
+	unsigned int n = 0;
+	int oh, ov, ih, iv;
+	int wx = 0, wy = 0, wh = 0, ww = 0;
+	Client *c;
+
+	getgaps(m, &oh, &ov, &ih, &iv, &n);
+	if (n == 0)
+		return;
+
+	wh = m->wh - 2*oh;
+	ww = m->ww - 2*ov;
+	wx = m->wx + ov;
+	wy = m->wy + oh;
+
+	for (c = m->clients; c; c = c->next)
+	if (n > 0) /* override layout symbol */
+		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
+	for (c = nexttiled(m->clients); c; c = nexttiled(c->next)) {
+		resize(c, wx, wy, ww - (2*c->bw), wh - (2*c->bw), 0);
+	}
+}
