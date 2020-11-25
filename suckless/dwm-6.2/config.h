@@ -21,8 +21,8 @@ static const int topbar                  = 1;        /* 0 means bottom bar */
 /*  monocle mode in the presence of several windows.                        */
 /*  Modes after showtab_nmodes are disabled.                                */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
-static const int showtab                 = showtab_always;      /* Default tab bar show mode */
-static const int toptab                  = False;               /* False means bottom tab bar */
+static const int showtab                 = showtab_auto;      /* Default tab bar show mode */
+static const int toptab                  = True;               /* False means bottom tab bar */
 static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=10" };
 static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=10";
 static char normbgcolor[]                = "#222222";
