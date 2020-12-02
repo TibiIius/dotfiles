@@ -5,6 +5,19 @@ set encoding=utf-8
 set number relativenumber " Number of current line + relative number of other lines
 set clipboard+=unnamedplus " Ditches Vim's clipboard and uses the OS's one
 
+
+let g:startify_custom_header=[
+    \ '    __     __ ___  __  __',
+    \ '    \ \   / /|_ _||  \/  |',
+    \ '     \ \ / /  | | | |\/| |',
+    \ '      \ V /   | | | |  | |',
+    \ '       \_/   |___||_|  |_|',
+    \ ]
+
+
+
+
+
 " Search settings
 set hlsearch " Highlights searched elements
 set ignorecase
@@ -14,6 +27,7 @@ set incsearch " Start searching as you type
 " Tab sizes
 set tabstop=2
 set shiftwidth=2
+set expandtab
 
 if !exists('g:vscode') " Only do if not in VScode mode
 	" Plug init
@@ -33,9 +47,12 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'ycm-core/YouCompleteMe'
+	Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+	Plug 'mhinz/vim-startify'
 	call plug#end()
 
 	" Set colorscheme
+	let g:material_theme_style = 'ocean'
 	colorscheme nord
 	if has("termguicolors") " set true colors
 		set t_8f=\[[38;2;%lu;%lu;%lum
@@ -52,7 +69,7 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	let g:vimtex_view_general_viewer = 'zathura'
 
 	" Airline config
-	let g:airline_theme='nord'
+	"let g:airline_theme='base16'
 	let g:airline#extensions#branch#enabled = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#nerdtree_status = 1
