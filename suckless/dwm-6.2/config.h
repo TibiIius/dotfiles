@@ -55,7 +55,6 @@ static const char *const autostart[] = {
 	"nm-applet", NULL,
 	"kmix", NULL,
 	"slstatus", NULL,
-	"light-locker", NULL,
 	"polychromatic-tray-applet", NULL,
 	"deja-dup", NULL,
 	"steam", NULL,
