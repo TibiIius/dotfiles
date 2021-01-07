@@ -53,7 +53,7 @@ if !exists('g:vscode') " Only do if not in VScode mode
 
 	" Set colorscheme
 	let g:material_theme_style = 'ocean'
-	colorscheme nord
+	colorscheme material
 	if has("termguicolors") " set true colors
 		set t_8f=\[[38;2;%lu;%lu;%lum
 		set t_8b=\[[48;2;%lu;%lu;%lum
@@ -69,7 +69,7 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	let g:vimtex_view_general_viewer = 'zathura'
 
 	" Airline config
-	"let g:airline_theme='base16'
+	let g:airline_theme='base16'
 	let g:airline#extensions#branch#enabled = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#nerdtree_status = 1
