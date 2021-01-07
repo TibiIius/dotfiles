@@ -2517,7 +2517,7 @@ updatestatus(void)
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
 		strcpy(stext, "dwm-"VERSION);
   for(m = mons; m; m = m->next) {
-  	drawbar(selmon);
+  	drawbar(m);
   }
   updatesystray();
 }
