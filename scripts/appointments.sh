@@ -1,13 +1,11 @@
 #!/bin/sh
 
-calcurse-caldav > /dev/null 2>&1
-
-sleep 10
+calcurse-caldav  > /dev/null 2>&1
 
 APPOINTMENTS_TODAY=$(calcurse -a)
 
 if [ -n "$APPOINTMENTS_TODAY" ]; then
-	notify-send "$(calcurse -a)"
+	notify-send "$APPOINTMENTS_TODAY"
 else
 	notify-send "No appointments today"
 fi
