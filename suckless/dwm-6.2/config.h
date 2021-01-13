@@ -21,7 +21,7 @@ static const int topbar                  = 1;        /* 0 means bottom bar */
 /*  monocle mode in the presence of several windows.                        */
 /*  Modes after showtab_nmodes are disabled.                                */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
-static const int showtab                 = showtab_auto;      /* Default tab bar show mode */
+static const int showtab                 = showtab_never;      /* Default tab bar show mode */
 static const int toptab                  = True;               /* False means bottom tab bar */
 static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=10" };
 static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=10";
@@ -31,10 +31,13 @@ static char normfgcolor[]                = "#bbbbbb";
 static char selfgcolor[]                 = "#eeeeee";
 static char selbordercolor[]             = "#005577";
 static char selbgcolor[]                 = "#005577";
+static char hidbgcolor[]                 = "#005577";
+static char hidbordercolor[]             = "#005577";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+       [SchemeHid]  = { normfgcolor, hidbgcolor,  hidbordercolor },
 };
 
 static const char *const autostart[] = {
@@ -155,8 +158,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_BackSpace,            spawn,          {.v = sysctlcmd } },
 	{ MODKEY,                       XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,                    togglebar,      {0} },
-	{ MODKEY,                       XK_j,                    focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,                    focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_j,                    focusstackvis,  {.i = +1 } },
+	{ MODKEY,                       XK_k,                    focusstackvis,  {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,                    focusstackhid,  {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,                    focusstackhid,  {.i = -1 } },
 	{ MODKEY,                       XK_i,                    incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_p,                    incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,                    setmfact,       {.f = -0.05} },
@@ -190,6 +195,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,     							 setlayout,      {.v = &layouts[5]} },
 	{ MODKEY|ControlMask,	        	XK_Left,                 cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_Right,                cyclelayout,    {.i = +1 } },
+	{ MODKEY,                       XK_s,                    show,           {0} },
+	{ MODKEY,                       XK_h,                    hide,           {0} },
 	{ MODKEY,                       XK_space,                setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,                togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,                    togglefullscr,  {0} },

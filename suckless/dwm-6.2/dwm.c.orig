@@ -277,6 +277,7 @@ static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void togglefullscr(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
@@ -918,7 +919,7 @@ drawbar(Monitor *m)
 		stw = getsystraywidth();
 
 	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) { /* status is only drawn on selected monitor */
+	if (m == selmon || 1) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		sw = TEXTW(stext) - lrpad / 2 + 2; /* 2px right padding */
 		drw_text(drw, m->ww - sw - stw, 0, sw, bh, lrpad / 2 - 2, stext, 0);
@@ -989,7 +990,7 @@ void
 drawtab(Monitor *m) {
 	Client *c;
 	int i;
-	int itag = -1;
+//	int itag = -1;
 	char view_info[50];
 	int view_info_w = 0;
 	int sorted_label_widths[MAXTABS];
@@ -999,21 +1000,21 @@ drawtab(Monitor *m) {
 	int w = 0;
 
 	//view_info: indicate the tag which is displayed in the view
-	for(i = 0; i < LENGTH(tags); ++i){
-	  if((selmon->tagset[selmon->seltags] >> i) & 1) {
-	    if(itag >=0){ //more than one tag selected
-	      itag = -1;
-	      break;
-	    }
-	    itag = i;
-	  }
-	}
-
-	if(0 <= itag  && itag < LENGTH(tags)){
-	  snprintf(view_info, sizeof view_info, "[%s]", tags[itag]);
-	} else {
-	  strncpy(view_info, "[...]", sizeof view_info);
-	}
+//	for(i = 0; i < LENGTH(tags); ++i){
+//	  if((selmon->tagset[selmon->seltags] >> i) & 1) {
+//	    if(itag >=0){ //more than one tag selected
+//	      itag = -1;
+//	      break;
+//	    }
+//	    itag = i;
+//	  }
+//	}
+//
+//	if(0 <= itag  && itag < LENGTH(tags)){
+//	  snprintf(view_info, sizeof view_info, "[%s]", tags[itag]);
+//	} else {
+//	  strncpy(view_info, "[...]", sizeof view_info);
+//	}
 	view_info[sizeof(view_info) - 1 ] = 0;
 	view_info_w = TEXTW(view_info);
 	tot_width = view_info_w;
@@ -1487,21 +1488,6 @@ maprequest(XEvent *e)
 		return;
 	if (!wintoclient(ev->window))
 		manage(ev->window, &wa);
-}
-
-void
-monocle(Monitor *m)
-{
-	unsigned int n = 0;
-	Client *c;
-
-	for (c = m->clients; c; c = c->next)
-		if (ISVISIBLE(c))
-			n++;
-	if (n > 0) /* override layout symbol */
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
-	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
-		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
 }
 
 void
@@ -2217,6 +2203,13 @@ togglefloating(const Arg *arg)
 }
 
 void
+togglefullscr(const Arg *arg)
+{
+  if(selmon->sel)
+    setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
+}
+
+void
 toggletag(const Arg *arg)
 {
 	unsigned int newtags;
@@ -2520,10 +2513,13 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
+  Monitor* m;
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
 		strcpy(stext, "dwm-"VERSION);
-	drawbar(selmon);
-	updatesystray();
+  for(m = mons; m; m = m->next) {
+  	drawbar(m);
+  }
+  updatesystray();
 }
 
 void
