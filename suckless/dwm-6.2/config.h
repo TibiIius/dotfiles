@@ -31,13 +31,14 @@ static char normfgcolor[]                = "#bbbbbb";
 static char selfgcolor[]                 = "#eeeeee";
 static char selbordercolor[]             = "#005577";
 static char selbgcolor[]                 = "#005577";
-static char hidbgcolor[]                 = "#005577";
+static char hidfgcolor[]                 = "#005577";
 static char hidbordercolor[]             = "#005577";
+static char hidbgcolor[]                 = "#005577";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
-       [SchemeHid]  = { normfgcolor, hidbgcolor,  hidbordercolor },
+       [SchemeHid]  = { hidfgcolor,  hidbgcolor,  hidbordercolor },
 };
 
 static const char *const autostart[] = {
