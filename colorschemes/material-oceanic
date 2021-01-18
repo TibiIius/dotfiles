@@ -45,5 +45,6 @@ dwm.normfgcolor:			materialFG
 dwm.selbordercolor:		material1
 dwm.selbgcolor:				material1
 dwm.selfgcolor:				materialFG
-dwm.hidbgcolor:       material3
 dwm.hidbordercolor:   material3
+dwm.hidbgcolor:       materialBG
+dwm.hidfgcolor:       material8
