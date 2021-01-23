@@ -1,9 +1,9 @@
 /* center radius (pixels) */
-#define C_RADIUS 128
+#define C_RADIUS 265
 /* center line thickness (pixels) */
 #define C_LINE 1.5
 /* outline color */
-#define OUTLINE #333333
+#define OUTLINE #fe4151
 /* Amplify magnitude of the results each bar displays */
 #define AMPLIFY 150
 /* Angle (in radians) for how much to rotate the visualizer */
