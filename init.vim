@@ -61,8 +61,8 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	endif
 
 	" transparent background
-"	hi! Normal ctermbg=NONE guibg=NONE
-"	hi! NonText ctermbg=NONE guibg=NONE
+	hi! Normal ctermbg=NONE guibg=NONE
+	hi! NonText ctermbg=NONE guibg=NONE
 
 	" General config
 	let g:tex_flavor = "latex"
