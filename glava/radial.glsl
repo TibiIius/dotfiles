@@ -14,13 +14,13 @@
 /* outline width (in pixels, set to 0 to disable outline drawing) */
 #define BAR_OUTLINE_WIDTH 0
 /* Amplify magnitude of the results each bar displays */
-#define AMPLIFY 500
+#define AMPLIFY 650
 /* Bar color */ 
 #define COLOR (#fe4151 * ((d / 40) + 1))
 /* Angle (in radians) for how much to rotate the visualizer */
 #define ROTATE (PI / 2)
 /* Whether to switch left/right audio buffers */
-#define INVERT 0
+#define INVERT 1
 /* Aliasing factors. Higher values mean more defined and jagged lines.
    Note: aliasing does not have a notable impact on performance, but requires
    `xroot` transparency to be enabled since it relies on alpha blending with
