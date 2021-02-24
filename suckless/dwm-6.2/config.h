@@ -141,6 +141,7 @@ static const char *audiomutecmd[]   = { "pamixer",   "-t", NULL };
 static const char *playpausecmd[]   = { "playerctl", "play-pause", NULL };
 static const char *nextsongcmd[]    = { "playerctl", "next", NULL };
 static const char *prevsongcmd[]    = { "playerctl", "previous", NULL };
+static const char *i3lock[]         = { "i3lock", "-B", "sigma", "--indicator", "-k", "--insidecolor=a3be8c44", "--insidevercolor=88c0d0aa", "--insidewrongcolor=fe4151ff", "--ringvercolor=88C0D0aa", "--ringcolor=a3be8caa", "--ringwrongcolor=fe4151ff", "--keyhlcolor=a3be8cff", "--bshlcolor=fe4151ff", "--wrongtext=\"BAKA\!\"", "--pass-media-keys", "--pass-volume-keys", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                      function        argument */
