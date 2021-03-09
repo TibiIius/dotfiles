@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:size=14:antialias=true:autohint=true";
+static char *font = "JetBrainsMono Nerd Font:size=12:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -85,46 +85,46 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9;
+float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-  [0] = "#151515", /* black   */
-  [1] = "#ac4142", /* red     */
-  [2] = "#90a959", /* green   */
-  [3] = "#f4bf75", /* yellow  */
-  [4] = "#6a9fb5", /* blue    */
-  [5] = "#aa759f", /* magenta */
-  [6] = "#75b5aa", /* cyan    */
-  [7] = "#d0d0d0", /* white   */
+	"#3b4252", /* black   */
+	"#bf616a", /* red     */
+	"#a3be8c", /* green   */
+	"#ebcb8b", /* yellow  */
+	"#81a1c1", /* blue    */
+	"#b48ead", /* magenta */
+	"#88c0d0", /* cyan    */
+	"#e5e9f0", /* white   */
 
 	/* 8 bright colors */
-  [8]  = "#505050", /* black   */
-  [9]  = "#ac4142", /* red     */
-  [10] = "#90a959", /* green   */
-  [11] = "#f4bf75", /* yellow  */
-  [12] = "#6a9fb5", /* blue    */
-  [13] = "#aa759f", /* magenta */
-  [14] = "#75b5aa", /* cyan    */
-  [15] = "#f5f5f5", /* white   */
+	"#4c566a", /* black   */
+	"#bf616a", /* red     */
+	"#a3be8c", /* green   */
+	"#ebcb8b", /* yellow  */
+	"#81a1c1", /* blue    */
+	"#b48ead", /* magenta */
+	"#8fbcbb", /* cyan    */
+	"#eceff4", /* white   */
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-  [256] = "#151515", /* background */
-  [257] = "#d0d0d0", /* foreground */
+	"#2e3440", /* background */
+	"#d8dee9", /* foreground */
 };
 
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor
+ * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 257;
 unsigned int defaultbg = 256;
 static unsigned int defaultcs = 257;
-static unsigned int defaultrcs = 257;
+static unsigned int defaultrcs = 256;
 
 /*
  * Default shape of cursor
