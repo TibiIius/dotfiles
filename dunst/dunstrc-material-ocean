@@ -417,8 +417,8 @@
 # Apllication-specific settings
 
 [Mail]
-appname = Geary
-format = " %a\n<b>%s</b>\n%b"
+appname = evolution-mail-notification
+format = " <b>%s</b>\n%b"
 
 [Spotify]
 appname = Spotify
