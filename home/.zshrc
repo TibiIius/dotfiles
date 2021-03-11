@@ -105,9 +105,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval $(thefuck --alias)
-
-
 # neovim as default editor
 export EDITOR=nvim
 export VISUAL=nvim
