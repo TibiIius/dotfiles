@@ -43,13 +43,12 @@ static char *colors[][3] = {
 
 static const char *const autostart[] = {
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/screenlayout.sh", NULL,
-	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/appointments.sh", NULL,
 	"sh", "-c", "/home/tim/Documents/GitHub/dotfiles/scripts/misc.sh", NULL,
 	"nitrogen", "--restore", NULL,
 	"picom", "--experimental-backends", "--backend", "glx", NULL,
 	"keepassxc", NULL,
 	"discord", NULL,
-	"geary", NULL,
+	"evolution", NULL,
 	"sh", "-c", "/usr/local/bin/spotify", NULL,
 	"dunst", NULL,
 	"nextcloud", NULL,
@@ -80,7 +79,7 @@ static const Rule rules[] = {
 	{ "KeePassXC",          NULL,       NULL,                                     1 << 8,       0,            0 },
 	{ "discord",            NULL,       NULL,                                     1 << 7,       0,            1 },
 	{ NULL,                 NULL,       "Backups",                                1 << 8,       0,            1 },
-	{ "Geary",              NULL,       NULL,                                     1 << 7,       0,            0 },
+	{ "Evolution",          NULL,       NULL,                                     1 << 7,       0,            0 },
 	{ "Steam",              NULL,       NULL,    								                  0,            1,           -1 },
 	{ "Spotify",            NULL,       NULL,                                     1 << 6,       0,            0 },
 	{ NULL,                 NULL,       "Calculator",                             0,            1,           -1 },
@@ -141,7 +140,7 @@ static const char *audiomutecmd[]   = { "pamixer",   "-t", NULL };
 static const char *playpausecmd[]   = { "playerctl", "play-pause", NULL };
 static const char *nextsongcmd[]    = { "playerctl", "next", NULL };
 static const char *prevsongcmd[]    = { "playerctl", "previous", NULL };
-static const char *i3lock[]         = { "i3lock", "-B", "sigma", "--indicator", "-k", "--insidecolor=a3be8c44", "--insidevercolor=88c0d0aa", "--insidewrongcolor=fe4151ff", "--ringvercolor=88C0D0aa", "--ringcolor=a3be8caa", "--ringwrongcolor=fe4151ff", "--keyhlcolor=a3be8cff", "--bshlcolor=fe4151ff", "--wrongtext=\"BAKA\!\"", "--pass-media-keys", "--pass-volume-keys", NULL };
+static const char *i3lock[]         = { "i3lock", "-B", "sigma", "--indicator", "-k", "--insidecolor=a3be8c44", "--insidevercolor=88c0d0aa", "--insidewrongcolor=fe4151ff", "--ringvercolor=88C0D0aa", "--ringcolor=a3be8caa", "--ringwrongcolor=fe4151ff", "--keyhlcolor=a3be8cff", "--bshlcolor=fe4151ff", "--wrongtext=\"BAKA!\"", "--pass-media-keys", "--pass-volume-keys", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                      function        argument */
