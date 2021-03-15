@@ -858,7 +858,14 @@
 
   # Don't show context unless running with privileges or in SSH.
   # Tip: Remove the next line to always show context.
-  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
+  # typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
+	if [[ -f /run/.containerenv && -f /run/.toolboxenv ]]; then
+  	# Display diamond when in a toolbox: ⬢ user@host.
+  	typeset -g POWERLEVEL9K_CONTEXT_VISUAL_IDENTIFIER_EXPANSION='⬢'
+	else
+	  # When not in a toolbox, don't show context unless running with privileges or in SSH.
+	  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_VISUAL_IDENTIFIER_EXPANSION=''
+	fi
 
   # Custom icon.
   # typeset -g POWERLEVEL9K_CONTEXT_VISUAL_IDENTIFIER_EXPANSION='⭐'
