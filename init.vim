@@ -46,7 +46,8 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	Plug 'lervag/vimtex'
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-	Plug 'ycm-core/YouCompleteMe'
+  "	Plug 'ycm-core/YouCompleteMe'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 	Plug 'mhinz/vim-startify'
 	call plug#end()
@@ -85,10 +86,4 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	inoremap ( ()<left>
 	inoremap [ []<left>
 	inoremap { {}<left>
-
-	" YCM snippets
-	if !exists('g:ycm_semantic_triggers')
-		let g:ycm_semantic_triggers = {}
-	endif
-	au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 endif
