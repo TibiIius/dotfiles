@@ -32,7 +32,7 @@ if !exists('g:vscode')
 	Plug 'lervag/vimtex'
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-	Plug 'ycm-core/YouCompleteMe'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	call plug#end()
 	
 	" Set colorscheme
