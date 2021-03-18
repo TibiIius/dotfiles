@@ -67,10 +67,4 @@ if !exists('g:vscode')
 	inoremap ( ()<left>
 	inoremap [ []<left>
 	inoremap { {}<left>
-	
-	" YCM snippets
-	if !exists('g:ycm_semantic_triggers')
-	    let g:ycm_semantic_triggers = {}
-	endif
-	au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 endif
