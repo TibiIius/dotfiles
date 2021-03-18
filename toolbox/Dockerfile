@@ -13,7 +13,3 @@ RUN printf "Port 2222\nListenAddress localhost\nPermitEmptyPasswords yes\n" >> /
 
 # Add global node packages
 RUN npm i -g yarn @vue/cli typescript
-
-# Setup rustup
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-RUN source $HOME/.cargo/env
