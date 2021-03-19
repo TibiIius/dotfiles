@@ -32,6 +32,7 @@ set expandtab
 if !exists('g:vscode') " Only do if not in VScode mode
 	" Plug init
 	call plug#begin('~/.vim/plugged')
+  Plug 'nekonako/xresources-nvim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'tpope/vim-fugitive'
@@ -53,8 +54,7 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	call plug#end()
 
 	" Set colorscheme
-	let g:material_theme_style = 'ocean'
-	colorscheme material
+	colorscheme xresources  
 	if has("termguicolors") " set true colors
 		set t_8f=\[[38;2;%lu;%lu;%lum
 		set t_8b=\[[48;2;%lu;%lu;%lum
