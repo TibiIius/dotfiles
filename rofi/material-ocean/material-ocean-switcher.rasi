@@ -1,6 +1,6 @@
 configuration {
   show-icons: true;
-  font: "JetBrainsMono Nerd Font 15";
+  font: "Hack Nerd Font Bold 15";
   drun-display-format: "{icon} {name}";
   display-window: " ";
   modi: "window";
@@ -68,7 +68,6 @@ inputbar {
 prompt {
   enabled: true;
   padding: 20 5 20 20;
-  font: "JetBrainsMono Nerd Font 15";
   text-color: @ocean-yellow;
 }
 

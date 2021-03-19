@@ -1,6 +1,6 @@
 configuration {
   show-icons: true;
-  font: "JetBrainsMono Nerd Font 15";
+  font: "Hack Nerd Font Bold 15";
   drun-display-format: "{icon} {name}";
   display-run: " ";
   display-drun: " ";

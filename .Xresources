@@ -9,4 +9,4 @@
 ! #include "Documents/GitHub/dotfiles/colorschemes/nord"
 #include "Documents/GitHub/dotfiles/colorschemes/material-oceanic"
 
-*font: JetBrainsMono Nerd Font-12
+*font: Hack Nerd Font-12:style=bold
