@@ -33,7 +33,8 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	" Plug init
 	call plug#begin('~/.vim/plugged')
   Plug 'nekonako/xresources-nvim'
-	Plug 'vim-airline/vim-airline'
+  Plug 'junegunn/fzf'
+  Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
@@ -47,7 +48,6 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	Plug 'lervag/vimtex'
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-  "	Plug 'ycm-core/YouCompleteMe'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 	Plug 'mhinz/vim-startify'
@@ -80,10 +80,41 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	let g:UltiSnipsExpandTrigger="<s-q>"
 	let g:UltiSnipsJumpForwardTrigger = '<s-q>'
 
-	" Auto brackets etc
-	"inoremap " ""<left>
-	"inoremap ' ''<left>
-	inoremap ( ()<left>
-	inoremap [ []<left>
-	inoremap { {}<left>
+  " Some keybinds
+  map <C-p> :FZF<enter>
+
+  " Additional coc config
+  let g:coc_global_extensions = [
+    \ 'coc-snippets',
+    \ 'coc-pairs',
+    \ 'coc-json', 
+    \ 'coc-vimtex', 
+    \ ]
+
+  " Use tab for trigger completion with characters ahead and navigate.
+  " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  " open NERDTree automatically
+  " if no args are passed, Startify is started
+  " wincmd to move focus away from NERDTree
+  autocmd VimEnter *
+              \   if !argc()
+              \ |   Startify
+              \ |   NERDTree
+              \ |   wincmd w
+              \ | else
+              \ |   NERDTree
+              \ |   wincmd w
+              \ | endif
+
 endif
