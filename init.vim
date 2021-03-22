@@ -77,8 +77,8 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	let g:airline#extensions#tabline#enabled = 1
 
 	" UltiSnippets
-	let g:UltiSnipsExpandTrigger="<s-q>"
-	let g:UltiSnipsJumpForwardTrigger = '<s-q>'
+	let g:UltiSnipsExpandTrigger="<c-q>"
+	let g:UltiSnipsJumpForwardTrigger = '<c-q>'
 
   " Some keybinds
   map <C-p> :FZF<enter>
