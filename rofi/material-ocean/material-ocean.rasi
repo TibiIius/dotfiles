@@ -1,6 +1,6 @@
 configuration {
   show-icons: true;
-  font: "Hack Nerd Font Bold 15";
+  font: "FiraCode Nerd Font 15";
   drun-display-format: "{icon} {name}";
   display-run: " ";
   display-drun: " ";

@@ -24,8 +24,8 @@ static const int user_bh                 = 24;        /* 0 means that dwm will c
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
 static const int showtab                 = showtab_never;      /* Default tab bar show mode */
 static const int toptab                  = True;               /* False means bottom tab bar */
-static const char *fonts[]               = { "Hack Nerd Font:size=10:style=bold" };
-static const char dmenufont[]            = "Hack Nerd Font:size=10:style=bold";
+static const char *fonts[]               = { "FiraCode Nerd Font:size=10:style=bold" };
+static const char dmenufont[]            = "FiraCode Nerd Font:size=10:style=bold";
 static char normbgcolor[]                = "#222222";
 static char normbordercolor[]            = "#444444";
 static char normfgcolor[]                = "#bbbbbb";
