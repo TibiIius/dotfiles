@@ -1,0 +1,50 @@
+#define materialBG  #0f111a
+#define materialFG  #e5e9f0
+#define material0  #3B4252
+#define material1  #FF4151
+#define material2  #A3BE8C
+#define material3  #EBCB8B
+#define material4  #81A1C1
+#define material5  #B48EAD
+#define material6  #88C0D0
+#define material7  #E5E9F0
+#define material8  #4C566A
+#define material9  #FF4151
+#define material10  #A3BE8C
+#define material11  #EBCB8B
+#define material12  #81A1C1
+#define material13  #B48EAD
+#define material14  #88C0D0
+#define material15  #B48EAD
+
+!Default
+*background:  materialBG
+*foreground:  materialFG
+! *.cursorColor: material3
+*.color0:  material0
+*.color1:  material1
+*.color2:  material2
+*.color3:  material3
+*.color4:  material4
+*.color5:  material5
+*.color6:  material6
+*.color7:  material7
+*.color8:  material8
+*.color9:  material9
+*.color10:  material10
+*.color11:  material11
+*.color12:  material12
+*.color13:  material13
+*.color14:  material14
+*.color15:  material15
+
+! DWM
+dwm.normbordercolor:	material0
+dwm.normbgcolor:			materialBG
+dwm.normfgcolor:			materialFG
+dwm.selbordercolor:		material1
+dwm.selbgcolor:				material1
+dwm.selfgcolor:				materialFG
+dwm.hidbordercolor:   material3
+dwm.hidbgcolor:       materialBG
+dwm.hidfgcolor:       material8

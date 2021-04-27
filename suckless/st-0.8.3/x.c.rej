@@ -1,0 +1,11 @@
+--- x.c
++++ x.c
+@@ -1013,8 +1027,6 @@ xinit(int cols, int rows)
+ 	pid_t thispid = getpid();
+ 	XColor xmousefg, xmousebg;
+ 
+-	if (!(xw.dpy = XOpenDisplay(NULL)))
+-		die("Can't open display\n");
+ 	xw.scr = XDefaultScreen(xw.dpy);
+ 	xw.vis = XDefaultVisual(xw.dpy, xw.scr);
+ 

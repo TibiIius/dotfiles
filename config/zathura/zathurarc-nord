@@ -1,0 +1,8 @@
+set font "Noto Sans 11"
+
+set recolor true
+set recolor-darkcolor "#d7dde8"
+set recolor-lightcolor "#2e3440"
+
+set statusbar-bg "#2e3440"
+set statusbar-fg "#d7dde8"
