@@ -1,4 +1,4 @@
-#include ".dotfiles/colorschemes/material-oceanic"
+#include ".dotfiles/colorschemes/base16-twilight"
 
 *font: FiraCode Nerd Font-12
 
