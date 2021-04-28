@@ -54,24 +54,20 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	call plug#end()
 
 	" Set colorscheme
-	colorscheme material  
   let g:material_theme_style = 'darker'
+	colorscheme material  
 	if has("termguicolors") " set true colors
 		set t_8f=\[[38;2;%lu;%lu;%lum
 		set t_8b=\[[48;2;%lu;%lu;%lum
 		set termguicolors
 	endif
 
-	" transparent background
-	hi! Normal ctermbg=NONE guibg=NONE
-	hi! NonText ctermbg=NONE guibg=NONE
-
 	" General config
 	let g:tex_flavor = "latex"
 	let g:vimtex_view_general_viewer = 'zathura'
 
 	" Airline config
-	let g:airline_theme='base16'
+	let g:airline_theme='wombat'
 	let g:airline#extensions#branch#enabled = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#nerdtree_status = 1
