@@ -1,5 +1,4 @@
-! #include "Documents/GitHub/dotfiles/colorschemes/nord"
-#include "Documents/GitHub/dotfiles/colorschemes/material-oceanic"
+#include ".dotfiles/colorschemes/material-oceanic"
 
 *font: FiraCode Nerd Font-12
 

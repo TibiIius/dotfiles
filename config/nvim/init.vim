@@ -54,7 +54,8 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	call plug#end()
 
 	" Set colorscheme
-	colorscheme xresources  
+	colorscheme material  
+  let g:material_theme_style = 'darker'
 	if has("termguicolors") " set true colors
 		set t_8f=\[[38;2;%lu;%lu;%lum
 		set t_8b=\[[48;2;%lu;%lu;%lum
