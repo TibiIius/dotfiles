@@ -4,7 +4,7 @@ syntax on
 set encoding=utf-8
 set number relativenumber " Number of current line + relative number of other lines
 set clipboard+=unnamedplus " Ditches Vim's clipboard and uses the OS's one
-
+set mouse=a " Be a heretic and use mouse support :)
 
 let g:startify_custom_header=[
     \ '    __     __ ___  __  __',
