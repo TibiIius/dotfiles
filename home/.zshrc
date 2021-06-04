@@ -107,6 +107,9 @@ source $ZSH/oh-my-zsh.sh
 
 # eval $(thefuck --alias)
 
+# Make updating on Silverblue EZ Clap
+[[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && rpm-ostree upgrade && toolbox run sudo dnf update --refresh"
+
 
 # neovim as default editor
 export EDITOR=nvim
@@ -118,12 +121,12 @@ if [[ $TILIX_ID ]]; then
         source /etc/profile.d/vte.sh
 fi
 
-# Export stuff
+# Fuck Microsoft
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
