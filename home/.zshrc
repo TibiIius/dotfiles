@@ -110,6 +110,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Make updating on Silverblue EZ Clap
 [[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && rpm-ostree upgrade && toolbox run sudo dnf update --refresh"
+[[ $(uname -n) == "arch-desktop" ]] && alias update="flatpak update && yay -Syyyu"
 
 
 # neovim as default editor
