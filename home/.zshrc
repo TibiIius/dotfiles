@@ -109,8 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # eval $(thefuck --alias)
 
 # Make updating on Silverblue EZ Clap
-[[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && rpm-ostree upgrade && toolbox run sudo dnf update --refresh"
-[[ $(uname -n) == "arch-desktop" ]] && alias update="flatpak update && yay -Syyyu"
+[[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && toolbox run sudo dnf update --refresh && rustup update && sudo yarn global upgrade && rpm-ostree upgrade"
+[[ $(uname -n) == "arch-desktop" ]] && alias update="flatpak update && rustup update && sudo yarn global upgrade && yay -Syyyu"
 
 
 # neovim as default editor
