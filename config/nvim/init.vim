@@ -67,7 +67,7 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	let g:vimtex_view_general_viewer = 'zathura'
 
 	" Airline config
-	let g:airline_theme='wombat'
+	let g:airline_theme='material'
 	let g:airline#extensions#branch#enabled = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#nerdtree_status = 1
