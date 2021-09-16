@@ -7,7 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$(yarn global bin):$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$(whoami)/.oh-my-zsh"
@@ -109,8 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # eval $(thefuck --alias)
 
 # Make updating on Silverblue EZ Clap
-[[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && toolbox run sudo dnf update --refresh && rustup update && toolbox run sudo yarn global upgrade && rpm-ostree upgrade"
-[[ $(uname -n) == "arch-desktop" ]] && alias update="flatpak update && rustup update && sudo yarn global upgrade && yay -Syyyu"
+[[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && toolbox run sudo dnf update --refresh && rustup update && toolbox run yarn global upgrade && rpm-ostree upgrade"
+[[ $(uname -n) == "arch-desktop" ]] && alias update="flatpak update && rustup update && yarn global upgrade && yay -Syyyu"
 
 
 # neovim as default editor
