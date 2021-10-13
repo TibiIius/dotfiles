@@ -126,6 +126,9 @@ fi
 # Fuck Microsoft
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+# Fuck Microsoft even more
+[[ $(uname -n) == "silverblue-laptop" ]] && export FrameworkPathOverride=/usr/lib/mono/4.5/
+
 # fzf
 [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
 [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
