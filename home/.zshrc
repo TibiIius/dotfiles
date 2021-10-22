@@ -130,7 +130,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 [[ $(uname -n) == "silverblue-laptop" ]] && export FrameworkPathOverride=/usr/lib/mono/4.5/
 
 # fzf
-[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh || [[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh 
 [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
