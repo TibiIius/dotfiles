@@ -55,13 +55,9 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	call plug#end()
 
 	" Set colorscheme
-  let g:material_theme_style = 'darker'
-	colorscheme material  
-	if has("termguicolors") " set true colors
-		set t_8f=\[[38;2;%lu;%lu;%lum
-		set t_8b=\[[48;2;%lu;%lu;%lum
-		set termguicolors
-	endif
+  if filereadable(expand('~/.config/nvim/colors.vim'))
+    source $HOME/.config/nvim/colors.vim
+  endif
 
 	" General config
 	let g:tex_flavor = "latex"
@@ -96,6 +92,10 @@ if !exists('g:vscode') " Only do if not in VScode mode
         \ <SID>check_back_space() ? "\<TAB>" :
         \ coc#refresh()
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  " Enter -> accept snippet
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
   
   function! s:check_back_space() abort
     let col = col('.') - 1

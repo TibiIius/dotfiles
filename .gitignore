@@ -1,2 +1,4 @@
 .directory
 ranger/plugins/__pycache__/**
+
+colors.vim
