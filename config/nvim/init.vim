@@ -51,7 +51,6 @@ if !exists('g:vscode') " Only do if not in VScode mode
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 	Plug 'mhinz/vim-startify'
-  Plug 'andweeb/presence.nvim'
 	call plug#end()
 
 	" Set colorscheme
