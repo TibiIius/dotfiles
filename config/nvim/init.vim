@@ -101,17 +101,10 @@ if !exists('g:vscode') " Only do if not in VScode mode
     return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
 
-  " open NERDTree automatically
   " if no args are passed, Startify is started
-  " wincmd to move focus away from NERDTree
   autocmd VimEnter *
               \   if !argc()
               \ |   Startify
-              \ |   NERDTree
-              \ |   wincmd w
-              \ | else
-              \ |   NERDTree
-              \ |   wincmd w
               \ | endif
 
 endif
