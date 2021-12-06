@@ -107,9 +107,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# eval $(thefuck --alias)
+alias cat=bat
+alias grep=rg
 
-# Make updating on Silverblue EZ Clap
+# Updates
 [[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && toolbox run sudo dnf update --refresh && rustup update && toolbox run yarn global upgrade && rpm-ostree upgrade"
 [[ $(uname -n) == "arch-desktop" ]] && alias update="flatpak update && rustup update && yarn global upgrade && yay -Syyyu"
 
