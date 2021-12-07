@@ -77,7 +77,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(vi-mode git zsh-autosuggestions zsh-syntax-highlighting zsh-aliases-exa)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,8 +107,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias cat=bat
-alias grep=rg
+[[ $(command -v bat) ]] && alias cat=bat
+[[ $(command -v rg) ]] && alias grep=rg
 
 # Updates
 [[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && toolbox run sudo dnf update --refresh && rustup update && toolbox run yarn global upgrade && rpm-ostree upgrade"
