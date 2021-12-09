@@ -10,6 +10,9 @@ fi
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 [[ $(command -v yarn) ]] && export PATH=$(yarn global bin):$PATH
 
+# Add poetry related stuff
+export PATH="$HOME/.poetry/bin:$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$(whoami)/.oh-my-zsh"
 
@@ -138,3 +141,4 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
