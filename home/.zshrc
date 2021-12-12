@@ -13,6 +13,10 @@ export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 # Add poetry related stuff
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# Stuff for npm/nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$(whoami)/.oh-my-zsh"
 
@@ -110,7 +114,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[[ $(command -v bat) ]] && alias cat=bat
+[[ $(command -v bat) ]] && alias cat=bat && alias fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 [[ $(command -v rg) ]] && alias grep=rg
 
 # Updates
@@ -135,7 +139,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 [[ $(uname -n) == "silverblue-laptop" ]] && export FrameworkPathOverride=/usr/lib/mono/4.5/
 
 # fzf
-[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh 
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
 [[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh 
 [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
 
