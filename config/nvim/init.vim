@@ -61,6 +61,20 @@ if !exists('g:vscode') " Only do if not in VScode mode
 	" General config
 	let g:tex_flavor = "latex"
 	let g:vimtex_view_general_viewer = 'zathura'
+    let g:vimtex_compiler_latexmk = {
+        \ 'build_dir' : 'build',
+        \ 'callback' : 1,
+        \ 'continuous' : 1,
+        \ 'executable' : 'latexmk',
+        \ 'hooks' : [],
+        \ 'options' : [
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \   '-shell-escape'
+        \ ],
+        \}
 
 	" Airline config
 	let g:airline_theme='material'
