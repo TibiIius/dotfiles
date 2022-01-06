@@ -7,11 +7,8 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
-[[ $(command -v yarn) ]] && export PATH=$(yarn global bin):$PATH
 
-# Add poetry related stuff
-export PATH="$HOME/.poetry/bin:$PATH"
+[[ $(command -v yarn) ]] && export PATH=$(yarn global bin):$PATH
 
 # Stuff for npm/nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -85,7 +82,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git zsh-autosuggestions zsh-syntax-highlighting zsh-aliases-exa)
+plugins=(vi-mode git zsh-autosuggestions zsh-syntax-highlighting zsh-aliases-exa pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
