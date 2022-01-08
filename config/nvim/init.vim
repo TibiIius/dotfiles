@@ -29,7 +29,16 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-if !exists('g:vscode') " Only do if not in VScode mode
+" Set camelCaseMotion
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+
 	" Plug init
 	call plug#begin('~/.vim/plugged')
   Plug 'nekonako/xresources-nvim'
@@ -51,6 +60,7 @@ if !exists('g:vscode') " Only do if not in VScode mode
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 	Plug 'mhinz/vim-startify'
+  Plug 'bkad/CamelCaseMotion'
 	call plug#end()
 
 	" Set colorscheme
@@ -120,5 +130,3 @@ if !exists('g:vscode') " Only do if not in VScode mode
               \   if !argc()
               \ |   Startify
               \ | endif
-
-endif
