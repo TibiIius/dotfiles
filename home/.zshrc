@@ -114,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 
 [[ $(command -v bat) ]] && alias cat=bat && alias fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 [[ $(command -v rg) ]] && alias grep=rg
+[[ $(command -v fd) ]] && alias find=fd
 
 # Updates
 [[ $(uname -n) == "silverblue-laptop" ]] && alias update="flatpak update && toolbox run sudo dnf update --refresh && rustup update && toolbox run yarn global upgrade && rpm-ostree upgrade"
