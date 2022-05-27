@@ -112,7 +112,7 @@
 /* Buffer swap interval (vsync), set to '0' to prevent
    waiting for refresh, '1' (or more) to wait for the specified
    amount of frames. */
-#request setswap 1
+#request setswap 0
 
 /* Linear interpolation for audio data frames. Drastically
    improves smoothness with configurations that yield low UPS
@@ -132,7 +132,7 @@
 
 /* Frame limiter, set to the frames per second (FPS) desired or
    simply set to zero (or lower) to disable the frame limiter. */
-#request setframerate 0
+#request setframerate 144
 
 /* Suspends rendering if a fullscreen window is focused while
    GLava is still visible (ie. on another monitor). This prevents
