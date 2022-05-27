@@ -1,1 +1,1 @@
-/home/tim/.dotfiles/config/glava/themes/material-ocean.bars.glsl
+/home/tim/.dotfiles/config/glava/themes/white.bars.glsl

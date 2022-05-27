@@ -48,7 +48,7 @@
 #request settitle "GLava"
 
 /* Window geometry (x, y, width, height) */
-#request setgeometry 0 0 3440 1440
+#request setgeometry 20 -120 450 1440
 
 /* Window background color (RGB format).
    Does not work with `setopacity "xroot"` */
