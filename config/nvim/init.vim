@@ -68,6 +68,10 @@ if filereadable(expand('~/.config/nvim/colors.vim'))
   source $HOME/.config/nvim/colors.vim
 endif
 
+" Transparency
+highlight Normal guibg=none
+highlight NonText guibg=none
+
 " General config
 let g:tex_flavor = "latex"
 let g:vimtex_view_general_viewer = 'zathura'
