@@ -34,7 +34,7 @@
               Has very little performance impact.
     
    "none"   - Disable window opacity completely. */
-#request setopacity "xroot"
+#request setopacity "native"
 
 /* Whether to mirror left and right audio input channels from PulseAudio.*/
 #request setmirror false
@@ -48,7 +48,7 @@
 #request settitle "GLava"
 
 /* Window geometry (x, y, width, height) */
-#request setgeometry 0 0 3840 1080
+#request setgeometry 0 0 3440 1440
 
 /* Window background color (RGB format).
    Does not work with `setopacity "xroot"` */
@@ -68,7 +68,7 @@
    will do nothing, but you can use "!+" and "!-" to stack on top
    or below other windows.
 */
-#request setxwintype "!-"
+#request setxwintype "desktop"
 
 /* (X11 only) EWMH Window state atoms (multiple can be specified).
    Possible values are:
@@ -87,8 +87,9 @@
    for `setxwintype`.
 */
 // #request addxwinstate "sticky"
-// #request addxwinstate "skip_taskbar"
-// #request addxwinstate "skip_pager"
+#request addxwinstate "skip_taskbar"
+#request addxwinstate "skip_pager"
+#request addxwinstate "below"
 // #request addxwinstate "above"
 // #request addxwinstate "pinned"
 
@@ -96,7 +97,7 @@
    the GLava window. Useful when you want to interact with other
    desktop windows (icons, menus, desktop shells). Enabled by
    default when GLava itself is a desktop window. */
-#request setclickthrough false
+#request setclickthrough true
 
 /* Audio source
 

@@ -1,1 +1,1 @@
-/home/tim/Documents/GitHub/dotfiles/glava/themes/material-ocean.bars.glsl
+/home/tim/.dotfiles/config/glava/themes/material-ocean.bars.glsl
