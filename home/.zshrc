@@ -146,4 +146,22 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Custom functions
+
+# Hack to make `tmux a` create a new session if none exists
+
+TMUX_EXEC=$(which tmux)
+
+tmux() {
+  if [ -z "$1" ]; then
+    $TMUX_EXEC
+  else
+    if [ "$1" = "a" ] && ! $TMUX_EXEC has-session 2>/dev/null; then
+      $TMUX_EXEC
+    else
+      $TMUX_EXEC $1
+    fi
+  fi
+}
+
 export PATH="$HOME/.poetry/bin:$PATH"
