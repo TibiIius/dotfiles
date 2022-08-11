@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 dark_theme() {
   sed -i "s/let g:material_theme_style = 'lighter'/let g:material_theme_style = 'palenight'/g" /home/tim/.config/nvim/colors.vim
