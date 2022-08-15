@@ -1,3 +1,6 @@
 [submodule "toolbox"]
 	path = toolbox
 	url = git@github.com:TibiIius/toolbox.git
+[submodule "nix-config"]
+	path = nix-config
+	url = git@github.com:TibiIius/nix-config.git
