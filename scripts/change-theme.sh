@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Needed because the socket always has Kitty's PID at the end
+KITTY_SOCKET=unix:/tmp/$(ls /tmp | grep mykitty)
+
 dark_theme() {
   sed -i "s/let g:material_style = 'lighter'/let g:material_style = 'palenight'/g" /home/tim/.config/nvim/colors.vim
   sed -i "s/gtk-application-prefer-dark-theme=0/gtk-application-prefer-dark-theme=1/g" /home/tim/.config/gtk-3.0/settings.ini
@@ -8,7 +11,8 @@ dark_theme() {
   sed -i 's/one-light/one-dark/g' $HOME/.hyper.js
   sed -i 's/OneHalfLight/OneHalfDark/g' $HOME/.config/bat/config
   [[ -f /home/tim/.config/spicetify/config-xpui.ini ]] && sed -i "s/color_scheme            = light/color_scheme            = dark/g" /home/tim/.config/spicetify/config-xpui.ini && spicetify -qn apply enable-devtools
-  kitty @ set-colors -a $HOME/.config/kitty/themes/Dark\ One\ Nuanced.conf
+  ln -sf $HOME/.config/kitty/themes/Dark\ One\ Nuanced.conf $HOME/.config/kitty/current-theme.conf
+  kitty @ --to $KITTY_SOCKET set-colors -a "/home/tim/.config/kitty/current-theme.conf"
 }
 
 light_theme() {
@@ -19,7 +23,8 @@ light_theme() {
   sed -i 's/one-dark/one-light/g' $HOME/.hyper.js
   sed -i 's/OneHalfDark/OneHalfLight/g' $HOME/.config/bat/config
   [[ -f /home/tim/.config/spicetify/config-xpui.ini ]] && sed -i "s/color_scheme            = dark/color_scheme            = light/g" /home/tim/.config/spicetify/config-xpui.ini && spicetify -qn apply enable-devtools
-  kitty @ set-colors -a $HOME/.config/kitty/themes/Atom\ One\ Light.conf
+  ln -sf $HOME/.config/kitty/themes/Atom\ One\ Light.conf $HOME/.config/kitty/current-theme.conf
+  kitty @ --to $KITTY_SOCKET set-colors -a "/home/tim/.config/kitty/current-theme.conf"
 }
 
 check_files() {
