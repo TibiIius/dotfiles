@@ -8,6 +8,7 @@ dark_theme() {
   sed -i 's/one-light/one-dark/g' $HOME/.hyper.js
   sed -i 's/OneHalfLight/OneHalfDark/g' $HOME/.config/bat/config
   [[ -f /home/tim/.config/spicetify/config-xpui.ini ]] && sed -i "s/color_scheme            = light/color_scheme            = dark/g" /home/tim/.config/spicetify/config-xpui.ini && spicetify -qn apply enable-devtools
+  kitty @ set-colors -a $HOME/.config/kitty/themes/Dark\ One\ Nuanced.conf
 }
 
 light_theme() {
@@ -18,6 +19,7 @@ light_theme() {
   sed -i 's/one-dark/one-light/g' $HOME/.hyper.js
   sed -i 's/OneHalfDark/OneHalfLight/g' $HOME/.config/bat/config
   [[ -f /home/tim/.config/spicetify/config-xpui.ini ]] && sed -i "s/color_scheme            = dark/color_scheme            = light/g" /home/tim/.config/spicetify/config-xpui.ini && spicetify -qn apply enable-devtools
+  kitty @ set-colors -a $HOME/.config/kitty/themes/Atom\ One\ Light.conf
 }
 
 check_files() {
