@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Needed because the socket always has Kitty's PID at the end
-KITTY_SOCKET=unix:/tmp/$(ls /tmp | grep mykitty)
+KITTY_SOCKET=unix:/tmp/$(ls /tmp | grep -m1 mykitty)
 
 dark_theme() {
   sed -i "s/let g:material_style = 'lighter'/let g:material_style = 'palenight'/g" /home/tim/.config/nvim/colors.vim
