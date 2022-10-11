@@ -1,47 +1,49 @@
 #!/usr/bin/env bash
 
 # Needed because the socket always has Kitty's PID at the end
-KITTY_SOCKET=unix:/tmp/$(ls /tmp | grep -m1 mykitty)
+KITTY_SOCKETS=$(ls /tmp | grep mykitty)
 
 dark_theme() {
   sed -i "s/let g:material_style = 'lighter'/let g:material_style = 'palenight'/g" /home/tim/.config/nvim/colors.vim
   sed -i "s/gtk-application-prefer-dark-theme=0/gtk-application-prefer-dark-theme=1/g" /home/tim/.config/gtk-3.0/settings.ini
   sed -i "s/\"workbench.colorTheme\": \"Material Theme Lighter High Contrast\"*/\"workbench.colorTheme\": \"Material Theme Palenight High Contrast\"/g" /home/tim/.config/Code/User/settings.json
-  sed -i "s/\"workbench.colorTheme\": \"Material Theme Lighter High Contrast\"*/\"workbench.colorTheme\": \"Material Theme Palenight High Contrast\"/g" /home/tim/.var/app/com.visualstudio.code/config/Code/User/settings.json
-  sed -i 's/one-light/one-dark/g' $HOME/.hyper.js
   sed -i 's/OneHalfLight/OneHalfDark/g' $HOME/.config/bat/config
   [[ -f /home/tim/.config/spicetify/config-xpui.ini ]] && sed -i "s/color_scheme            = light/color_scheme            = dark/g" /home/tim/.config/spicetify/config-xpui.ini && spicetify -qn apply enable-devtools
   ln -sf $HOME/.config/kitty/themes/Dark\ One\ Nuanced.conf $HOME/.config/kitty/current-theme.conf
-  kitty @ --to $KITTY_SOCKET set-colors -a "/home/tim/.config/kitty/current-theme.conf"
 }
 
 light_theme() {
   sed -i "s/let g:material_style = 'palenight'/let g:material_style = 'lighter'/g" /home/tim/.config/nvim/colors.vim
   sed -i "s/gtk-application-prefer-dark-theme=1/gtk-application-prefer-dark-theme=0/g" /home/tim/.config/gtk-3.0/settings.ini
   sed -i "s/\"workbench.colorTheme\": \"Material Theme Palenight High Contrast\"*/\"workbench.colorTheme\": \"Material Theme Lighter High Contrast\"/g" /home/tim/.config/Code/User/settings.json
-  sed -i "s/\"workbench.colorTheme\": \"Material Theme Palenight High Contrast\"*/\"workbench.colorTheme\": \"Material Theme Lighter High Contrast\"/g" /home/tim/.var/app/com.visualstudio.code/config/Code/User/settings.json
-  sed -i 's/one-dark/one-light/g' $HOME/.hyper.js
   sed -i 's/OneHalfDark/OneHalfLight/g' $HOME/.config/bat/config
   [[ -f /home/tim/.config/spicetify/config-xpui.ini ]] && sed -i "s/color_scheme            = dark/color_scheme            = light/g" /home/tim/.config/spicetify/config-xpui.ini && spicetify -qn apply enable-devtools
   ln -sf $HOME/.config/kitty/themes/Atom\ One\ Light.conf $HOME/.config/kitty/current-theme.conf
-  kitty @ --to $KITTY_SOCKET set-colors -a "/home/tim/.config/kitty/current-theme.conf"
 }
 
 check_files() {
-# neovim
-[[ ! -f /home/tim/.config/nvim/colors.vim ]] && printf "let g:material_theme_style = 'darker'\ncolorscheme material\nif has(\"termguicolors\") \" set true colors\n  set t_8f=\[[38;2;%lu;%lu;%lum\n  set t_8b=\[[48;2;%lu;%lu;%lum\n  set termguicolors\nendif" > /home/tim/.config/nvim/colors.vim
+  # neovim
+  [[ ! -f /home/tim/.config/nvim/colors.vim ]] && printf "let g:material_theme_style = 'darker'\ncolorscheme material\nif has(\"termguicolors\") \" set true colors\n  set t_8f=\[[38;2;%lu;%lu;%lum\n  set t_8b=\[[48;2;%lu;%lu;%lum\n  set termguicolors\nendif" > /home/tim/.config/nvim/colors.vim
 }
 
+main() {
+  check_files
 
-check_files
+  case $1 in
+    "--dark")
+      dark_theme
+      ;;
+    "--light")
+      light_theme
+      ;;
+  esac
 
-case $1 in
-  "--dark")
-    dark_theme
-    ;;
-  "--light")
-    light_theme
-    ;;
-esac
+  for KITTY_SOCKET in $KITTY_SOCKETS; do
+    kitty @ --to unix:/tmp/$KITTY_SOCKET set-colors -a "/home/tim/.config/kitty/current-theme.conf"
+  done
+    
 
-exit 0
+  exit 0
+}
+
+main $@
