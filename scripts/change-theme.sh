@@ -9,7 +9,7 @@ dark_theme() {
   sed -i "s/\"workbench.colorTheme\": \"Material Theme Lighter High Contrast\"*/\"workbench.colorTheme\": \"Material Theme Palenight High Contrast\"/g" /home/tim/.config/Code/User/settings.json
   sed -i 's/OneHalfLight/OneHalfDark/g' $HOME/.config/bat/config
   [[ -f /home/tim/.config/spicetify/config-xpui.ini ]] && sed -i "s/color_scheme            = light/color_scheme            = dark/g" /home/tim/.config/spicetify/config-xpui.ini && spicetify -qn apply enable-devtools
-  ln -sf $HOME/.config/kitty/themes/Dark\ One\ Nuanced.conf $HOME/.config/kitty/current-theme.conf
+  ln -sf $HOME/.config/kitty/themes-github/DarkOneNuanced.conf $HOME/.config/kitty/current-theme.conf
 }
 
 light_theme() {
@@ -18,7 +18,7 @@ light_theme() {
   sed -i "s/\"workbench.colorTheme\": \"Material Theme Palenight High Contrast\"*/\"workbench.colorTheme\": \"Material Theme Lighter High Contrast\"/g" /home/tim/.config/Code/User/settings.json
   sed -i 's/OneHalfDark/OneHalfLight/g' $HOME/.config/bat/config
   [[ -f /home/tim/.config/spicetify/config-xpui.ini ]] && sed -i "s/color_scheme            = dark/color_scheme            = light/g" /home/tim/.config/spicetify/config-xpui.ini && spicetify -qn apply enable-devtools
-  ln -sf $HOME/.config/kitty/themes/Atom\ One\ Light.conf $HOME/.config/kitty/current-theme.conf
+  ln -sf $HOME/.config/kitty/themes-github/AtomOneLight.conf $HOME/.config/kitty/current-theme.conf
 }
 
 check_files() {
