@@ -7,4 +7,4 @@ set recolor-lightcolor "#0f111a"
 set statusbar-bg "#0f111a"
 set statusbar-fg "#d7dde8"
 
-set database null
+set database sqlite
