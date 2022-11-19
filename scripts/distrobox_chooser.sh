@@ -1,5 +1,11 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-choice=$(zenity --list --title "Distrobox selection" --column="Container name" $(distrobox list | tail -n +2 | rg -o "\|.*?\|" | sed 's/|//g;s/^[ \t]//;s/[ \t]*$//') --separator="\S\s")
+CONTAINERS=$(distrobox list | tail -n +2 | rg -o "\|.*?\|" | sed 's/|//g;s/^[ \t]//;s/[ \t]*$//') || (echo "No Distrobox containers found!" && exit 0)
 
-distrobox enter $choice
+PS3="Choose a distro: "
+
+select CONTAINER in $CONTAINERS; do
+  break
+done
+
+distrobox enter $CONTAINER
