@@ -6,6 +6,10 @@
     type = "file"
     url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
 
+["Ubuntu Mono Ligaturized"]
+    type = "git-repo"
+    url = "https://github.com/vizhub-core/ubuntu-mono-ligaturized.git"
+
 ["Inter"]
     type = "archive"
     format = "zip"
