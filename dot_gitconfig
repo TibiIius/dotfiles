@@ -1,0 +1,16 @@
+[credential]
+	helper = "!f() { /var/home/tim/.vscode-server/bin/e2816fe719a4026ffa1ee0189dc89bdfdbafb164/node /tmp/vscode-remote-containers-45a163b1-a2ac-4446-8fa2-e6d3961c8385.js git-credential-helper $*; }; f"
+[user]
+	name = TimFB
+	email = timf.brueggemann1999@gmx.de
+	signingkey = 4B3B63F9A1CB361C
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	followTags = true
+
