@@ -5,3 +5,10 @@
 ["Ubuntu Mono Nerd Font Complete Mono.ttf"]
     type = "file"
     url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
+
+["Inter"]
+    type = "archive"
+    format = "zip"
+    stripComponents = 1
+    include = ["Inter Desktop/**"]
+    url = "https://github.com/rsms/inter/releases/download/v3.19/Inter-3.19.zip"
