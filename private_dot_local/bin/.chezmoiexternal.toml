@@ -1,0 +1,7 @@
+["jetbrains-toolbox"]
+    type = "file"
+    url = "https://data.services.jetbrains.com/products/download?platform=linux&code=TBA"
+    executable = true
+    ["jetbrains-toolbox".filter]
+        command = "tar"
+        args = ["-xz", "--file", "/dev/stdin", "--gzip", "--to-stdout"]
