@@ -1,0 +1,9 @@
+[archbox]
+image=ghcr.io/tibiiius/archbox:latest
+{{ if (env "HOSTNAME") | regexMatch "desktop" }}
+nvidia=true
+{{ else }}
+nvidia=false
+{{ end }}
+pull=true
+replace=true
