@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Advanced Combat Tracker
+Comment=ACT for FFXIV
+Exec=/home/tim/.local/bin/ffxiv-run-act.sh
+Icon=/home/tim/.local/share/icons/hicolor/200x200/apps/act.png
+Type=Application
+Terminal=false
+Categories=Game;
