@@ -1,2 +1,2 @@
 [Context]
-filesystems=~/.icons;xdg-data/icons;xdg-run/app/com.discordapp.Discord:create
+filesystems=~/.themes;xdg-data/themes;xdg-run/app/com.discordapp.Discord:create;xdg-data/icons;~/.icons
