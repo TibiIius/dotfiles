@@ -141,3 +141,8 @@ if [[ $(command -v tmux) ]]; then
     fi
   }
 fi
+
+# Completions
+fpath+=~/.zfunc
+
+autoload -U compinit && compinit
