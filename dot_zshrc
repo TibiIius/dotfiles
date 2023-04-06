@@ -143,6 +143,11 @@ if [[ $(command -v tmux) ]]; then
 fi
 
 # Completions
-fpath+=~/.zfunc
+mkdir -p $HOME/.zfunc
 
+rustup completions zsh > $HOME/.zfunc/_rustup
+rustup completions zsh cargo > $HOME/.zfunc/_cargo
+podman completion -f $HOME/.zfunc/_podman zsh
+
+fpath+=~/.zfunc
 autoload -U compinit && compinit
