@@ -14,8 +14,5 @@ export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 # Add poetry related stuff
 [[ -d "$HOME/.poetry/bin" ]] && export PATH="$HOME/.poetry/bin:$PATH"
 
-# Go
-GOPATH=$HOME/.local/share/go
-
 # Rustup
 . "$HOME/.cargo/env"

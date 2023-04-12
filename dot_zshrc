@@ -125,6 +125,8 @@ alias temppls='cd $(mktemp -d)'
 alias hostpls='distrobox-host-exec $SHELL'
 alias dhe='distrobox-host-exec'
 alias rm='rm -I'
+## Chezmoi
+alias ce='chezmoi edit --apply'
 
 # Tmux function for convenience
 if [[ $(command -v tmux) ]]; then
@@ -141,6 +143,9 @@ if [[ $(command -v tmux) ]]; then
     fi
   }
 fi
+
+# Go stuff
+export GOPATH=$HOME/.local/share/go
 
 # Completions
 mkdir -p $HOME/.zfunc
