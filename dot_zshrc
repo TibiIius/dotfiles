@@ -153,6 +153,7 @@ mkdir -p $HOME/.zfunc
 rustup completions zsh > $HOME/.zfunc/_rustup
 rustup completions zsh cargo > $HOME/.zfunc/_cargo
 podman completion -f $HOME/.zfunc/_podman zsh
+poetry completions zsh > ~/.zfunc/_poetry
 
 fpath+=~/.zfunc
 autoload -U compinit && compinit
