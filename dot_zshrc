@@ -151,6 +151,7 @@ fi
 
 # Go stuff
 export GOPATH=$HOME/.local/share/go
+export PATH=$GOPATH/bin:$PATH
 
 # Completions
 mkdir -p $HOME/.zfunc
