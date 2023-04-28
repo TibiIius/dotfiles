@@ -91,7 +91,7 @@ $line_break\
 $character"""
 
 [character]
-success_symbol = '[❯](green)'
+success_symbol = '[❯ ](green)'
 error_symbol = '[✗ ](red)'
 
 [username]
