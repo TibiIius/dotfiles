@@ -82,22 +82,22 @@ $battery\
 $time\
 $status\
 $fill\
-$username\
-$hostname\
 $container\
 $shell\
 $line_break\
+$username\
+$hostname\
 $os\
 $character"""
 
 [character]
 success_symbol = '[➜ ](blue)'
-error_symbol = '[✗ ](red)'
+error_symbol = '[✗ ](yellow)'
 
 [username]
 style_user = 'yellow'
-style_root = 'black red'
-format = '[$user]($style)'
+style_root = 'red'
+format = '[\[$user]($style)'
 disabled = false
 show_always = true
 
@@ -105,8 +105,9 @@ show_always = true
 format = " [$symbol \\[$name\\]]($style)"
 
 [hostname]
-ssh_only = true
-format = '[@$hostname](yellow)[$ssh_symbol](bold blue) '
+ssh_only = false
+ssh_symbol = "  "
+format = '[@$hostname](blue)[$ssh_symbol\]](blue) '
 disabled = false
 
 [fill]
