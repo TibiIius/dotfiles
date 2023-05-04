@@ -107,7 +107,7 @@ format = " [$symbol \\[$name\\]]($style)"
 [hostname]
 ssh_only = false
 ssh_symbol = "  "
-format = '[@$hostname](blue)[$ssh_symbol\]](blue) '
+format = '[@$hostname](blue)[$ssh_symbol](purple)[\]](blue) '
 disabled = false
 
 [fill]
