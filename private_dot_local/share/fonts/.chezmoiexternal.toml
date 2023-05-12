@@ -1,3 +1,11 @@
+["DejaVu Sans Mono Nerd Font.ttf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf"
+
+["DejaVu Sans Mono Nerd Font Mono.ttf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFontMono-Regular.ttf"
+
 ["Ubuntu Mono Nerd Font Complete.ttf"]
     type = "file"
     url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete.ttf"
