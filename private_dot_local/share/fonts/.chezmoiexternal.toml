@@ -26,6 +26,13 @@
     type = "git-repo"
     url = "https://github.com/vizhub-core/ubuntu-mono-ligaturized.git"
 
+["Ubuntu Font Family"]
+    type = "archive"
+    format = "zip"
+    stripComponents = 1
+    include = ["ubuntu-font-family-0.83/**"]
+    url = "https://assets.ubuntu.com/v1/0cef8205-ubuntu-font-family-0.83.zip"
+
 ["Inter"]
     type = "archive"
     format = "zip"
