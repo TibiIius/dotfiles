@@ -1,3 +1,11 @@
+["Monoid Nerd Font.ttf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Monoid/Regular/MonoidNerdFont-Regular.ttf"
+
+["Monoid Nerd Font Mono.ttf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Monoid/Regular/MonoidNerdFontMono-Regular.ttf"
+
 ["DejaVu Sans Mono Nerd Font.ttf"]
     type = "file"
     url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf"
