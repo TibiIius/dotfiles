@@ -1,0 +1,8 @@
+[Context]
+filesystems={{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}host-os{{ end }}
+
+[Environment]
+{{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}LIBVA_DRIVER_NAME=nvidia
+LIBVA_DRIVERS_PATH=/run/host/usr/lib64/dri
+LIBVA_MESSAGING_LEVEL=1
+NVD_BACKEND=direct{{ end }}
