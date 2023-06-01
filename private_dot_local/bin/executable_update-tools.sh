@@ -12,7 +12,7 @@ main() {
   done
 
   # Update chezmoi dotfiles
-  /usr/bin/distrobox enter -n archbox -e chezmoi update
+  chezmoi update
 
   # Update rustup installation
   rustup update
