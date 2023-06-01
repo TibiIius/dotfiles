@@ -131,20 +131,36 @@ alias ce='chezmoi edit --apply'
 alias marp-convert="podman run --rm -v $PWD:/home/marp/app/:Z -e LANG=$LANG -e MARP_USER=\"0:0\" marpteam/marp-cli"
 alias marp-serve="podman run --rm --init -v $PWD:/home/marp/app:Z -e LANG=$LANG -e MARP_USER=\"0:0\" -p 8080:8080 -p 37717:37717 marpteam/marp-cli -s"
 
-# Tmux function for convenience
+# Tmux
 if [[ $(command -v tmux) ]]; then
-  TMUX_EXEC=$(command -v tmux)
-  tmux() {
-    if [ -z "$1" ]; then
-      $TMUX_EXEC
-    else
-      if [ "$1" = "a" ] && ! $TMUX_EXEC has-session 2>/dev/null; then
+  # We check if ${TMUX_EXEC} exists, otherwise we encounter recoursion when sourcing again
+  if [[ -z "${TMUX_EXEC}" ]]; then
+    TMUX_EXEC=$(command -v tmux)
+
+    ## Function for convenience
+    tmux() {
+      if [ -z "$1" ]; then
         $TMUX_EXEC
       else
-        $TMUX_EXEC $1
+        if [ "$1" = "a" ] && ! $TMUX_EXEC has-session 2>/dev/null; then
+          $TMUX_EXEC
+        else
+          $TMUX_EXEC $@
+        fi
       fi
+    }
+  fi
+
+  ## SSH connection
+  if [[ "${SSH_CONNECTION}" ]]; then
+    # Create a new SSH Tmux session if there is none
+    if ! $(${TMUX_EXEC} has-session -t ssh); then
+      ${TMUX_EXEC} new-session -s ssh -d
     fi
-  }
+    if [[ -z "${TMUX}" ]]; then
+      ${TMUX_EXEC} a -t ssh
+    fi
+  fi
 fi
 
 # Go stuff
