@@ -11,7 +11,10 @@ main() {
     __count=$((${__count}+1))
   done
 
-  # Update chezmoi dotfiles
+  # Update chezmoi 
+  ## Update chezmoi itself
+  chezmoi upgrade
+  ## Update dotfiles
   chezmoi update
 
   # Update rustup installation
