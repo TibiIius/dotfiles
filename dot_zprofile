@@ -4,8 +4,9 @@ export PATH="$HOME/.local/share/rtx/shims:$PATH"
 # Setup completions
 mkdir -p $HOME/.zfunc
 
-[[ $(command -v rustup) ]] && rustup completions zsh > $HOME/.zfunc/_rustup
-[[ $(command -v rustup) ]] && rustup completions zsh cargo > $HOME/.zfunc/_cargo
-[[ $(command -v podman) ]] && podman completion -f $HOME/.zfunc/_podman zsh
-[[ $(command -v poetry) ]] && poetry completions zsh > ~/.zfunc/_poetry
-[[ $(command -v rtx) ]]    && rtx completion zsh > ~/.zfunc/_rtx
+[[ $(command -v rustup) ]]  && rustup completions zsh > $HOME/.zfunc/_rustup
+[[ $(command -v rustup) ]]  && rustup completions zsh cargo > $HOME/.zfunc/_cargo
+[[ $(command -v podman) ]]  && podman completion -f $HOME/.zfunc/_podman zsh
+[[ $(command -v poetry) ]]  && poetry completions zsh > ~/.zfunc/_poetry
+[[ $(command -v rtx) ]]     && rtx completion zsh > ~/.zfunc/_rtx
+[[ $(command -v chezmoi) ]] && chezmoi completion zsh > ~/.zfunc/_chezmoi
