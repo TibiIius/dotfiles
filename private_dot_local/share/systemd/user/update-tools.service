@@ -1,0 +1,9 @@
+[Unit]
+Description=Updates various OS tools like chezmoi dotfiles, rustup, cargo installs, ...
+After=network-online.target
+[Service]
+Type=simple
+TimeoutStartSec=0
+ExecStart=%h/.local/bin/update-tools.sh
+[Install]
+WantedBy=default.target
