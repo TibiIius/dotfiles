@@ -1,5 +1,5 @@
 #!/bin/sh
-CHEZMOI_DIR=$(chezmoi source-path)
+CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
 source ${CHEZMOI_DIR}/.scripts/helper.sh
 
 # Include hash of packages (that way, if we add new packages, this file's content changes and is being re-runned): {{ include ".scripts/data/rust-packages" | sha256sum }}

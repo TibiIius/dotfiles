@@ -1,5 +1,5 @@
 #!/bin/sh
-CHEZMOI_DIR=$(chezmoi source-path)
+CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
 
 # We source a helper script
 source "${CHEZMOI_DIR}/.scripts/helper.sh"
