@@ -1,41 +1,41 @@
 ["Monoid Nerd Font.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Monoid/Regular/MonoidNerdFont-Regular.ttf"
+type = "file"
+url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Monoid/Regular/MonoidNerdFont-Regular.ttf"
 
 ["Monoid Nerd Font Mono.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Monoid/Regular/MonoidNerdFontMono-Regular.ttf"
+type = "file"
+url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Monoid/Regular/MonoidNerdFontMono-Regular.ttf"
 
 ["DejaVu Sans Mono Nerd Font.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf"
+type = "file"
+url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf"
 
 ["DejaVu Sans Mono Nerd Font Mono.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFontMono-Regular.ttf"
+type = "file"
+url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFontMono-Regular.ttf"
 
 ["Ubuntu Mono Nerd Font Complete.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete.ttf"
+type = "file"
+url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/UbuntuMonoNerdFont-Regular.ttf"
 
 ["Ubuntu Mono Nerd Font Complete Mono.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
+type = "file"
+url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/UbuntuMonoNerdFontMono-Regular.ttf"
 
 ["Ubuntu Mono Ligaturized"]
-    type = "git-repo"
-    url = "https://github.com/vizhub-core/ubuntu-mono-ligaturized.git"
+type = "git-repo"
+url = "https://github.com/vizhub-core/ubuntu-mono-ligaturized.git"
 
 ["Ubuntu Font Family"]
-    type = "archive"
-    format = "zip"
-    stripComponents = 1
-    include = ["ubuntu-font-family-0.83/**"]
-    url = "https://assets.ubuntu.com/v1/0cef8205-ubuntu-font-family-0.83.zip"
+type = "archive"
+format = "zip"
+stripComponents = 1
+include = ["ubuntu-font-family-0.83/**"]
+url = "https://assets.ubuntu.com/v1/0cef8205-ubuntu-font-family-0.83.zip"
 
 ["Inter"]
-    type = "archive"
-    format = "zip"
-    stripComponents = 1
-    include = ["Inter Desktop/**"]
-    url = "https://github.com/rsms/inter/releases/download/v3.19/Inter-3.19.zip"
+type = "archive"
+format = "zip"
+stripComponents = 1
+include = ["Inter Desktop/**"]
+url = "https://github.com/rsms/inter/releases/download/v3.19/Inter-3.19.zip"
