@@ -1,7 +1,7 @@
 # Setup completions
 mkdir -p $HOME/.zfunc
 
-rustup completions zsh > $HOME/.zfunc/_rustup
-rustup completions zsh cargo > $HOME/.zfunc/_cargo
-podman completion -f $HOME/.zfunc/_podman zsh
-poetry completions zsh > ~/.zfunc/_poetry
+[[ $(command -v rustup) ]] && rustup completions zsh > $HOME/.zfunc/_rustup
+[[ $(command -v rustup) ]] && rustup completions zsh cargo > $HOME/.zfunc/_cargo
+[[ $(command -v podman) ]] && podman completion -f $HOME/.zfunc/_podman zsh
+[[ $(command -v poetry) ]] && poetry completions zsh > ~/.zfunc/_poetry
