@@ -17,12 +17,14 @@ source $HOME/.cargo/env
 
 # Install Rust tools
 print_message "Installing Rust tools..."
+## binstall so that we don't have to compile EVERTYHING
+[ ! $(command -v cargo-binstall) ] && curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 ## sccache so that we can cache compilation results, and set the wrapper in case our cargo config doesn't exist yet
 ## This always reinstall, regardless of being installed already, so we first of all check if it's in $PATH already, and skip this step if it is
-[ ! $(command -v sccache) ] && cargo install --locked sccache
+[ ! $(command -v sccache) ] && cargo binstall --locked sccache
 RUSTC_WRAPPER=sccache
 ## Actual packages now
-cargo install --locked $(<${CHEZMOI_DIR}/.scripts/data/rust-packages)
+cargo binstall --locked $(<${CHEZMOI_DIR}/.scripts/data/rust-packages)
 ## We need to install bandwhich from a fork until its PR is merged (current upstream doesn't work)
 cargo install --git=https://github.com/jcgruenhage/bandwhich.git --branch=upgrades-2023-04-11
 ## cross for cross-compiling
