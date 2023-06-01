@@ -12,6 +12,8 @@ if [ ! -d "$HOME/.cargo" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 fi
 
+# Source cargo env
+source $HOME/.cargo/env
 
 # Install Rust tools
 print_message "Installing Rust tools..."
