@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
 
 # We source a helper script
