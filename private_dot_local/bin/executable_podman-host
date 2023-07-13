@@ -1,19 +1,14 @@
 #!/bin/bash
 set -x
-if [ "$1" == "exec" ]; then
-  # Remove 'exec' from $@
-  shift
-  script='
-      result_command="podman exec"
-        for i in $(printenv | grep "=" | grep -Ev " |\"" |
-          grep -Ev "^(HOST|HOSTNAME|HOME|PATH|SHELL|USER|_)"); do
-  
-          result_command="${result_command} -e ${i}"
-        done
-  
-        exec ${result_command} "$@"
-     '
-  exec flatpak-spawn --host sh -c "$script" - "$@"
-else
-  exec flatpak-spawn --host podman "$@"
-fi
+
+# This little workaround is used to ensure
+# we use our $USER inside the containers, without
+# resorting to creating devcontainer.json or similar stuff
+arr=("$@")
+for i in "${!arr[@]}"; do
+    if [[ ${arr[$i]} == *"root:root"* ]]; then
+        arr[$i]="$(echo "${arr[$i]}" | sed "s|root:root|$USER:$USER|g")"
+    fi
+done
+
+flatpak-spawn --host podman "${arr[@]}"
