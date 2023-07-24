@@ -128,8 +128,8 @@ alias rm='rm -I'
 ## Chezmoi
 alias ce='chezmoi edit --apply'
 ## Marp with Docker
-alias marp-convert="podman run --rm -v $PWD:/home/marp/app/:Z -e LANG=$LANG -e MARP_USER=\"0:0\" marpteam/marp-cli"
-alias marp-serve="podman run --rm --init -v $PWD:/home/marp/app:Z -e LANG=$LANG -e MARP_USER=\"0:0\" -p 8080:8080 -p 37717:37717 marpteam/marp-cli -s"
+alias marp-convert="podman run --rm -v \"${PWD}:/home/marp/app/:Z\" -e LANG=$LANG -e MARP_USER=\"0:0\" marpteam/marp-cli"
+alias marp-serve="podman run --rm --init -v \"${PWD}:/home/marp/app:Z\" -e LANG=$LANG -e MARP_USER=\"0:0\" -p 8080:8080 -p 37717:37717 marpteam/marp-cli -s"
 
 # Tmux
 if [[ $(command -v tmux) ]]; then
