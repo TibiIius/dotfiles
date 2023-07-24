@@ -1,2 +1,2 @@
 [Context]
-filesystems=xdg-download;/mnt
+filesystems=/var/mnt;/mnt;xdg-download
