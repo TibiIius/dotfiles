@@ -6,7 +6,6 @@ KITTY_SOCKETS=$(ls /tmp | grep mykitty)
 dark_theme() {
   sed -i "s/let g:material_theme_style = 'lighter'/let g:material_theme_style = 'palenight'/g" /home/tim/.config/nvim/colors.vim
   sed -i "s/gtk-application-prefer-dark-theme=0/gtk-application-prefer-dark-theme=1/g" /home/tim/.config/gtk-3.0/settings.ini
-  sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"Community Material Theme Palenight\"\,/g" /home/tim/.var/app/com.visualstudio.code/config/Code/User/settings.json
   sed -i 's/OneHalfLight/OneHalfDark/g' $HOME/.config/bat/config
   ln -sf $HOME/.config/kitty/themes-custom/Dark\ One\ Nuanced.conf $HOME/.config/kitty/current-theme.conf
 }
@@ -14,7 +13,6 @@ dark_theme() {
 light_theme() {
   sed -i "s/let g:material_theme_style = 'palenight'/let g:material_theme_style = 'lighter'/g" /home/tim/.config/nvim/colors.vim
   sed -i "s/gtk-application-prefer-dark-theme=1/gtk-application-prefer-dark-theme=0/g" /home/tim/.config/gtk-3.0/settings.ini
-  sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"Community Material Theme Lighter\"\,/g" /home/tim/.var/app/com.visualstudio.code/config/Code/User/settings.json
   sed -i 's/OneHalfDark/OneHalfLight/g' $HOME/.config/bat/config
   ln -sf $HOME/.config/kitty/themes-custom/Atom\ One\ Light.conf $HOME/.config/kitty/current-theme.conf
 }
