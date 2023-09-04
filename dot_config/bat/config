@@ -1,20 +1,10 @@
-#!/usr/bin/env python3
-# Ignore a single line in a config file:
-
-from sys    	import stdin
-from pathlib	import Path
-import re
-
-# 1.1 set the default script content for when target file is empty/doesn't exist
-config_header="""\
 # This is `bat`s configuration file. Each line either contains a comment or
 # a command-line option that you want to pass to `bat` by default. You can
 # run `bat --help` to get a list of all possible configuration options.
 
 # Specify desired highlighting theme (e.g. "TwoDark"). Run `bat --list-themes`
 # for a list of all available themes"""
-config_ignored_line="--theme=\"OneHalfLight\""
-config_end="""\
+--theme="ansi"
 
 # Enable this to use italic text on the terminal. This is not supported on all
 # terminal emulators (like tmux, by default):
@@ -33,27 +23,3 @@ config_end="""\
 #   Example 2: Use ".gitignore"-style highlighting for ".ignore" files
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"
-\
-"""
-
-# 2. receive the contents of the target file from chezmoi via stdin
-cur_config = stdin.read()
-
-# 3.1. pass the defaults defined above for when target is empty
-if cur_config == '':
-  print(config_header)
-  print(config_ignored_line)
-  print(config_end)
-# 3.2. pass the defaults except for the line we should ignore:
-  # "font_size" : 14,
-  # which is passed as is (from stdin)
-else:
-  print(config_header)
-  pattern = r'^--theme.*$'
-  re_comp = re.compile(pattern, re.MULTILINE)
-  cur_ignored = re_comp.search(cur_config)
-  if cur_ignored:
-    print(cur_ignored.group(0))
-  else:
-    print(config_ignored_line)
-  print(config_end)
