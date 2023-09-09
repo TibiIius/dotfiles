@@ -1,6 +1,6 @@
 [user]
 	name = TimFB
-	email = timf.brueggemann1999@gmx.de
+	email = oss@timfb.dev
 	signingkey = 4B3B63F9A1CB361C
 [commit]
 	gpgsign = true
