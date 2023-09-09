@@ -13,16 +13,18 @@ main() {
   done
 
   # Update chezmoi 
+  local __chezmoi_exec="${HOME}/.local/bin/chezmoi"
   ## Update chezmoi itself
-  chezmoi upgrade
+  $__chezmoi_exec upgrade
   ## Update dotfiles
-  chezmoi update
+  $__chezmoi_exec update
 
-  # Update rustup installation
-  rustup update
-
-  # Update all global cargo packages using cargo-update and cargo-binstall
-  cargo install-update -a
+  # Rust stuff
+  local __cargo_bin="${HOME}/.cargo/bin"
+  ## Update rustup installation
+  ${__cargo_bin}/rustup update
+  ## Update all global cargo packages using cargo-update and cargo-binstall
+  ${__cargo_bin}/cargo install-update -a
 
   # Sync archbox (distrobox) packages
   if [[ $(command -v distrobox) ]]; then
@@ -31,7 +33,9 @@ main() {
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
     "https://gist.github.com/TibiIius/672c9c9c6749bec37903378b717cb8dd/raw/" -o "/tmp/packages" && \
-    ## Install all the packages that are in the list but not on the host (`--needed` skips already installed packages
+    ## Update keyring
+    ${ARCHBOX_RUN_COMMAND} 'sudo pacman --noconfirm -Sy archlinux-keyring' && \
+    ## Install all the packages that are in the list but not on the host (`--needed` skips already installed packages)
     ${ARCHBOX_RUN_COMMAND} 'sudo pacman --noconfirm --needed -Syu $(</tmp/packages)' && \
     ## Remove all packages that are not in the list but installed on the host systen (command from here https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#Install_packages_from_a_list)
     ## Since #? equals to 1 when there are no differences between the two package lists, we just specify || true (not the cleanest, but oh well, it works)
