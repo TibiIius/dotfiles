@@ -13,6 +13,12 @@ light_theme() {
   sed -i "s/let g:material_theme_style = 'palenight'/let g:material_theme_style = 'lighter'/g" /home/tim/.config/nvim/colors.vim
   sed -i "s/gtk-application-prefer-dark-theme=1/gtk-application-prefer-dark-theme=0/g" /home/tim/.config/gtk-3.0/settings.ini
   ln -sf $HOME/.config/kitty/themes-custom/Atom\ One\ Light.conf $HOME/.config/kitty/current-theme.conf
+  # Sets Gnome 45's new light shell, currently not adjustable via settings
+  if [[ -z "${CONTAINER_ID}" ]]; then
+    gsettings set org.gnome.desktop.interface color-scheme prefer-light
+  else
+    /usr/bin/distrobox-host-exec gsettings set org.gnome.desktop.interface color-scheme prefer-light
+  fi
 }
 
 check_files() {
