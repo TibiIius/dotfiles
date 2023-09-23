@@ -78,17 +78,41 @@ $custom\
 $sudo\
 $cmd_duration\
 $jobs\
-$battery\
 $time\
 $status\
 $fill\
 $container\
+$battery\
 $shell\
 $line_break\
 $username\
 $hostname\
 $os\
 $character"""
+
+[battery]
+full_symbol = '󰁹'
+charging_symbol = '󰂄'
+discharging_symbol = '󰂃'
+unknown_symbol = '󰁽'
+empty_symbol = '󰂎'
+format = ' [$symbol $percentage]($style)'
+
+[[battery.display]]
+threshold = 10
+style = 'red'
+
+[[battery.display]]
+threshold = 20
+style = 'yellow'
+
+[[battery.display]]
+threshold = 80
+style = 'green'
+
+[[battery.display]]
+threshold = 100
+style = 'bold green'
 
 [character]
 success_symbol = '[❯](bold green)'
