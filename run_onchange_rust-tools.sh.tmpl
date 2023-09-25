@@ -25,8 +25,12 @@ print_message "Installing Rust tools..."
 RUSTC_WRAPPER=sccache
 ## Actual packages now
 cargo binstall --no-confirm --locked $(<${CHEZMOI_DIR}/.scripts/data/rust-packages)
-## We need to install bandwhich from a fork until its PR is merged (current upstream doesn't work)
-cargo install --git=https://github.com/jcgruenhage/bandwhich.git --branch=upgrades-2023-04-11
+# This needs to be re-done with every upgrade of bandwhich (obviously)
+if [[ -z ${CONTAINER_ID} ]]; then
+  sudo setcap cap_sys_ptrace,cap_dac_read_search,cap_net_raw,cap_net_admin+ep /var/home/tim/.cargo/bin/bandwhich
+else
+  /usr/bin/distrobox-host-exec sudo setcap cap_sys_ptrace,cap_dac_read_search,cap_net_raw,cap_net_admin+ep /var/home/tim/.cargo/bin/bandwhich
+fi
 ## cross for cross-compiling
 cargo install cross --git https://github.com/cross-rs/cross
 
