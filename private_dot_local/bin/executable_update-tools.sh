@@ -19,6 +19,9 @@ main() {
   ## Update dotfiles
   $__chezmoi_exec update
 
+  # Update Flatpak applications
+  /usr/bin/flatpak update --noninteractive
+
   # Rust stuff
   local __cargo_bin="${HOME}/.cargo/bin"
   ## Update rustup installation
