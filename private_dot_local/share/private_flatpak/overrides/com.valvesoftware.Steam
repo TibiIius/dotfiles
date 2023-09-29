@@ -1,2 +1,2 @@
 [Context]
-filesystems=/var/mnt;/mnt;xdg-download
+filesystems=xdg-run/pipewire-0;xdg-download;/mnt;/var/mnt
