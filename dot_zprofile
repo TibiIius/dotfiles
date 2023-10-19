@@ -1,6 +1,3 @@
-# rtx shims
-export PATH="$HOME/.local/share/rtx/shims:$PATH"
-
 # Setup completions
 mkdir -p $HOME/.zfunc
 
