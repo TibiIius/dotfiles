@@ -29,8 +29,12 @@ main() {
   ## Update all global cargo packages using cargo-update and cargo-binstall
   ${__cargo_bin}/cargo install-update -a
 
-  # Sync archbox (distrobox) packages
+
   if [[ $(command -v distrobox) ]]; then
+    # Rebuild distrobox containers
+    distrobox assemble create --file "{$HOME}/.config/distrobox/distrobox.ini"
+
+    # Sync archbox (distrobox) packages
     ## Get package list first
     curl -L --silent \
     -H "Accept: application/vnd.github+json" \
