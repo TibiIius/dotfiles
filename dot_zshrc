@@ -126,6 +126,7 @@ alias temppls='cd $(mktemp -d)'
 alias hostpls='distrobox-host-exec $SHELL'
 alias dhe='distrobox-host-exec'
 alias rm='rm -I'
+alias bandwhich="sudo $(command -v bandwhich)"
 ## Chezmoi
 alias ce='chezmoi edit --apply'
 ## Marp with Docker
