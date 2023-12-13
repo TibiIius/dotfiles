@@ -127,6 +127,8 @@ alias hostpls='distrobox-host-exec $SHELL'
 alias dhe='distrobox-host-exec'
 alias rm='rm -I'
 alias bandwhich="sudo $(command -v bandwhich)"
+alias vim='nvim'
+alias vi='nvim'
 ## Chezmoi
 alias ce='chezmoi edit --apply'
 ## Marp with Docker
