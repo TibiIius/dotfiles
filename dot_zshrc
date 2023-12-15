@@ -129,6 +129,7 @@ alias rm='rm -I'
 alias bandwhich="sudo $(command -v bandwhich)"
 alias vim='nvim'
 alias vi='nvim'
+alias poe="poetry run poe"
 ## Chezmoi
 alias ce='chezmoi edit --apply'
 ## Marp with Docker

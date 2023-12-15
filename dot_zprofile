@@ -8,3 +8,4 @@ mkdir -p $HOME/.zfunc
 [[ $(command -v rtx) ]]     && rtx completion zsh > ~/.zfunc/_rtx
 [[ $(command -v procs) ]]   && procs --gen-completion-out zsh > ~/.zfunc/_procs
 [[ $(command -v chezmoi) ]] && chezmoi completion zsh > ~/.zfunc/_chezmoi
+[[ $(command -v poe) ]] && poe _zsh_completion > ~/.zfunc/_poe
