@@ -13,3 +13,4 @@ git-absorb
 rtx-cli
 cargo-update
 procs
+tokei
