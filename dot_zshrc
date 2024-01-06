@@ -108,7 +108,7 @@ eval $(starship init zsh)
 
 # Aliases
 ## Replacements
-[[ $(command -v bat) ]] && alias cat='bat'
+[[ $(command -v bat) ]] && alias cat='bat -p'
 [[ $(command -v rg) ]] && alias grep='rg'
 [[ $(command -v fd) ]] && alias find='fd'
 [[ $(command -v dust) ]] && alias du='dust'
