@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 MAX_RETRIES=300
 ARCHBOX_RUN_COMMAND="distrobox enter -n archbox -e bash -c"
 
@@ -7,7 +9,7 @@ main() {
 # First, check if we already have internet (timeout after ${MAX_RETRIES} seconds)
   local __count=1
   until /usr/bin/ping -q -c 1 google.com; do
-    if [ ${__count} -ge ${MAX_RETRIES} ]; then break; fi
+    if [ ${__count} -ge ${MAX_RETRIES} ]; then exit 1337; fi
     sleep 1
     __count=$((${__count}+1))
   done
@@ -34,19 +36,21 @@ main() {
     # Rebuild distrobox containers
     distrobox assemble create --file "{$HOME}/.config/distrobox/distrobox.ini"
 
-    # Sync archbox (distrobox) packages
-    ## Get package list first
-    curl -L --silent \
-    -H "Accept: application/vnd.github+json" \
-    -H "X-GitHub-Api-Version: 2022-11-28" \
-    "https://gist.github.com/TibiIius/672c9c9c6749bec37903378b717cb8dd/raw/" -o "/tmp/packages" && \
-    ## Update keyring
-    ${ARCHBOX_RUN_COMMAND} 'sudo pacman --noconfirm -Sy archlinux-keyring' && \
-    ## Install all the packages that are in the list but not on the host (`--needed` skips already installed packages)
-    ${ARCHBOX_RUN_COMMAND} 'sudo pacman --noconfirm --needed -Syu $(</tmp/packages)' && \
-    ## Remove all packages that are not in the list but installed on the host systen (command from here https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#Install_packages_from_a_list)
-    ## Since #? equals to 1 when there are no differences between the two package lists, we just specify || true (not the cleanest, but oh well, it works)
-    ${ARCHBOX_RUN_COMMAND} 'sudo pacman --noconfirm -Rsu $(comm -23 <(pacman -Qqen | sort) <(sort /tmp/packages))' || true
+    if distrobox list | grep -q archbox; then
+      # Sync archbox (distrobox) packages
+      ## Get package list first
+      curl -L --silent \
+      -H "Accept: application/vnd.github+json" \
+      -H "X-GitHub-Api-Version: 2022-11-28" \
+      "https://gist.github.com/TibiIius/672c9c9c6749bec37903378b717cb8dd/raw/" -o "/tmp/packages" && \
+      ## Update keyring
+      ${ARCHBOX_RUN_COMMAND} 'sudo pacman --noconfirm -Sy archlinux-keyring' && \
+      ## Install all the packages that are in the list but not on the host (`--needed` skips already installed packages)
+      ${ARCHBOX_RUN_COMMAND} 'sudo pacman --noconfirm --needed -Syu $(</tmp/packages)' && \
+      ## Remove all packages that are not in the list but installed on the host systen (command from here https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#Install_packages_from_a_list)
+      ## Since #? equals to 1 when there are no differences between the two package lists, we just specify || true (not the cleanest, but oh well, it works)
+      ${ARCHBOX_RUN_COMMAND} 'sudo pacman --noconfirm -Rsu $(comm -23 <(pacman -Qqen | sort) <(sort /tmp/packages))' || true
+    fi
   fi
 }
 
