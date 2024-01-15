@@ -123,6 +123,7 @@ alias gitgp='git fetch --all --prune && git pull'
 alias gitp='git push'
 ## Misc
 alias temppls='cd $(mktemp -d)'
+alias passpls='cat /dev/urandom | tr -dc "0-9a-zA-Z" | head -c32'
 alias hostpls='distrobox-host-exec $SHELL'
 alias dhe='distrobox-host-exec'
 alias rm='rm -I'
