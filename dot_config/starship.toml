@@ -118,6 +118,9 @@ style = 'bold green'
 success_symbol = '[❯](bold green)'
 error_symbol = '[❯](bold red)'
 
+[time]
+disabled=false
+
 [username]
 style_user = 'yellow'
 style_root = 'red'
