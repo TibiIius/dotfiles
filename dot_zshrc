@@ -173,8 +173,8 @@ fi
 export GOPATH=$HOME/.local/share/go
 export PATH=$GOPATH/bin:$PATH
 
-# rtx
-eval "$(rtx activate zsh)"
+# mise
+eval "$(mise activate zsh)"
 
 # atuin shell history
 eval "$(atuin init zsh)"
