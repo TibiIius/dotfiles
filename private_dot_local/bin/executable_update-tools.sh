@@ -4,6 +4,7 @@ set -e
 
 MAX_RETRIES=300
 ARCHBOX_RUN_COMMAND="distrobox enter -n archbox -e bash -c"
+FEDORA_RUN_COMMAND="distrobox enter -n fedora -e bash -c"
 
 main() {
 # First, check if we already have internet (timeout after ${MAX_RETRIES} seconds)
@@ -29,12 +30,13 @@ main() {
   ## Update rustup installation
   ${__cargo_bin}/rustup update
   ## Update all global cargo packages using cargo-update and cargo-binstall
-  ${__cargo_bin}/cargo install-update -a
+  ## Do this inside the Fedora Distrobox as we have some builddeps that are not on the host
+  ${FEDORA_RUN_COMMAND} '${HOME}/.cargo/bin/cargo install-update -a'
 
 
   if [[ $(command -v distrobox) ]]; then
     # Rebuild distrobox containers
-    distrobox assemble create --file "{$HOME}/.config/distrobox/distrobox.ini"
+    distrobox assemble create --file "${HOME}/.config/distrobox/distrobox.ini"
 
     if distrobox list | grep -q archbox; then
       # Sync archbox (distrobox) packages
