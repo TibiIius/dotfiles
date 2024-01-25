@@ -1,0 +1,10 @@
+[tools]
+node = ['latest']
+yarn = "1"
+python = "latest"
+dotnet = "latest"
+poetry = "latest"
+
+[settings]
+experimental = true
+python_compile = true
