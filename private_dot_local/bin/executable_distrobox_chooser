@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-CONTAINERS=$(distrobox list | tail -n +2 | rg -o "\|.*?\|" | sed 's/|//g;s/^[ \t]//;s/[ \t]*$//') || (echo "No Distrobox containers found!" && exit 0)
+CONTAINERS=$(distrobox list | tail -n +2 | rg -o "\|.*?\|" | sed 's/|//g;s/^[ \t]//;s/[ \t]*$//') || (echo "No Distrobox containers found!" && exit 1)
 
-if [[ ${#CONTAINERS[@]} == 1 ]]; then
+NUM_CONTAINERS=$(echo "${CONTAINERS}" | wc -w)
+
+if [[ ${NUM_CONTAINERS} == 1 ]]; then
   distrobox enter $CONTAINERS
 fi
 
