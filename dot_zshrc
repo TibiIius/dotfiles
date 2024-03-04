@@ -131,6 +131,8 @@ alias rm='rm -I'
 alias bandwhich="sudo $(command -v bandwhich)"
 alias vim='nvim'
 alias vi='nvim'
+alias cutlb='perl -pi -e "chomp if eof"'
+alias coder='code --reuse-window'
 ## Chezmoi
 alias ce='chezmoi edit --apply'
 ## Marp with Docker
@@ -182,8 +184,41 @@ eval "$(atuin init zsh)"
 # broot
 source /var/home/tim/.config/broot/launcher/bash/br
 
+# Rasmus 5Head-Git-Stuff
+currentBranch() {
+    git rev-parse --abbrev-ref HEAD
+}
+
+gitrs() {
+    git_fml || return 1
+    if [[ -z $1 ]]; then
+        echo "No remote"
+        return 1
+    fi
+
+    branch=$(currentBranch)
+    git switch -C "${branch}" "${1}/${branch}"
+    grunt
+}
+
+gitrm() {
+    git_fml || return 1
+    if [[ -z $1 ]]; then
+        echo "No remote"
+        return 1
+    fi
+
+    branch=$(currentBranch)
+    git merge $1/$branch
+}
+
+git_fml() {
+    if [[ -e $(pwd)/.git/index.lock ]]; then
+        echo "Index lock exists, aborting..."
+        return 1
+    fi
+}
+
 # Load completions
 fpath+=~/.zfunc
 autoload -U compinit && compinit
-
-
