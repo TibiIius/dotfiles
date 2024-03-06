@@ -4,6 +4,7 @@ yarn = "1"
 python = "latest"
 dotnet = "latest"
 poetry = "latest"
+go = "latest"
 
 [settings]
 experimental = true

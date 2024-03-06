@@ -11,6 +11,12 @@ image=ghcr.io/tibiiius/ubuntu:22.04
 pull=true
 replace=false
 
+[alpine]
+image=quay.io/toolbx-images/alpine-toolbox:latest
+{{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}nvidia=true{{ else }}nvidia=false{{ end }}
+pull=true
+replace=false
+
 [fedora]
 image=ghcr.io/tibiiius/fedora:39
 {{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}nvidia=true{{ else }}nvidia=false{{ end }}

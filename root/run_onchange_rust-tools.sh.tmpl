@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
-source ${CHEZMOI_DIR}/.scripts/helper.sh
+source ${CHEZMOI_DIR}/root/helper.sh
 
-# Include hash of packages (that way, if we add new packages, this file's content changes and is being re-runned): {{ include ".scripts/data/rust-packages" | sha256sum }}
+
+# Include hash of packages (that way, if we add new packages, this file's content changes and is being re-runned): {{ .rust_packages | sha256sum }}
 
 print_message "Running Rust setup..."
 
@@ -24,7 +25,7 @@ print_message "Installing Rust tools..."
 [ ! $(command -v sccache) ] && cargo binstall --no-confirm --locked sccache
 RUSTC_WRAPPER=sccache
 ## Actual packages now
-cargo binstall --no-confirm --locked $(<${CHEZMOI_DIR}/.scripts/data/rust-packages)
+echo "{{ .rust_packages }}"
 ## cross for cross-compiling
 cargo install cross --git https://github.com/cross-rs/cross
 
