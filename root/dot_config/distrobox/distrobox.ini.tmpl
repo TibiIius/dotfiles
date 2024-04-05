@@ -1,24 +1,28 @@
 [ubuntu]
 image=ghcr.io/tibiiius/ubuntu:22.04
 {{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}nvidia=true{{ else }}nvidia=false{{ end }}
+volume=/home/linuxbrew/.linuxbrew:/home/linuxbrew/.linuxbrew:rw,Z
 pull=true
 replace=false
 
 [alpine]
 image=quay.io/toolbx-images/alpine-toolbox:latest
 {{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}nvidia=true{{ else }}nvidia=false{{ end }}
+volume=/home/linuxbrew/.linuxbrew:/home/linuxbrew/.linuxbrew:rw,Z
 pull=true
 replace=false
 
 [fedora]
 image=ghcr.io/tibiiius/fedora:40
 {{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}nvidia=true{{ else }}nvidia=false{{ end }}
+volume=/home/linuxbrew/.linuxbrew:/home/linuxbrew/.linuxbrew:rw,Z
 pull=true
 replace=false
 {{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}
 [cuda]
 image=docker.io/nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 nvidia=true
+volume=/home/linuxbrew/.linuxbrew:/home/linuxbrew/.linuxbrew:rw,Z
 pull=true
 replace=false
 {{ else }}{{ end }}

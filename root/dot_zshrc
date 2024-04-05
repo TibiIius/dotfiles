@@ -220,6 +220,9 @@ git_fml() {
     fi
 }
 
+# Brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Load completions
 fpath+=~/.zfunc
 autoload -U compinit && compinit
