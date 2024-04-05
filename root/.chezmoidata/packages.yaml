@@ -1,21 +1,23 @@
 packages:
   rust:
+    - flamegraph
+    - cargo-update
+  brew:
     - atuin
     - bandwhich
     - bat
     - bottom
     - broot
-    - du-dust
-    - flamegraph
+    - dust
     - hyperfine
     - zoxide
     - ripgrep
-    - fd-find
+    - ripgrep-all
+    - fd
     - hexyl
     - rbw
     - xh
     - git-absorb
-    - cargo-update
     - procs
     - tokei
     - websocat

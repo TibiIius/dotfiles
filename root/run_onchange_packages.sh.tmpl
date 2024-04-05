@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
+source ${CHEZMOI_DIR}/root/.helper.sh
+
+# Include hash of packages (that way, if we add new packages, this file's content changes and is being re-runned): {{ .packages.rust | join " " | sha256sum }}
+
+# Same with brew packages: {{ .packages.brew | join " " | sha256sum }}
+
+# Rust packages
+source $HOME/.cargo/env
+export RUSTC_WRAPPER="sccache"
+cargo binstall --no-confirm --locked {{ .packages.rust | join " " }}
+
+# Brew packages
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew install {{ .packages.brew | join " " }}

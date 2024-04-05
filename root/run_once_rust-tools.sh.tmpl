@@ -2,8 +2,6 @@
 CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
 source ${CHEZMOI_DIR}/root/.helper.sh
 
-# Include hash of packages (that way, if we add new packages, this file's content changes and is being re-runned): {{ .packages.rust | join " " | sha256sum }}
-
 print_message "Running Rust setup..."
 
 # Install Rustup if there's no `$HOME/.cargo`
@@ -17,14 +15,14 @@ source $HOME/.cargo/env
 
 # Install Rust tools
 print_message "Installing Rust tools..."
+
 ## binstall so that we don't have to compile EVERTYHING
 [ ! $(command -v cargo-binstall) ] && curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
 ## sccache so that we can cache compilation results, and set the wrapper in case our cargo config doesn't exist yet
 ## This always reinstall, regardless of being installed already, so we first of all check if it's in $PATH already, and skip this step if it is
 [ ! $(command -v sccache) ] && cargo binstall --no-confirm --locked sccache
-## Actual packages now
-export RUSTC_WRAPPER="sccache"
-cargo binstall --no-confirm --locked {{ .packages.rust | join " " }}
+
 ## cross for cross-compiling
 cargo install cross --git https://github.com/cross-rs/cross
 
