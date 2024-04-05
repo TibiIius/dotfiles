@@ -1,0 +1,22 @@
+packages:
+  rust:
+    - atuin
+    - bandwhich
+    - bat
+    - bottom
+    - broot
+    - du-dust
+    - flamegraph
+    - hyperfine
+    - zoxide
+    - ripgrep
+    - fd-find
+    - hexyl
+    - rbw
+    - xh
+    - git-absorb
+    - cargo-update
+    - procs
+    - tokei
+    - websocat
+    - py-spy
