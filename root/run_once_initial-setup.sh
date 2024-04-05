@@ -2,7 +2,7 @@
 CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
 
 # We source a helper script
-source "${CHEZMOI_DIR}/root/helper.sh"
+source "${CHEZMOI_DIR}/root/.helper.sh"
 
 print_message "Running initial setup script..."
 

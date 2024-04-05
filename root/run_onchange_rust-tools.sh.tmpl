@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
-source ${CHEZMOI_DIR}/root/helper.sh
+source ${CHEZMOI_DIR}/root/.helper.sh
 
 # Include hash of packages (that way, if we add new packages, this file's content changes and is being re-runned): {{ .packages.rust | join " " | sha256sum }}
 
