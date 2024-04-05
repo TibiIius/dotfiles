@@ -1,6 +1,10 @@
 # Some env variables
+if [[ $(command -v code) ]]; then
+  export VISUAL="code --wait"
+else
+  export VISUAL=nvim
+fi
 export EDITOR=nvim
-export VISUAL=nvim
 export BROWSER=firefox
 
 # Fuck Microsoft
