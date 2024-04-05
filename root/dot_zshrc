@@ -70,7 +70,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting fzf-zsh-plugin)
+plugins=(git zsh-autosuggestions fast-syntax-highlighting fzf-zsh-plugin)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,8 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 # Prompt
-eval $(starship init zsh)
+eval "$(starship init zsh)"
 
 # Zoxide init
 [[ $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
