@@ -1,10 +1,10 @@
 [tools]
 node = ['latest']
-yarn = "1"
 python = "latest"
 dotnet = "latest"
 poetry = "latest"
 go = "latest"
+"npm:yarn" = "1"
 
 [settings]
 experimental = true
