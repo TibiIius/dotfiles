@@ -104,6 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # Prompt
 eval "$(starship init zsh)"
 
+# Brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Zoxide init
 [[ $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
 
@@ -220,9 +223,6 @@ git_fml() {
         return 1
     fi
 }
-
-# Brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Load completions
 fpath+=~/.zfunc
