@@ -133,6 +133,7 @@ alias bandwhich="sudo $(command -v bandwhich)"
 alias vim='nvim'
 alias vi='nvim'
 alias cutlb='perl -pi -e "chomp if eof"'
+[[ ! $(command -v code) ]] && alias code='flatpak run com.visualstudio.code'
 alias coder='code --reuse-window'
 ## Chezmoi
 alias ce='chezmoi edit --apply'
