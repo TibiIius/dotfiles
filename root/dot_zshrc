@@ -187,7 +187,7 @@ eval "$(mise activate zsh)"
 eval "$(atuin init zsh)"
 
 # broot
-source /var/home/tim/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
 
 # Rasmus 5Head-Git-Stuff
 currentBranch() {
