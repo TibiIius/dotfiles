@@ -181,13 +181,13 @@ export GOPATH=$HOME/.local/share/go
 export PATH=$GOPATH/bin:$PATH
 
 # mise
-eval "$(mise activate zsh)"
+[[ $(command -v mise) ]] && eval "$(mise activate zsh)"
 
 # atuin shell history
-eval "$(atuin init zsh)"
+[[ $(command -v atuin) ]] && eval "$(atuin init zsh)"
 
 # broot
-source $HOME/.config/broot/launcher/bash/br
+[[ $(command -v broot) ]] && source $HOME/.config/broot/launcher/bash/br
 
 # Rasmus 5Head-Git-Stuff
 currentBranch() {
