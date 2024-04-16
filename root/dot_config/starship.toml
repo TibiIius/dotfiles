@@ -119,7 +119,7 @@ success_symbol = '[❯](bold green)'
 error_symbol = '[❯](bold red)'
 
 [time]
-disabled=false
+disabled = false
 
 [username]
 style_user = 'yellow'
@@ -181,7 +181,9 @@ symbol = " "
 symbol = " "
 
 [git_branch]
+always_show_remote = true
 symbol = " "
+format = 'on [$symbol\[$remote_name\] $remote_branch(:$branch)]($style) '
 
 [git_metrics]
 disabled = false
