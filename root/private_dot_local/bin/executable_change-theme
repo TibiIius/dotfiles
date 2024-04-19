@@ -1,24 +1,13 @@
 #!/usr/bin/env bash
 
-# Needed because the socket always has Kitty's PID at the end
-KITTY_SOCKETS=$(ls /tmp | grep mykitty)
-
 dark_theme() {
   sed -i "s/let g:material_theme_style = 'lighter'/let g:material_theme_style = 'palenight'/g" /home/tim/.config/nvim/colors.vim
-  sed -i "s/gtk-application-prefer-dark-theme=0/gtk-application-prefer-dark-theme=1/g" /home/tim/.config/gtk-3.0/settings.ini
-  ln -sf $HOME/.config/kitty/themes-custom/Dark\ One\ Nuanced.conf $HOME/.config/kitty/current-theme.conf
+  gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 }
 
 light_theme() {
   sed -i "s/let g:material_theme_style = 'palenight'/let g:material_theme_style = 'lighter'/g" /home/tim/.config/nvim/colors.vim
-  sed -i "s/gtk-application-prefer-dark-theme=1/gtk-application-prefer-dark-theme=0/g" /home/tim/.config/gtk-3.0/settings.ini
-  ln -sf $HOME/.config/kitty/themes-custom/Atom\ One\ Light.conf $HOME/.config/kitty/current-theme.conf
-  # Sets Gnome 45's new light shell, currently not adjustable via settings
-  if [[ -z "${CONTAINER_ID}" ]]; then
-    gsettings set org.gnome.desktop.interface color-scheme prefer-light
-  else
-    /usr/bin/distrobox-host-exec gsettings set org.gnome.desktop.interface color-scheme prefer-light
-  fi
+  gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
 }
 
 check_files() {
@@ -37,11 +26,6 @@ main() {
       light_theme
       ;;
   esac
-
-  for KITTY_SOCKET in $KITTY_SOCKETS; do
-    kitty @ --to unix:/tmp/$KITTY_SOCKET set-colors -a "/home/tim/.config/kitty/current-theme.conf"
-  done
-    
 
   exit 0
 }
