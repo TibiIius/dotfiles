@@ -1,0 +1,3 @@
+[submodule "root/dot_config/external_nvim"]
+	path = root/dot_config/external_nvim
+	url = git@github.com:TibiIius/kickstart.nvim.git
