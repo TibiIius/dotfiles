@@ -224,6 +224,8 @@ git_fml() {
     fi
 }
 
+export DBX_CONTAINER_MANAGER=docker
+
 # Load completions
 fpath+=~/.zfunc
 autoload -U compinit && compinit
