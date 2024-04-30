@@ -9,7 +9,6 @@ packages:
     - bottom
     - broot
     - dust
-    - hadolint
     - hyperfine
     - zoxide
     - ripgrep
