@@ -18,11 +18,3 @@ image=ghcr.io/tibiiius/fedora:40
 volume=/home/linuxbrew/.linuxbrew:/home/linuxbrew/.linuxbrew:rw,Z
 pull=true
 replace=false
-{{ if (or ((env "HOSTNAME") | regexMatch "desktop") (.chezmoi.hostname | regexMatch "desktop")) }}
-[cuda]
-image=docker.io/nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
-nvidia=true
-volume=/home/linuxbrew/.linuxbrew:/home/linuxbrew/.linuxbrew:rw,Z
-pull=true
-replace=false
-{{ else }}{{ end }}
