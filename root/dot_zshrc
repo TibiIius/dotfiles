@@ -230,4 +230,5 @@ source <(kubectl completion zsh)
 
 # Load completions
 fpath+=~/.zfunc
+fpath+=/usr/share/zsh/vendor-completions
 autoload -U compinit && compinit
