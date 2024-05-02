@@ -24,7 +24,7 @@ fi
 
 pushd /tmp
 
-${CURL_CMD} -O && chmod +x nvim.appimage
+${CURL_CMD} -o nvim.appimage && chmod +x nvim.appimage
 ./nvim.appimage --appimage-extract && rm -rf ${TARGET_DIR} && mkdir -p ${TARGET_DIR} && mv squashfs-root/** ${TARGET_DIR}
 
 ln -sf ${TARGET_DIR}/AppRun ${HOME}/.local/bin/nvim
