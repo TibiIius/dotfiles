@@ -10,9 +10,12 @@ TARGET_DIR="${HOME}/.local/share/nvim-appimage"
 mkdir -p "${TARGET_DIR}" || exit 1
 
 # Check if update is needed
-if [ -f "~/.local/share/nvim/nvim.appimage.sha256" ]; then
-    SUM_INSTALLED=$(sha256sum ~/.local/share/nvim/nvim.appimage.sha256)
-    SUM_REMOTE=$(${CURL_CMD} | sha256sum)
+if [ -f "${TARGET_DIR}/nvim.appimage.sha256" ]; then
+    SUM_INSTALLED=$(cat ${TARGET_DIR}/nvim.appimage.sha256 | cut -d " " -f 1)
+    SUM_REMOTE=$(${CURL_CMD} | sha256sum | cut -d " " -f 1)
+
+    echo "Installed: ${SUM_INSTALLED}"
+    echo "Remote: ${SUM_REMOTE}"
     if [ "${SUM_INSTALLED}" == "${SUM_REMOTE}" ]; then
         echo "Neovim is up to date."
         exit 0
