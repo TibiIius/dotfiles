@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+DOCKER_ABSOLUTE_CMD="$($HOME/.local/bin/flatpak-host-runner $HOME/.local/bin/absolute-path docker)"
+
+DOCKER="$($DOCKER_ABSOLUTE_CMD)"
+
+DOCKER="$($HOME/.local/bin/flatpak-host-runner $DOCKER)"
+
+$DOCKER "$@"
+
