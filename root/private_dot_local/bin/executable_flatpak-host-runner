@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+if [ "$container" == "flatpak" ]; then
+  echo "flatpak-spawn --host $@"
+else
+  echo "$@"
+fi

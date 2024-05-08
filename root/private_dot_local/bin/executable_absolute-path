@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+exclude_dir="$HOME/.local/bin"
+
+IFS=':'
+
+for d in $PATH; do
+  if [ "$d" == "$exclude_dir" ]; then
+    continue
+  elif [ -x "${d}/${1}" ]; then
+    echo "${d}/${1}"
+    break;
+  fi
+done
