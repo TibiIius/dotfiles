@@ -1,10 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-DOCKER_RUN_COMMAND="docker run -i --rm hadolint/hadolint hadolint"
-
-if [ "$container" == "flatpak" ]; then
-  DOCKER_RUN_COMMAND="flatpak-spawn --host $DOCKER_RUN_COMMAND"
-fi
+DOCKER_RUN_COMMAND="$($HOME/.local/bin/flatpak-host-runner docker run -i --rm hadolint/hadolint hadolint)"
 
 dockerfile="$1"
 
