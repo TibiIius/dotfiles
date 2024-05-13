@@ -1,0 +1,26 @@
+{
+    "name": "Ayu Light",
+    "comment": "Gogh Ayu Light",
+    "use-theme-colors": true,
+    "foreground-color": "#575F66",
+    "background-color": "#FAFAFA",
+    "palette": [
+        "#575F66",
+        "#F51818",
+        "#86B300",
+        "#F2AE49",
+        "#399EE6",
+        "#A37ACC",
+        "#4CBF99",
+        "#FAFAFA",
+        "#8A9199",
+        "#F51818",
+        "#86B300",
+        "#F2AE49",
+        "#399EE6",
+        "#A37ACC",
+        "#4CBF99",
+        "#FAFAFA"
+    ]
+}
+
