@@ -2,10 +2,8 @@
 node = ['latest']
 python = "latest"
 dotnet = "latest"
-poetry = "latest"
 go = "latest"
-"npm:yarn" = "1"
 
 [settings]
 experimental = true
-python_compile = true
+python_compile = false
