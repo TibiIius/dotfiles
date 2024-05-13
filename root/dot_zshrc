@@ -22,10 +22,9 @@ antidote bundle ohmyzsh/ohmyzsh path:plugins/copybuffer
 antidote bundle ohmyzsh/ohmyzsh path:plugins/copyfile
 antidote bundle ohmyzsh/ohmyzsh path:plugins/copypath
 antidote bundle ohmyzsh/ohmyzsh path:plugins/extract
-antidote bundle ohmyzsh/ohmyzsh path:plugins/magic-enter
 antidote bundle ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
-# Plugins 
+# Plugins
 antidote bundle mattmc3/zephyr path:plugins/completion
 antidote bundle mattmc3/zephyr path:plugins/homebrew
 antidote bundle ohmyzsh/ohmyzsh path:plugins/git
