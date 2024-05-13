@@ -1,11 +1,42 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# Antidote clone location
+export ANTIDOTE_CLONE_LOCATION=${ZDOTDIR:-~}/.antidote
 
-# OMZ
-# Chezmoi does updates for us
-DISABLE_AUTO_UPDATE="true"
-# Has no effect since we use Starship anyways
-ZSH_THEME="robbyrussell"
+# Clone antidote if necessary.
+
+[[ -e "${ANTIDOTE_CLONE_LOCATION}" ]] ||
+  git clone git@github.com:mattmc3/antidote.git "${ANTIDOTE_CLONE_LOCATION}"
+
+# Source antidote.
+source ${ANTIDOTE_CLONE_LOCATION}/antidote.zsh
+
+# Initialize antidote's dynamic mode, which changes `antidote bundle`
+# from static mode.
+source <(antidote init)
+
+autoload -Uz compinit
+compinit
+
+# OMZ trough antidote
+antidote bundle ohmyzsh/ohmyzsh path:lib
+antidote bundle ohmyzsh/ohmyzsh path:plugins/copybuffer
+antidote bundle ohmyzsh/ohmyzsh path:plugins/copyfile
+antidote bundle ohmyzsh/ohmyzsh path:plugins/copypath
+antidote bundle ohmyzsh/ohmyzsh path:plugins/extract
+antidote bundle ohmyzsh/ohmyzsh path:plugins/magic-enter
+antidote bundle ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+
+# Plugins 
+antidote bundle mattmc3/zephyr path:plugins/completion
+antidote bundle mattmc3/zephyr path:plugins/homebrew
+antidote bundle ohmyzsh/ohmyzsh path:plugins/git
+antidote bundle ohmyzsh/ohmyzsh path:plugins/eza
+antidote bundle zdharma-continuum/fast-syntax-highlighting kind:defer
+antidote bundle jeffreytse/zsh-vi-mode
+
+# Late loading plugins
+antidote bundle zsh-users/zsh-autosuggestions
+
+# OMZ settings
 HYPHEN_INSENSITIVE="true"
 # Uncomment the following line if pasting URLs and other text is messed up.
 DISABLE_MAGIC_FUNCTIONS="true"
@@ -15,23 +46,8 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Plugins
-plugins=(git zsh-autosuggestions fast-syntax-highlighting)
-
-# Init OMZ
-source $ZSH/oh-my-zsh.sh
-
 # Prompt
 eval "$(starship init zsh)"
-
-# Brew
-[[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export HOMEBREW_CASK_OPTS="--no-quarantine --greedy"
-if type brew &>/dev/null
-then
-  fpath+="$(brew --prefix)/share/zsh/site-functions"
-  fpath+="$(brew --prefix)/share/zsh/vendor-completions"
-fi
 
 # Zoxide init
 [[ $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
@@ -77,6 +93,15 @@ alias ce='chezmoi edit --apply'
 alias marp-convert="docker run --rm -v \"./:/home/marp/app/:Z\" -e LANG=$LANG -e MARP_USER=\"${UID}:${GID}\" marpteam/marp-cli"
 alias marp-serve="docker run --rm --init -v \"./:/home/marp/app:Z\" -e LANG=$LANG -e MARP_USER=\"${UID}:${GID}\" -p 8080:8080 -p 37717:37717 marpteam/marp-cli -s"
 
+# Updating stuff
+update_tools() {
+    antidote update
+    [[ $(command -v chezmoi) ]] && chezmoi upgrade
+    [[ $(command -v brew) ]] && brew upgrade
+    [[ $(command -v mise) ]] && mise upgrade
+    [[ $(command -v rustup) ]] && rustup upgrade
+}
+
 # Tmux
 if [[ $(command -v tmux) ]]; then
   # We check if ${TMUX_EXEC} exists, otherwise we encounter recoursion when sourcing again
@@ -115,7 +140,7 @@ export PATH=$GOPATH/bin:$PATH
 
 # mise
 [[ $(command -v mise) ]] && eval "$(mise activate zsh)"
-MISE_NODE_COREPACK=true
+export MISE_NODE_COREPACK=true
 
 # atuin shell history
 [[ $(command -v atuin) ]] && eval "$(atuin init zsh)"
@@ -166,4 +191,5 @@ source <(kubectl completion zsh)
 # Load completions
 fpath+=~/.zfunc
 fpath+=/usr/share/zsh/vendor-completions
+fpath+=/usr/share/zsh/site-functions
 autoload -U compinit && compinit
