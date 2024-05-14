@@ -2,6 +2,11 @@
 CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
 source ${CHEZMOI_DIR}/root/.helper.sh
 
+{{ if .devcontainer }}
+print_message "In Dev Container, skipping setting up packages..."
+exit 0
+{{ end }}
+
 # Include hash of packages (that way, if we add new packages, this file's content changes and is being re-runned): {{ .packages.rust | join " " | sha256sum }}
 
 # Same with brew packages: {{ .packages.brew | join " " | sha256sum }}
