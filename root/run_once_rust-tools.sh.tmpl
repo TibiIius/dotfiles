@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
-source ${CHEZMOI_DIR}/root/.helper.sh
+source {{ .chezmoi.sourceDir }}/.helper.sh
 
 {{ if .devcontainer }}
 print_message "In Dev Container, skipping setting up Rust..."
