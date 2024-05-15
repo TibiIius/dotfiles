@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 declare -A COLORS=(
   [red]="\033[0;31m"
@@ -29,4 +29,20 @@ print_debug() {
   fi
 
   echo -e "${COLORS[blue]}[~] DEBUG: ${@}${COLORS[reset]}}"
+}
+
+# Find brew
+find_brew() {
+  declare -A brew_common_install_paths=(
+    "/opt/homebrew/bin/brew"
+    "/home/linuxbrew/.linuxbrew/bin/brew"
+  )
+  brew_path=""
+  for f in "${!brew_common_install_paths[@]}"; do
+    if [ -f "$f" ]; then
+      print_message "Brew found at $brew_path"
+      brew_path=$f
+    fi
+  done
+  echo $brew_path
 }

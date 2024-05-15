@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 source {{ .chezmoi.sourceDir }}/.helper.sh
 
-{{ if .devcontainer }}
-print_message "In Dev Container, skipping setting up Rust..."
+{{ if or (eq .machineType "dev") (eq .machineType "server") }}
+print_message "In Dev Container or on server, skipping setting up Rust..."
 exit 0
 {{ end }}
 
@@ -12,7 +12,13 @@ print_message "Running Rust setup..."
 if [ ! -d "$HOME/.cargo" ]; then
   print_message "Installing Rustup..."
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+
+  if [ $? -ne "0" ]; then
+    print_error "Failed to install Rustup!"
+    exit 1
+  fi
 fi
+
 
 # Source cargo env
 source $HOME/.cargo/env
@@ -21,13 +27,25 @@ source $HOME/.cargo/env
 print_message "Installing Rust tools..."
 
 ## binstall so that we don't have to compile EVERTYHING
-[ ! $(command -v cargo-binstall) ] && curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+if [ ! $(command -v cargo-binstall) ]; then
+  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
+  if [ $? -ne "0" ]; then
+    print_error "Failed to install cargo-binstall!"
+    exit 1
+  fi
+fi
 
 ## sccache so that we can cache compilation results, and set the wrapper in case our cargo config doesn't exist yet
 ## This always reinstall, regardless of being installed already, so we first of all check if it's in $PATH already, and skip this step if it is
-[ ! $(command -v sccache) ] && cargo binstall --no-confirm --locked sccache
-
-## cross for cross-compiling
-cargo install cross --git https://github.com/cross-rs/cross
+if [ ! $(command -v sccache) ]; then
+  cargo binstall --no-confirm --locked sccache
+  
+  if [ $? -ne "0" ]; then
+    print_error "Failed to install sccache!"
+    exit 1
+  fi
+fi
 
 print_message "Done setting up Rust!"
+

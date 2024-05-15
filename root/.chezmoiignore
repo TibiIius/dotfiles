@@ -1,0 +1,24 @@
+{{ if not (eq .machineType "home") }}
+.var
+
+.config/distrobox
+.config/neofetch
+.config/pipewire
+.config/tiling-assistant
+.config/zathura
+.config/atuin
+
+.local/bin
+.local/share/
+  {{ if not (or (eq .machineType "dev") (eq .machineType "server")) }}
+  !.local/share/fonts
+  {{ end }}
+{{ end }}
+
+{{ if eq .machineType "work" }}
+!.local/bin/hadolint
+{{ end }}
+
+{{ if or (eq .machineType "dev") (eq .machineType "server") }}
+.local
+{{ end }}

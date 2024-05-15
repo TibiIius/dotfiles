@@ -2,7 +2,6 @@
 export ANTIDOTE_CLONE_LOCATION=${ZDOTDIR:-~}/.antidote
 
 # Clone antidote if necessary.
-
 [[ -e "${ANTIDOTE_CLONE_LOCATION}" ]] ||
   git clone git@github.com:mattmc3/antidote.git "${ANTIDOTE_CLONE_LOCATION}"
 
@@ -13,8 +12,7 @@ source ${ANTIDOTE_CLONE_LOCATION}/antidote.zsh
 # from static mode.
 source <(antidote init)
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 # OMZ trough antidote
 antidote bundle ohmyzsh/ohmyzsh path:lib
@@ -58,10 +56,11 @@ eval "$(starship init zsh)"
 [[ $(command -v fd) ]] && alias find='fd'
 [[ $(command -v dust) ]] && alias du='dust'
 ## Git aliases
-alias gits='git stash'
-alias gitsa='git stash apply'
-alias gitsp='git stash pop'
-alias gitsd='git stash drop'
+alias gits='git status'
+alias gitst='git stash'
+alias gitstp='git stash pop'
+alias gitsta='git stash apply'
+alias gitstd='git stash apply'
 alias gitd='git diff'
 alias gitds='git diff --staged'
 alias gitl='git log'
@@ -126,6 +125,7 @@ if [[ $(command -v tmux) ]]; then
     }
   fi
 
+{{ if eq .machineType "server" }}
   ## SSH connection
   if [[ "${SSH_CONNECTION}" ]]; then
     # Create a new SSH Tmux session if there is none
@@ -136,6 +136,7 @@ if [[ $(command -v tmux) ]]; then
       ${TMUX_EXEC} a -t ssh
     fi
   fi
+{{ end }}
 fi
 
 # Go stuff
@@ -194,6 +195,8 @@ source <(kubectl completion zsh)
 
 # Load completions
 fpath+=~/.zfunc
+{{ if eq .chezmoi.os "linux" }}
 fpath+=/usr/share/zsh/vendor-completions
 fpath+=/usr/share/zsh/site-functions
+{{ end }}
 autoload -U compinit && compinit

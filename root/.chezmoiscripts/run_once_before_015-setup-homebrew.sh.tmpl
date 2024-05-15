@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+source {{ .chezmoi.sourceDir }}/.helper.sh
+
+{{ if not .homebrewSupported }}
+  print_debug "Homebrew is not supported on this platform"
+  exit 0
+{{ end }}
+
+print_message "Setting up Homebrew"
+
+brew_path=$(find_brew)
+
+if command -v ${brew_path} &> /dev/null; then
+    print_debug "Homebrew is already installed"
+    exit 0
+fi
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+if [ $? -ne 0 ]; then
+    print_error "Failed to install Homebrew"
+    exit 1
+fi
+
+print_message "Homebrew setup completed"

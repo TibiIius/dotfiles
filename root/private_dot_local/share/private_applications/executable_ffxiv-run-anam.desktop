@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Anamnesis
-Comment=Anamnesis for FFXIV
-Exec=/home/tim/.local/bin/ffxiv-run-anam.sh
-Icon=/home/tim/.local/share/icons/hicolor/128x128/apps/ffxiv_anamnesis.png
-Type=Application
-Terminal=false
-Categories=Game;

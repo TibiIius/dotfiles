@@ -1,7 +1,9 @@
 [user]
-	name = Tim Friedrich Brüggemann
-	email = oss@timfb.dev
+	name = {{ .name | quote }}
+	email = {{ .email | quote }}
+{{ if not (eq .machineType "work") }}
 	signingkey = 4B3B63F9A1CB361C
+{{ end }}
 [commit]
 	gpgsign = true
 [filter "lfs"]

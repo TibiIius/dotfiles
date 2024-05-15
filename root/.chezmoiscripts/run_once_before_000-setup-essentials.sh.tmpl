@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-CHEZMOI_DIR="${HOME}/.local/share/chezmoi"
 
-# We source a helper script
-source "${CHEZMOI_DIR}/root/.helper.sh"
+source {{ .chezmoi.sourceDir }}/.helper.sh
 
-print_message "Running initial setup script..."
+print_message "Running essentials setup script..."
 
 print_message "Installing starship prompt..."
 

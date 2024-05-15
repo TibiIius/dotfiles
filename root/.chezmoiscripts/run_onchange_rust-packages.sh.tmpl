@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+source {{ .chezmoi.sourceDir }}/.helper.sh
+
+# Package hash: {{ .packages.rust | join " " | sha256sum }}
+
+{{ if eq .machineType "dev" }}
+  print_debug "In Dev Container, skipping setting up packages..."
+  exit 0
+{{ end }}
+
+# Check if cargo is installed
+source $HOME/.cargo/env
+if ! command -v cargo &> /dev/null; then
+  print_debug "cargo is not installed, skipping rust packages installation"
+  exit 0
+fi
+
+# Install rust packages
+export RUSTC_WRAPPER="sccache"
+print_message "Checking Rust packages"
+cargo binstall --no-confirm --locked {{ .packages.rust | join " " }}

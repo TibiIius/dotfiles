@@ -1,8 +1,54 @@
+{{/*
+  This represents the chezmoi config used for the initializing machine.
+  If possible, prompts for a choice of different machines. If no TTY is available, or if we detect we're running inside a devcontainer, it will default to the "dev" machine.
+*/}}
+
+{{/*
+  Machines:
+    - dev: Represents a "machine" that is used for development, e.g. a dev container or some other minimal environment.
+    - server: Represents a server machine, i.e. no sophisticated dev env or GUI is needed.
+    - work: Represents my work machine.
+    - home: Represents private machines.
+ */}}
+{{- $machineTypes := list "dev" "server" "work" "home" -}}
+{{- $machineType := "" -}}
+
 {{- $devcontainer:= (or (env "CODESPACES" | not | not) (env "REMOTE_CONTAINERS" | not | not)) -}}
+
+{{- if or $devcontainer (not stdinIsATTY) -}}
+  {{- $machineType = "dev" -}}
+{{- else -}}
+  {{- $machineType = promptChoice "What type of machine is this" $machineTypes -}}
+{{- end -}}
+
+{{/* Figure out if we have Homebrew support (currently no support under Linux/arm) */}}
+{{- $homebrewSupported := true -}}
+{{- if (and (eq .chezmoi.arch "arm64") (eq .chezmoi.os "Linux")) -}}
+  {{- $homebrewSupported = false -}}
+{{/* No real reason to install Homebrew in something small like a dev container */}}
+{{- else if (eq $machineType "dev") -}}
+  {{ $homebrewSupported = false }}
+{{- else if stdinIsATTY -}}
+  {{ $homebrewSupported = promptBool "Do you want to install Homebrew" true }}
+{{- end -}}
+
+
+{{/* Personal info */}}
+{{- $email:= "oss@timfb.dev" -}}
+{{- $name:= "Tim Friedrich Brüggemann" -}}
+
+{{- if eq $machineType "work" -}}
+  {{- $email = promptString "Enter your work email" -}}
+  {{- $name = promptString "Enter your work name" -}}
+{{- end -}}
+
+
+{{/* Actual config */}}
 
 sourceDir: "{{ .chezmoi.sourceDir }}"
 
 data:
-  name: "Tibilius"
-  email: "oss@timfb.dev"
-  devcontainer: {{ $devcontainer }}
+  name: {{ $name | quote }}
+  email: {{ $email | quote }}
+  machineType: {{ $machineType | quote }}
+  homebrewSupported: {{ $homebrewSupported }}
