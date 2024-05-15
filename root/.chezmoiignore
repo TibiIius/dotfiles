@@ -22,3 +22,7 @@
 {{ if or (eq .machineType "dev") (eq .machineType "server") }}
 .local
 {{ end }}
+
+{{ if .devcontainer }}
+.gitconfig
+{{ end }}
