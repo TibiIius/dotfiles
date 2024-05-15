@@ -20,29 +20,28 @@ print_error() {
 }
 
 print_warning() {
-  echo -e "${COLORS[yellow]}[=] WARN: ${@}${COLORS[reset]}}"
+  echo -e "${COLORS[yellow]}[=] WARN: ${@}${COLORS[reset]}"
 }
 
 print_debug() {
-  if [ -z "${DEBUG}"]; then
+  if [ -z "${DEBUG}" ]; then
     return 0
   fi
 
-  echo -e "${COLORS[blue]}[~] DEBUG: ${@}${COLORS[reset]}}"
+  echo -e "${COLORS[blue]}[~] DEBUG: ${@}${COLORS[reset]}"
 }
 
 # Find brew
 find_brew() {
-  declare -A brew_common_install_paths=(
-    "/opt/homebrew/bin/brew"
-    "/home/linuxbrew/.linuxbrew/bin/brew"
-  )
+  brew_common_install_paths=("/opt/homebrew/bin/brew" "/home/linuxbrew/.linuxbrew/bin/brew")
   brew_path=""
-  for f in "${!brew_common_install_paths[@]}"; do
-    if [ -f "$f" ]; then
-      print_message "Brew found at $brew_path"
-      brew_path=$f
+  for idx in "${!brew_common_install_paths[@]}"; do
+    current_path="${brew_common_install_paths[${idx}]}"
+    print_debug "Checking for brew at ${current_path}"
+    if [ -f "${current_path}" ]; then
+      print_message "Brew found at ${current_path}"
+      brew_path="${current_path}"
     fi
   done
-  echo $brew_path
+  export BREW_PATH="${brew_path}"
 }
