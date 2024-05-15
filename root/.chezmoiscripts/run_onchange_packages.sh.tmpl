@@ -9,34 +9,34 @@ source {{ .chezmoi.sourceDir }}/.helper.sh
 # Package hash: {{ .packages.common | join " " | sha256sum }}
 
 {{ if .homebrewSupported }}
-  brew_path=$(find_brew)
-
-  print_debug "Brew path: ${brew_path}"
+  find_brew
 
   # Install packages
   
   print_message "Installing packages using brew"
   
-  eval "$(${brew_path} shellenv)"
+  eval "$(${BREW_PATH} shellenv)"
   export HOMEBREW_NO_AUTO_UPDATE=1
   
   {{ range .packages.common }}
-    brew list {{ .brew }} &> /dev/null || brew install {{ .brew }}
+    {{ if (index . "brew") }}
+      brew list {{ .brew }} &> /dev/null || brew install {{ .brew }}
+    {{ end }}
   {{ end }}
   
   exit 0
 
 {{ else }}
-
   print_message "Brew not supported, trying to install using alternatives..."
   
   if command -v cargo &> /dev/null; then
     print_message "Cargo found, installing packages using cargo"
     {{ range .packages.common }}
+    {{ if (index . "cargo") }}
       cargo binstall --locked --no-confirm {{ .cargo }}
+    {{ end }}
     {{ end }}
   fi
   
   exit 0
-
 {{ end }}

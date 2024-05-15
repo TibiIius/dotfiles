@@ -8,9 +8,9 @@ source {{ .chezmoi.sourceDir }}/.helper.sh
 
 print_message "Setting up Homebrew"
 
-brew_path=$(find_brew)
+find_brew
 
-if command -v ${brew_path} &> /dev/null; then
+if command -v ${BREW_PATH} &> /dev/null; then
     print_debug "Homebrew is already installed"
     exit 0
 fi
