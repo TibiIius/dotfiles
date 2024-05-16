@@ -18,7 +18,7 @@
 {{- if or $devcontainer (not stdinIsATTY) -}}
   {{- $machineType = "dev" -}}
 {{- else -}}
-  {{- $machineType = promptChoice "What type of machine is this" $machineTypes -}}
+  {{- $machineType = promptChoiceOnce . "machineType" "What type of machine is this" $machineTypes -}}
 {{- end -}}
 
 {{/* Figure out if we have Homebrew support (currently no support under Linux/arm) */}}
@@ -29,7 +29,7 @@
 {{- else if (eq $machineType "dev") -}}
   {{ $homebrewSupported = false }}
 {{- else if stdinIsATTY -}}
-  {{ $homebrewSupported = promptBool "Do you want to install Homebrew" true }}
+  {{ $homebrewSupported = promptBoolOnce . "homebrewSupported" "Do you want to install Homebrew" true }}
 {{- end -}}
 
 
@@ -38,8 +38,8 @@
 {{- $name:= "Tim Friedrich Brüggemann" -}}
 
 {{- if eq $machineType "work" -}}
-  {{- $email = promptString "Enter your work email" -}}
-  {{- $name = promptString "Enter your work name" -}}
+  {{- $email = promptStringOnce . "email" "Enter your work email" -}}
+  {{- $name = promptStringOnce . "name" "Enter your work name" -}}
 {{- end -}}
 
 
@@ -53,3 +53,8 @@ data:
   machineType: {{ $machineType | quote }}
   devcontainer: {{ $devcontainer }}
   homebrewSupported: {{ $homebrewSupported }}
+
+
+merge:
+  command: "nvim"
+  args: ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
