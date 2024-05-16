@@ -3,16 +3,37 @@
 	email = {{ .email | quote }}
 {{ if not (eq .machineType "work") }}
 	signingkey = 4B3B63F9A1CB361C
-{{ end }}
 [commit]
 	gpgsign = true
+{{ end }}
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[log]
+	decorate = true
 [push]
+{{ if not (eq .machineType "work") }}
 	followTags = true
-
+{{ else }}
+	default = simple
+{{ end }}
+{{ if eq .machineType "work" }}
 [pull]
 	rebase = true
+[diff]
+	prompt = false
+[difftool "vim"]
+	prompt = false
+	cmd = vim -f -d \"$LOCAL\" \"$REMOTE\"
+[merge]
+	keepBackup = false
+[mergetool "vim"]
+	cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+	path = ''
+	prompt = false
+	keepBackup = false
+	keepTemporaries = false
+	trustExitCode = false
+{{ end }}
