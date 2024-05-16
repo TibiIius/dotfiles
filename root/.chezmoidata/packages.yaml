@@ -46,3 +46,4 @@ packages:
       cargo: py-spy
     - brew: minikube
     - brew: kubectl
+    - brew: tmux
