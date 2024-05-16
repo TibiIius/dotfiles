@@ -1,9 +1,5 @@
 # Antidote clone location
-export ANTIDOTE_CLONE_LOCATION=${ZDOTDIR:-~}/.antidote
-
-# Clone antidote if necessary.
-[[ -e "${ANTIDOTE_CLONE_LOCATION}" ]] ||
-  git clone git@github.com:mattmc3/antidote.git "${ANTIDOTE_CLONE_LOCATION}"
+export ANTIDOTE_CLONE_LOCATION=${HOME}/.antidote
 
 # Source antidote.
 source ${ANTIDOTE_CLONE_LOCATION}/antidote.zsh
