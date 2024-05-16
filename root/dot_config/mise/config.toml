@@ -1,7 +1,8 @@
 [tools]
-node = ['latest']
+node = "latest"
 python = "latest"
 dotnet = "latest"
+ruby = "latest"
 go = "latest"
 
 [settings]
