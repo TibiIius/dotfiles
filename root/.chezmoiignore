@@ -20,6 +20,7 @@
 
 {{ if eq .machineType "work" }}
 !.local/bin/hadolint
+!.local/bin/flatpak-host-runner
 {{ end }}
 
 {{ if or (eq .machineType "dev") (eq .machineType "server") }}
