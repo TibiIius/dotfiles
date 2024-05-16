@@ -38,7 +38,12 @@ COMPLETION_WAITING_DOTS="true"
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
+{{ if eq .chezmoi.os "darwin" }}
+# MacOS convenience functions
+alias sha1sum="shasum -a 1"
+alias sha256sum="shasum -a 256"
+alias sha512sum="shasum -a 512"
+{{ end }}
 # Prompt
 eval "$(starship init zsh)"
 
@@ -142,6 +147,11 @@ export PATH=$GOPATH/bin:$PATH
 # mise
 [[ $(command -v mise) ]] && eval "$(mise activate zsh)"
 export MISE_NODE_COREPACK=true
+
+{{ if eq .chezmoi.os "darwin" }}
+# iTerm2
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+{{ end }}
 
 # atuin shell history
 [[ $(command -v atuin) ]] && eval "$(atuin init zsh)"
