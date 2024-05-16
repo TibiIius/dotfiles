@@ -1,3 +1,6 @@
 [submodule "root/dot_config/external_nvim"]
 	path = root/dot_config/external_nvim
 	url = git@github.com:TibiIius/kickstart.nvim.git
+[submodule "root/dot_tmux/plugins/external_tpm"]
+	path = root/dot_tmux/plugins/external_tpm
+	url = git@github.com:tmux-plugins/tpm.git

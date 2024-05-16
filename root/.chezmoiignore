@@ -1,3 +1,6 @@
+.tmux/plugins/*
+!.tmux/plugins/tpm
+
 {{ if not (eq .machineType "home") }}
 .var
 
@@ -8,8 +11,8 @@
 .config/zathura
 .config/atuin
 
-.local/bin
-.local/share/
+.local/bin/*
+.local/share/*
   {{ if not (or (eq .machineType "dev") (eq .machineType "server")) }}
   !.local/share/fonts
   {{ end }}
