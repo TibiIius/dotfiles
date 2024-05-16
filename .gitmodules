@@ -1,9 +1,12 @@
 [submodule "root/dot_config/external_nvim"]
 	path = root/dot_config/external_nvim
 	url = git@github.com:TibiIius/kickstart.nvim.git
+	branch = master
 [submodule "root/dot_tmux/plugins/external_tpm"]
 	path = root/dot_tmux/plugins/external_tpm
 	url = git@github.com:tmux-plugins/tpm.git
+	branch = master
 [submodule "root/external_dot_antidote"]
 	path = root/external_dot_antidote
 	url = git@github.com:mattmc3/antidote.git
+	branch = main
