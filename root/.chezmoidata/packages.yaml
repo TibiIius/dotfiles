@@ -47,3 +47,5 @@ packages:
     - brew: minikube
     - brew: kubectl
     - brew: tmux
+    - brew: onefetch
+      cargo: onefetch
