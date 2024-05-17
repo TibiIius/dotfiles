@@ -10,14 +10,6 @@ source <(antidote init)
 
 autoload -Uz compinit && compinit
 
-# OMZ trough antidote
-antidote bundle ohmyzsh/ohmyzsh path:lib
-antidote bundle ohmyzsh/ohmyzsh path:plugins/copybuffer
-antidote bundle ohmyzsh/ohmyzsh path:plugins/copyfile
-antidote bundle ohmyzsh/ohmyzsh path:plugins/copypath
-antidote bundle ohmyzsh/ohmyzsh path:plugins/extract
-antidote bundle ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-
 # Plugins
 antidote bundle mattmc3/zephyr path:plugins/completion
 antidote bundle mattmc3/zephyr path:plugins/homebrew
@@ -29,21 +21,15 @@ antidote bundle jeffreytse/zsh-vi-mode
 # Late loading plugins
 antidote bundle zsh-users/zsh-autosuggestions
 
-# OMZ settings
-HYPHEN_INSENSITIVE="true"
-# Uncomment the following line if pasting URLs and other text is messed up.
-DISABLE_MAGIC_FUNCTIONS="true"
-COMPLETION_WAITING_DOTS="true"
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-{{ if eq .chezmoi.os "darwin" }}
+{{- if eq .chezmoi.os "darwin" }}
+
 # MacOS convenience functions
 alias sha1sum="shasum -a 1"
 alias sha256sum="shasum -a 256"
 alias sha512sum="shasum -a 512"
-{{ end }}
+
+{{- end }}
+
 # Prompt
 eval "$(starship init zsh)"
 
