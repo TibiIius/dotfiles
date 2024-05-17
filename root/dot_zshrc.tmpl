@@ -4,22 +4,10 @@ export ANTIDOTE_CLONE_LOCATION=${HOME}/.antidote
 # Source antidote.
 source ${ANTIDOTE_CLONE_LOCATION}/antidote.zsh
 
-# Initialize antidote's dynamic mode, which changes `antidote bundle`
-# from static mode.
-source <(antidote init)
-
 autoload -Uz compinit && compinit
 
-# Plugins
-antidote bundle mattmc3/zephyr path:plugins/completion
-antidote bundle mattmc3/zephyr path:plugins/homebrew
-antidote bundle ohmyzsh/ohmyzsh path:plugins/git
-antidote bundle ohmyzsh/ohmyzsh path:plugins/eza
-antidote bundle zdharma-continuum/fast-syntax-highlighting kind:defer
-antidote bundle jeffreytse/zsh-vi-mode
-
-# Late loading plugins
-antidote bundle zsh-users/zsh-autosuggestions
+# Load from ~/.zsh_plugins.txt
+antidote load
 
 {{- if eq .chezmoi.os "darwin" }}
 
