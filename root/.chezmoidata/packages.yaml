@@ -46,6 +46,7 @@ packages:
       cargo: py-spy
     - brew: minikube
     - brew: kubectl
+    - brew: helm
     - brew: tmux
     - brew: onefetch
       cargo: onefetch
