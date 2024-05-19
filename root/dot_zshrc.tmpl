@@ -76,7 +76,7 @@ update_tools() {
     antidote update
     [[ $(command -v chezmoi) ]] && chezmoi upgrade && chezmoi update
     [[ $(command -v brew) ]] && brew upgrade
-    [[ $(command -v mise) ]] && mise self-update && mise upgrade
+    [[ $(command -v mise) ]] && mise self-update --yes && mise upgrade
     [[ $(command -v rustup) ]] && rustup upgrade
 }
 
