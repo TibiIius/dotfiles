@@ -1,7 +1,0 @@
-["fzf"]
-    type = "file"
-    url = "https://github.com/junegunn/fzf/releases/download/0.43.0/fzf-0.43.0-linux_{{ .chezmoi.arch }}.tar.gz"
-    executable = true
-    ["fzf".filter]
-        command = "tar"
-        args = ["-xz", "--file", "/dev/stdin", "--gzip", "--to-stdout"]
