@@ -3,8 +3,8 @@ source {{ .chezmoi.sourceDir }}/.helper.sh
 
 # Package hash: {{ .packages.rust | join " " | sha256sum }}
 
-{{ if eq .machineType "dev" }}
-  print_debug "In Dev Container, skipping setting up packages..."
+{{ if not .rustupSupported }}
+  print_debug "Rustup support is turned off, skipping..."
   exit 0
 {{ end }}
 

@@ -13,7 +13,7 @@
 
 .local/bin/*
 .local/share/*
-  {{ if not (or (eq .machineType "dev") (eq .machineType "server")) }}
+  {{ if not (or .headless .ephemeral) }}
   !.local/share/fonts
   {{ end }}
 {{ end }}
@@ -23,10 +23,10 @@
 !.local/bin/flatpak-host-runner
 {{ end }}
 
-{{ if or (eq .machineType "dev") (eq .machineType "server") }}
+{{ if or .ephemeral .headless }}
 .local
 {{ end }}
 
-{{ if .devcontainer }}
+{{ if .ephemeral }}
 .gitconfig
 {{ end }}

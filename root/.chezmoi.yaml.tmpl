@@ -1,37 +1,58 @@
 {{/*
   This represents the chezmoi config used for the initializing machine.
-  If possible, prompts for a choice of different machines. If no TTY is available, or if we detect we're running inside a devcontainer, it will default to the "dev" machine.
+  If possible, prompts for a choice of different machines. 
 */}}
 
 {{/*
   Machines:
-    - dev: Represents a "machine" that is used for development, e.g. a dev container or some other minimal environment.
     - server: Represents a server machine, i.e. no sophisticated dev env or GUI is needed.
     - work: Represents my work machine.
     - home: Represents private machines.
  */}}
-{{- $machineTypes := list "dev" "server" "work" "home" -}}
+{{- $machineTypes := list "server" "work" "home" -}}
 {{- $machineType := "" -}}
 
 {{- $devcontainer:= (or (env "CODESPACES" | not | not) (env "REMOTE_CONTAINERS" | not | not)) -}}
 
-{{- if or $devcontainer (not stdinIsATTY) -}}
-  {{- $machineType = "dev" -}}
+{{- if stdinIsATTY -}}
+  {{- $machineType = promptChoiceOnce . "machineType" "Choose a machine type" $machineTypes -}}
 {{- else -}}
-  {{- $machineType = promptChoiceOnce . "machineType" "What type of machine is this" $machineTypes -}}
+  {{- $machineType = "home" -}}
+{{- end -}}
+
+{{- $ephemeral := false -}}
+
+{{- if $devcontainer -}}
+  {{- $ephemeral = true -}}
+{{- else if stdinIsATTY -}}
+  {{- $ephemeral = promptBoolOnce . "ephemeral" "Is this an ephemeral setup" false -}}
+{{- end -}}
+
+{{- $headless:= false -}}
+{{- if or $devcontainer (not stdinIsATTY) -}}
+  {{- $headless = true -}}
+{{- else -}}
+  {{- $headless = promptBoolOnce . "headless" "Is this a headless setup" false -}}
 {{- end -}}
 
 {{/* Figure out if we have Homebrew support (currently no support under Linux/arm) */}}
 {{- $homebrewSupported := true -}}
 {{- if (and (eq .chezmoi.arch "arm64") (eq .chezmoi.os "Linux")) -}}
   {{- $homebrewSupported = false -}}
-{{/* No real reason to install Homebrew in something small like a dev container */}}
-{{- else if (eq $machineType "dev") -}}
-  {{ $homebrewSupported = false }}
 {{- else if stdinIsATTY -}}
   {{ $homebrewSupported = promptBoolOnce . "homebrewSupported" "Do you want to install Homebrew" true }}
+{{/* No real reason to install Homebrew in something small like a dev container */}}
+{{- else if $ephemeral -}}
+  {{ $homebrewSupported = false }}
 {{- end -}}
 
+{{/* Figure out if we have Rustup support */}}
+{{- $rustupSupported := true -}}
+{{- if stdinIsATTY -}}
+  {{ $rustupSupported = promptBoolOnce . "rustupSupported" "Do you want to install Rustup" true }}
+{{- else if $ephemeral -}}
+  {{ $rustupSupported = false }}
+{{- end -}}
 
 {{/* Personal info */}}
 {{- $email:= "oss@timfb.dev" -}}
@@ -51,8 +72,10 @@ data:
   name: {{ $name | quote }}
   email: {{ $email | quote }}
   machineType: {{ $machineType | quote }}
-  devcontainer: {{ $devcontainer }}
+  ephemeral: {{ $ephemeral }}
+  headless: {{ $headless }}
   homebrewSupported: {{ $homebrewSupported }}
+  rustupSupported: {{ $rustupSupported }}
   packages:
     rust:
       - flamegraph
@@ -61,20 +84,15 @@ data:
     common:
       - brew: atuin
         cargo: atuin
-      - brew: bandwhich
-        cargo: bandwhich
       - brew: bat
         cargo: bat
-      - brew: bottom
-        cargo: bottom
+        apt: bat
       - brew: broot
         cargo: broot
       - brew: dust
         cargo: du-dust
       - brew: eza
         cargo: eza
-      - brew: hyperfine
-        cargo: hyperfine
       - brew: zoxide
         cargo: zoxide
       - brew: ripgrep
@@ -83,44 +101,61 @@ data:
         cargo: ripgrep_all
       - brew: fd
         cargo: fd-find
-      - brew: hexyl
-        cargo: hexyl
-      - brew: rbw
-        cargo: rbw
-      - brew: xh
-        cargo: xh
-      - brew: git-absorb
-        cargo: git-absorb
+        apt: fd-find
       - brew: procs
         cargo: procs
+      - brew: fzf
+        apt: fzf
+      - brew: hexyl
+        cargo: hexyl
+      - brew: xh
+        cargo: xh
+      - brew: hyperfine
+        cargo: hyperfine
+        apt: hyperfine
+      - brew: git-absorb
+        cargo: git-absorb
+        apt: git-absorb
       - brew: tokei
         cargo: tokei
+{{- if not $ephemeral }}
       - brew: websocat
         cargo: websocat
       - brew: py-spy
         cargo: py-spy
+      - brew: bandwhich
+        cargo: bandwhich
+      - brew: bottom
+        cargo: bottom
+      - brew: rbw
+        cargo: rbw
       - brew: minikube
       - brew: kubectl
       - brew: helm
       - brew: tmux
+        apt: tmux
       - brew: ruby
-      - brew: fzf
       - brew: onefetch
         cargo: onefetch
   {{- if eq .chezmoi.os "darwin" }}
+    {{- if not $headless }}
       - cask: visual-studio-code
       - cask: iterm2
       - cask: spotify
       - cask: google-chrome
       - cask: firefox
+    {{- end }}
       - brew: docker
       - brew: docker-compose
       - brew: docker-buildx
     {{- if eq .machineType "work" }}
+      {{- if not $headless }}
       - cask: slack
       - cask: dbeaver-community
+      {{- end }}
     {{- end }}
   {{- end }}
+{{- end }}
 
 merge:
   command: "nvim"

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 source {{ .chezmoi.sourceDir }}/.helper.sh
 
-{{ if or (eq .machineType "dev") (eq .machineType "server") }}
-print_message "In Dev Container or on server, skipping setting up Rust..."
+{{ if not .rustupSupported }}
+print_message "Rustup support deactivated, skipping setting up Rust..."
 exit 0
 {{ end }}
 
