@@ -60,8 +60,10 @@ alias hostpls='distrobox-host-exec $SHELL'
 alias dhe='distrobox-host-exec'
 alias rm='rm -I'
 alias bandwhich="sudo $(command -v bandwhich)"
-alias vim='nvim'
-alias vi='nvim'
+if [[ $(command -v nvim) ]]; then
+  alias vim='nvim'
+  alias vi='nvim'
+fi
 alias cutlb='perl -pi -e "chomp if eof"'
 [[ ! $(command -v code) ]] && alias code='flatpak run com.visualstudio.code'
 alias coder='code --reuse-window'
