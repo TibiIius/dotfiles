@@ -32,12 +32,11 @@ EOF
 
   if command -v cargo &> /dev/null; then
     print_message "Cargo found, installing packages using cargo"
-    cargo binstall --locked --no-confirm \
-    {{ range .packages.common }}
-      {{ if (index . "cargo") }}
-        {{ .cargo }} \
-      {{ end }}
-    {{ end }}
+    cargo binstall --locked --no-confirm 
+    {{- range .packages.common }}
+      {{- if (index . "cargo") }} {{ .cargo }}
+      {{- end }}
+    {{- end }}
   fi
 
   exit 0
@@ -47,12 +46,11 @@ EOF
   if command -v apt &> /dev/null; then
     print_message "Apt found, installing packages using apt"
     sudo apt-get update
-    sudo apt-get install -y \
-    {{ range .packages.common }}
-      {{ if (index . "apt") }}
-        {{ .apt }} \
-      {{ end }}
-    {{ end }}
+    sudo apt-get install -y 
+    {{- range .packages.common }}
+      {{- if (index . "apt") }} {{ .apt }}
+      {{- end }}
+    {{- end }}
   fi
 
 {{ end }}
