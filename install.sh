@@ -6,6 +6,7 @@ set -eu
 
 if ! chezmoi="$(command -v chezmoi)"; then
 	bin_dir="${HOME}/.local/bin"
+ 	mkdir -p "${bin_dir}"
 	chezmoi="${bin_dir}/chezmoi"
 	echo "Installing chezmoi to '${chezmoi}'" >&2
 	if command -v curl >/dev/null; then
