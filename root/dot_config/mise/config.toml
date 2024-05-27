@@ -3,6 +3,7 @@ node = "latest"
 python = "latest"
 dotnet = "latest"
 go = "latest"
+ruby = "latest"
 
 [settings]
 experimental = true
