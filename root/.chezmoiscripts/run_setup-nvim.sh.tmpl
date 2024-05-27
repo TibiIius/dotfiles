@@ -4,7 +4,7 @@ source {{ .chezmoi.sourceDir }}/.helper.sh
 # This script is used to setup neovim.
 
 {{/* AppImages only run on Linux */}}
-{{ if eq .chezmoi.os "Linux" }}
+{{ if eq .chezmoi.os "linux" }}
 
 APPIMAGE_LINK="https://github.com/neovim/neovim/releases/latest/download/nvim.appimage"
 CURL_CMD="curl -s -L ${APPIMAGE_LINK}"
