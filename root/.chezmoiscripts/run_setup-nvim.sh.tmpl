@@ -21,7 +21,7 @@ if [ -f "${TARGET_DIR}/nvim.appimage.sha256" ]; then
   print_debug "Installed: ${SUM_INSTALLED}"
   print_debug "Remote: ${SUM_REMOTE}"
   if [ "${SUM_INSTALLED}" == "${SUM_REMOTE}" ]; then
-    print_info "Neovim is up to date."
+    print_message "Neovim is up to date."
     exit 0
   fi
 fi
@@ -38,7 +38,7 @@ sha256sum nvim.appimage > ${TARGET_DIR}/nvim.appimage.sha256
 popd
 
 {{/* On OSX, use brew instead */}}
-{{ else if eq .chezmoi.os "Darwin" }}
+{{ else if eq .chezmoi.os "darwin" }}
 find_brew
 
 if [ $BREW_PATH -ne "" ]; then
