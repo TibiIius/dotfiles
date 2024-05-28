@@ -53,6 +53,11 @@ alias gitfr='git fetch --all && git rebase'
 alias gitfpr='git fetch --all --prune && git rebase'
 alias gitr='git rebase'
 alias gitp='git push'
+## Devcontainer
+alias dec='devcontainer --workspace-folder $(pwd)'
+alias decu='devcontainer up --workspace-folder $(pwd)'
+alias dece='devcontainer exec --workspace-folder $(pwd)'
+alias deca='devcontainer exec --workspace-folder $(pwd) /bin/zsh'
 ## Misc
 alias temppls='cd $(mktemp -d)'
 alias passpls='cat /dev/urandom | tr -dc "0-9a-zA-Z" | head -c32'
