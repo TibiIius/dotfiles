@@ -41,10 +41,14 @@ popd
 {{ else if eq .chezmoi.os "darwin" }}
 find_brew
 
-if [ $BREW_PATH -ne "" ]; then
+if [ ! -z "${BREW_PATH}" ]; then
     eval "$(${BREW_PATH} shellenv)"
     export HOMEBREW_NO_AUTO_UPDATE=1
-    brew list neovim &> /dev/null || brew install neovim
+    if brew list neovim &> /dev/null; then
+      print_message "Neovim is already installed."
+    else
+      brew install neovim
+    fi
 
     if [ $? -ne "0" ]; then
         print_error "Couldn't install Neovim!"
