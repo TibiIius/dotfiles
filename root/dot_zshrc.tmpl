@@ -82,7 +82,7 @@ alias marp-serve="docker run --rm --init -v \"./:/home/marp/app:Z\" -e LANG=$LAN
 update_tools() {
     antidote update
     [[ $(command -v chezmoi) ]] && chezmoi upgrade && chezmoi init --apply
-    [[ $(command -v brew) ]] && brew upgrade
+    [[ $(command -v brew) ]] && brew cleanup && brew upgrade
     [[ $(command -v mise) ]] && mise self-update --yes && mise upgrade
     [[ $(command -v rustup) ]] && rustup upgrade
 }
