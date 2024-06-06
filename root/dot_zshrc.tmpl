@@ -80,6 +80,11 @@ alias marp-serve="docker run --rm --init -v \"./:/home/marp/app:Z\" -e LANG=$LAN
 
 # Updating stuff
 update_tools() {
+    if ! sudo ls &> /dev/null; then
+        echo "Sorry, this operation needs sudo access!"
+        return 1
+    fi
+
     antidote update
     [[ $(command -v chezmoi) ]] && chezmoi upgrade && chezmoi init --apply
     [[ $(command -v brew) ]] && brew cleanup && brew upgrade && brew upgrade --cask --greedy
