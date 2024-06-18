@@ -3,7 +3,9 @@ node = "latest"
 python = "latest"
 dotnet = "latest"
 go = "latest"
+{{- if eq .machineType "work" }}
 ruby = "latest"
+{{- end }}
 
 [settings]
 experimental = true
