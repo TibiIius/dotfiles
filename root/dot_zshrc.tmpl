@@ -15,12 +15,13 @@ antidote load
 alias sha1sum="shasum -a 1"
 alias sha256sum="shasum -a 256"
 alias sha512sum="shasum -a 512"
+
 notfiy-send() {
-  if [[ -z $1]] || [[ -z $2 ]]; then
+  if [[ -z $1 ]] || [[ -z $2 ]]; then
     echo "Need title and body"
-    exit 1
+    return 1
   fi
-  osascript -e 'display notification "$2" with title "$1"'
+  osascript -e 'display notification "'"${2}"'" with title "'"${1}"'"'
 }
 
 {{- end }}
