@@ -1,7 +1,9 @@
 [tools]
 node = "latest"
 python = "latest"
+{{- if ne .machineType "work" }}
 dotnet = "latest"
+{{- end }}
 go = "latest"
 {{- if eq .machineType "work" }}
 ruby = "latest"
