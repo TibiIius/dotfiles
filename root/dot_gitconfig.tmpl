@@ -19,6 +19,8 @@
 {{ else }}
 	default = simple
 {{ end }}
+[rebase]
+	autostash = true
 {{ if eq .machineType "work" }}
 [pull]
 	rebase = true
