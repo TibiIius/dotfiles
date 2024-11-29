@@ -6,6 +6,8 @@
 [commit]
 	gpgsign = true
 {{ end }}
+[core]
+	editor = code --wait
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -21,16 +23,20 @@
 {{ end }}
 [rebase]
 	autostash = true
-{{ if eq .machineType "work" }}
 [pull]
 	rebase = true
 [diff]
 	prompt = false
+	tool = vscode
 [difftool "vim"]
 	prompt = false
 	cmd = vim -f -d \"$LOCAL\" \"$REMOTE\"
+[difftool "vscode"]
+	prompt = false
+	cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
 [merge]
 	keepBackup = false
+	tool = vscode
 [mergetool "vim"]
 	cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 	path = ''
@@ -38,4 +44,7 @@
 	keepBackup = false
 	keepTemporaries = false
 	trustExitCode = false
-{{ end }}
+[mergetool "vscode"]
+	prompt = false
+	cmd = code --wait \"$MERGED\"
+
