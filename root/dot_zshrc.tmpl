@@ -66,12 +66,14 @@ alias gitp='git push'
 alias gitsm='git submodule'
 alias gitsmu='git submodule update --init'
 alias gitsmui='git submodule update --init'
+alias gitshortlog='git shortlog -sn --all --no-merges --since="1 year ago" | cat'
 ## Devcontainer
 alias dec='devcontainer --workspace-folder $(pwd)'
 alias decu='devcontainer up --workspace-folder $(pwd)'
 alias dece='devcontainer exec --workspace-folder $(pwd)'
 alias deca='devcontainer exec --workspace-folder $(pwd) /bin/zsh'
 ## Misc
+alias 7z='7zz' # 7zz is the official 7zip binary for unix, 7z is for the unmaintained p7zip
 alias btm='btm --process_memory_as_value'
 alias btml='btm --theme default-light'
 alias temppls='cd $(mktemp -d)'
