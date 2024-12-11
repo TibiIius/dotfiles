@@ -47,6 +47,7 @@ alias gitstp='git stash pop'
 alias gitsta='git stash apply'
 alias gitstd='git stash drop'
 alias gitd='git diff'
+alias gitdt='git difftool'
 alias gitds='git diff --staged'
 alias gitl='git log'
 alias gitlp='git log -p'
@@ -66,6 +67,8 @@ alias gitp='git push'
 alias gitsm='git submodule'
 alias gitsmu='git submodule update --init'
 alias gitsmui='git submodule update --init'
+alias gitmr='git merge'
+alias gitmrt='git mergetool'
 alias gitshortlog='git shortlog -sn --all --no-merges --since="1 year ago" | cat'
 ## Devcontainer
 alias dec='devcontainer --workspace-folder $(pwd)'
@@ -75,7 +78,7 @@ alias deca='devcontainer exec --workspace-folder $(pwd) /bin/zsh'
 ## Misc
 alias 7z='7zz' # 7zz is the official 7zip binary for unix, 7z is for the unmaintained p7zip
 alias btm='btm --process_memory_as_value'
-alias btml='btm --theme default-light'
+alias btml='btm --theme default-light --process_memory_as_value'
 alias temppls='cd $(mktemp -d)'
 alias passpls='cat /dev/urandom | tr -dc "0-9a-zA-Z" | head -c32'
 alias hostpls='distrobox-host-exec $SHELL'
@@ -87,7 +90,7 @@ if [[ $(command -v nvim) ]]; then
   alias vi='nvim'
 fi
 alias cutlb='perl -pi -e "chomp if eof"'
-[[ ! $(command -v code) ]] && alias code='flatpak run com.visualstudio.code'
+[[ ! $(command -v code) ]] && [[ $(command -v flatpak) ]] && alias code='flatpak run com.visualstudio.code'
 alias coder='code --reuse-window'
 ## Chezmoi
 alias ce='chezmoi edit --apply'
@@ -167,22 +170,40 @@ currentBranch() {
     git rev-parse --abbrev-ref HEAD
 }
 
+masterOrMain() {
+    if [[ -z $1 ]]; then
+        echo "No remote, using 'origin'"
+        1='origin'
+    fi
+
+    if git ls-remote --exit-code --heads "${1}" refs/heads/master 2>&1 > /dev/null; then
+        echo "master"
+    else
+        echo "main"
+    fi
+}
+
 gitrs() {
     git_fml || return 1
     if [[ -z $1 ]]; then
-        echo "No remote"
-        return 1
+        echo "No remote, using 'origin'"
+        1='origin'
     fi
 
     branch=$(currentBranch)
-    git switch -C "${branch}" "${1}/${branch}"
-    grunt
+    branchMasterOrMain=$(masterOrMain "${1}")
+
+    if git ls-remote --exit-code --heads "${1}" refs/heads/"${branch}" 2>&1 > /dev/null; then
+        git switch -C "${branch}" "${1}/${branch}"
+    else
+        git switch -C "${branch}" "${1}/${branchMasterOrMain}"
+    fi
 }
 
-gitrm() {
+gitmrr() {
     git_fml || return 1
     if [[ -z $1 ]]; then
-        echo "No remote"
+        echo "No remote, using 'upstream'"
         return 1
     fi
 
