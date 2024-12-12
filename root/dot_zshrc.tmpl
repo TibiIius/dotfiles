@@ -204,7 +204,7 @@ gitmrr() {
     git_fml || return 1
     if [[ -z $1 ]]; then
         echo "No remote, using 'upstream'"
-        return 1
+        1='upstream'
     fi
 
     branch=$(currentBranch)
