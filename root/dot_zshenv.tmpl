@@ -1,5 +1,5 @@
 # Some env variables
-if [[ $(command -v code) ]]; then
+if [[ "${TERM_PROGRAM:-unset}" == "vscode" ]]; then
   export VISUAL="code --wait"
 else
   export VISUAL=nvim
