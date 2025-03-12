@@ -32,6 +32,9 @@ eval "$(starship init zsh)"
 # Zoxide init
 [[ $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
 
+# Set Git editor
+export GIT_EDITOR="${VISUAL}"
+
 # Aliases
 ## Replacements
 [[ $(command -v bat) ]] && alias cat='bat -p'
