@@ -27,9 +27,9 @@ config = {
 		PATH = "/opt/homebrew/bin",
 	},
 	leader = {
-		key = "phys:Space",
-		mods = "SHIFT",
-		timeout_milliseconds = 1000,
+		key = "phys:G",
+		mods = "CTRL",
+		timeout_milliseconds = 10000,
 	},
 	keys = { -- ... add these new entries to your config.keys table
 		{
@@ -47,10 +47,15 @@ config = {
 		},
 		{
 			key = "%",
-			mods = "LEADER|SHIFT",
+			mods = "LEADER",
 			action = wezterm.action.SplitVertical({
 				domain = "CurrentPaneDomain",
 			}),
+		},
+		{
+			key = "[",
+			mods = "LEADER",
+			action = wezterm.action.ActivateCopyMode,
 		},
 	},
 	font = wezterm.font("Liga SFMono Nerd Font", {
