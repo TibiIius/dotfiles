@@ -149,6 +149,25 @@ if [[ $(command -v tmux) ]]; then
 {{ end }}
 fi
 
+{{ if eq .chezmoi.os "darwin" }}
+# Filter some network stuff
+applevz_network() {
+    if [[ -z ${1} ]]; then
+        echo "Needs the VM's network in CIDR notation as arg 1"
+        return 1
+    fi
+
+    pushd $(mktemp -d)
+
+    sudo pfctl -a com.apple.internet-sharing/shared_v4 -s nat > newrules.conf
+    echo "nat on utun4 inet from ${1} to 192.168.5.0/24 -> (utun4) extfilter ei" >> newrules.conf
+    echo "nat on utun4 inet from ${1} to 10.0.0.0/8 -> (utun4) extfilter ei" >> newrules.conf
+    sudo pfctl -a com.apple.internet-sharing/shared_v4 -N -f newrules.conf
+
+    popd
+}
+{{ end }}
+
 # Go stuff
 export GOPATH=$HOME/.local/share/go
 export PATH=$GOPATH/bin:$PATH
