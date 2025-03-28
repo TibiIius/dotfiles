@@ -243,6 +243,7 @@ git_fml() {
 export DBX_CONTAINER_MANAGER=docker
 
 # K8s
+export K9S_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}"/k9s
 source <(kubectl completion zsh)
 
 [[ -f $HOME/.zshrc.ds ]] && source $HOME/.zshrc.ds
