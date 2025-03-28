@@ -13,9 +13,9 @@ end
 
 function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return "Gruvbox Material Dark (Medium)"
+		return "Gruvbox dark, pale (base16)"
 	else
-		return "Gruvbox Material Light (Hard)"
+		return "Gruvbox light, hard (base16)"
 	end
 end
 
@@ -121,47 +121,6 @@ config = {
 				italic = true,
 			},
 		},
-	},
-	color_schemes = {
-		["Gruvbox Material Dark (Hard)"] = {
-			foreground = "#D4BE98",
-			background = "#1D2021",
-			cursor_bg = "#D4BE98",
-			cursor_border = "#D4BE98",
-			cursor_fg = "#1D2021",
-			selection_bg = "#D4BE98",
-			selection_fg = "#3C3836",
-
-			ansi = { "#1d2021", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-			brights = { "#eddeb5", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-		},
-		["Gruvbox Material Dark (Medium)"] = {
-			foreground = "#D4BE98",
-			background = "#282828",
-			cursor_bg = "#D4BE98",
-			cursor_border = "#D4BE98",
-			cursor_fg = "#282828",
-			selection_bg = "#D4BE98",
-			selection_fg = "#45403d",
-
-			ansi = { "#282828", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-			brights = { "#eddeb5", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-		},
-		["Gruvbox Material Dark (Soft)"] = {},
-		["Gruvbox Material Light (Hard)"] = {
-			foreground = "#654735",
-			background = "#F9F5D7",
-			cursor_bg = "#654735",
-			cursor_border = "#654735",
-			cursor_fg = "#F9F5D7",
-			selection_bg = "#F3EAC7",
-			selection_fg = "#4F3829",
-
-			ansi = { "#1d2021", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-			brights = { "#eddeb5", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-		},
-		["Gruvbox Material Light (Medium)"] = {},
-		["Gruvbox Material Light (Soft)"] = {},
 	},
 }
 
