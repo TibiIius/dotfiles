@@ -19,8 +19,6 @@ function scheme_for_appearance(appearance)
 	end
 end
 
-bar.apply_to_config(config)
-
 config = {
 	color_scheme = scheme_for_appearance(get_appearance()),
 	set_environment_variables = {
@@ -123,6 +121,8 @@ config = {
 		},
 	},
 }
+
+bar.apply_to_config(config)
 
 -- and finally, return the configuration to wezterm
 return config
