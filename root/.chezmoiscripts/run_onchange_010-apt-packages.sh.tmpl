@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+source {{ .chezmoi.sourceDir }}/.helper.sh
+
+# Package hash: {{ .packages.apt | join " " | sha256sum }}
+
+if command -v apt &> /dev/null; then
+  print_message "Apt found, installing packages using apt"
+  sudo apt-get update
+  sudo apt-get install -y {{ .packages.apt | join " " }}
+fi

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+source {{ .chezmoi.sourceDir }}/.helper.sh
+
+# Package hash: {{ .packages.brew | join " " | sha256sum }}
+
+{{ if .homebrewSupported }}
+find_brew
+
+# Install packages
+print_message "Installing packages using brew bundle"
+
+eval "$(${BREW_PATH} shellenv)"
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+brew bundle --no-upgrade --no-lock --file=/dev/stdin <<EOF
+  {{- range .packages.common }}
+    {{- if (index . "tap") }}
+tap "{{ .tap }}"
+      {{- end }}
+      {{- if (index . "brew") }}
+brew "{{ .brew }}"
+      {{- end }}
+      {{- if (index . "cask") }}
+cask "{{ .cask }}"
+      {{- end }}
+    {{- end }}
+EOF
+{{ end  }}

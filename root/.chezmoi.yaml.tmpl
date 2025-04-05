@@ -37,7 +37,7 @@
 
 {{/* Figure out if we have Homebrew support (currently no support under Linux/arm) */}}
 {{- $homebrewSupported := true -}}
-{{- if (and (eq .chezmoi.arch "arm64") (eq .chezmoi.os "Linux")) -}}
+{{- if (and (eq .chezmoi.arch "arm64") (eq .chezmoi.os "linux")) -}}
   {{- $homebrewSupported = false -}}
 {{- else if stdinIsATTY -}}
   {{ $homebrewSupported = promptBoolOnce . "homebrewSupported" "Do you want to install Homebrew" true }}
@@ -52,6 +52,15 @@
   {{ $rustupSupported = promptBoolOnce . "rustupSupported" "Do you want to install Rustup" true }}
 {{- else if $ephemeral -}}
   {{ $rustupSupported = false }}
+{{- end -}}
+
+{{/* Ask which C stdlib is used */}}
+{{- $cStdLibs := list "gnu" "musl" -}}
+{{- $cStdLib := "gnu" -}}
+{{- if stdinIsATTY -}}
+  {{- $cStdLib = promptChoiceOnce . "cStdLib" "Choose a C stdlib" $cStdLibs -}}
+{{- else -}}
+  {{- $cStdLib = "gnu" -}}
 {{- end -}}
 
 {{/* Personal info */}}
@@ -76,77 +85,17 @@ data:
   headless: {{ $headless }}
   homebrewSupported: {{ $homebrewSupported }}
   rustupSupported: {{ $rustupSupported }}
-  packages:
-    rust:
-      - flamegraph
-      - cargo-update
-      - cross
-    common:
-      - brew: atuin
-        cargo: atuin
-      - brew: bat
-        cargo: bat
-        apt: bat
-      - brew: broot
-        cargo: broot
-      - brew: dust
-        cargo: du-dust
-      - brew: eza
-        cargo: eza
-      - brew: zoxide
-        cargo: zoxide
-      - brew: ripgrep
-        cargo: ripgrep
-      - brew: ripgrep-all
-        cargo: ripgrep_all
-      - brew: fd
-        cargo: fd-find
-        apt: fd-find
-      - brew: procs
-        cargo: procs
-      - brew: fzf
-        apt: fzf
-      - brew: jq
-        apt: jq
-      - brew: yq
-      - brew: ranger
-        apt: ranger
-      - brew: joshuto
-{{- if ne $machineType "server" }}
-      - brew: hexyl
-        cargo: hexyl
-      - brew: xh
-        cargo: xh
-      - brew: hyperfine
-        cargo: hyperfine
-      - brew: git-absorb
-        cargo: git-absorb
-        apt: git-absorb
-      - brew: tokei
-        cargo: tokei
+{{- if eq .chezmoi.os "linux" }}
+  cStdLib: {{ $cStdLib | quote }}
 {{- end }}
-{{- if not $ephemeral }}
-      - brew: bandwhich
-        cargo: bandwhich
-      - brew: bottom
-        cargo: bottom
-  {{- if ne $machineType "server" }}
-      - brew: websocat
-        cargo: websocat
-      - brew: py-spy
-        cargo: py-spy
-      - brew: rbw
-        cargo: rbw
-      - brew: minikube
-      - brew: kubectl
-      - brew: helm
-      - brew: ruby
-      - brew: devcontainer
-      - brew: onefetch
-        cargo: onefetch
-  {{- end }}
+  packages:
+    apt:
+      - tmux
+    rust:
+      - cargo-quickinstall
+      - cargo-update
+    brew:
       - brew: tmux
-        apt: tmux
   {{- if eq .chezmoi.os "darwin" }}
     {{- if not $headless }}
       - cask: visual-studio-code
@@ -166,7 +115,6 @@ data:
       {{- end }}
     {{- end }}
   {{- end }}
-{{- end }}
 
 merge:
   command: "nvim"
