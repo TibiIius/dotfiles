@@ -11,7 +11,6 @@
 .config/zathura
 .config/atuin
 
-.local/bin/*
 .local/share/*
   {{ if not (or .headless .ephemeral) }}
   !.local/share/fonts
@@ -26,6 +25,7 @@
 {{ if or .ephemeral .headless }}
 .wezterm.lua
 .local
+!.local/bin
 {{ end }}
 
 {{ if .ephemeral }}
