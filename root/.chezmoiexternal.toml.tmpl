@@ -203,6 +203,11 @@
   executable = true
   path = "kubectl"
 
+[".local/bin/talosctl"]
+  type = "file"
+  url = {{ gitHubLatestReleaseAssetURL "siderolabs/talos" (printf "talosctl-%s-%s" .chezmoi.os .chezmoi.arch) | quote }}
+  executable = true
+
 [".local/bin/helm"]
   type = "file"
   url = {{ (printf "https://get.helm.sh/helm-%s-%s-%s.tar.gz" $helm_version .chezmoi.os .chezmoi.arch) | quote }}

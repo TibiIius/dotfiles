@@ -184,9 +184,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # atuin shell history
 [[ $(command -v atuin) ]] && eval "$(atuin init zsh)"
 
-# broot
-[[ $(command -v broot) ]] && source $HOME/.config/broot/launcher/bash/br
-
 # Rasmus 5Head-Git-Stuff
 currentBranch() {
     git rev-parse --abbrev-ref HEAD
