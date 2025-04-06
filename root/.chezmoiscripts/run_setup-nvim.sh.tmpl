@@ -6,16 +6,7 @@ source {{ .chezmoi.sourceDir }}/.helper.sh
 {{/* AppImages only run on Linux */}}
 {{ if eq .chezmoi.os "linux" }}
 
-{{ $alter_arch := "" }}
-{{ if eq .chezmoi.arch "amd64" }}
-  {{ $alter_arch = "x86_64" }}
-{{ else if eq .chezmoi.arch "arm64" }}
-  {{ $alter_arch = "aarch64" }}
-{{ else }}
-  {{ $alter_arch = .chezmoi.arch }}
-{{ end }}
-
-APPIMAGE_LINK="https://github.com/neovim/neovim/releases/latest/download/nvim-linux-{{ $alter_arch }}.appimage"
+APPIMAGE_LINK={{ gitHubLatestReleaseAssetURL "neovim/neovim" (printf "nvim-%s-%s.appimage" .chezmoi.os .alterArch) | quote }}
 CURL_CMD="curl -s -L ${APPIMAGE_LINK}"
 TARGET_DIR="${HOME}/.local/share/nvim-appimage"
 
