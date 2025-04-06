@@ -14,7 +14,7 @@
   {{ $os_with_cstdlib = .chezmoi.os }}
 {{- end -}}
 
-{{- $k8s_version := output "curl" "-LS" "https://dl.k8s.io/release/stable.txt" | trim -}}
+{{- $k8s_version := output "curl" "-LS" "--silent" "--fail" "https://dl.k8s.io/release/stable.txt" | trim -}}
 
 [".local/bin/age"]
   type = "archive-file"
