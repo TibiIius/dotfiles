@@ -16,6 +16,8 @@
 
 {{- $k8s_version := output "curl" "-LS" "--silent" "--fail" "https://dl.k8s.io/release/stable.txt" | trim -}}
 
+{{- $helm_version := (gitHubLatestRelease "helm/helm").TagName | trim -}}
+
 [".local/bin/age"]
   type = "archive-file"
   url = {{ gitHubLatestReleaseAssetURL "FiloSottile/age" (printf "age-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
@@ -203,7 +205,7 @@
 
 [".local/bin/helm"]
   type = "file"
-  url = {{ (printf "https://get.helm.sh/helm-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+  url = {{ (printf "https://get.helm.sh/helm-%s-%s-%s.tar.gz" $helm_version .chezmoi.os .chezmoi.arch) | quote }}
   executable = true
   stripComponents = 1
   path = "helm"
