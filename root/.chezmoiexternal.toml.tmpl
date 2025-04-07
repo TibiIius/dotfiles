@@ -1,8 +1,6 @@
-{{ $os_with_cstdlib := "" }}
+{{ $os_with_cstdlib := .chezmoi.os }}
 {{- if eq .chezmoi.os "linux" -}}
   {{ $os_with_cstdlib = printf "%s-%s" .chezmoi.os .cStdLib }}
-{{- else -}}
-  {{ $os_with_cstdlib = .chezmoi.os }}
 {{- end -}}
 
 {{- $k8s_version := output "curl" "-LS" "--silent" "--fail" "https://dl.k8s.io/release/stable.txt" | trim -}}
@@ -25,19 +23,19 @@
 
 [".local/bin/cross"]
   type = "archive-file"
-  url = {{ gitHubLatestReleaseAssetURL "cross-rs/cross" (printf "cross-%s-*-%s*.tar.gz" .alterArch .chezmoi.os) | quote }}
+  url = {{ gitHubReleaseAssetURL "cargo-bins/cargo-quickinstall" "cross-0.2.5" (printf "cross-*-%s-*-%s*.tar.gz" .alterArch $os_with_cstdlib) | quote }}
   executable = true
   path = "cross"
 
 [".local/bin/cross-util"]
   type = "archive-file"
-  url = {{ gitHubLatestReleaseAssetURL "cross-rs/cross" (printf "cross-%s-*-%s*.tar.gz" .alterArch .chezmoi.os) | quote }}
+  url = {{ gitHubReleaseAssetURL "cargo-bins/cargo-quickinstall" "cross-0.2.5" (printf "cross-*-%s-*-%s*.tar.gz" .alterArch $os_with_cstdlib) | quote }}
   executable = true
   path = "cross-util"
 
 [".local/bin/atuin"]
   type = "archive-file"
-  url = {{ gitHubLatestReleaseAssetURL "atuinsh/atuin" (printf "atuin-%s-*-%s-gnu*tar.gz" .alterArch .chezmoi.os) | quote }}
+  url = {{ gitHubLatestReleaseAssetURL "atuinsh/atuin" (printf "atuin-%s-*-%s.tar.gz" .alterArch $os_with_cstdlib) | quote }}
   executable = true
   path = "atuin"
   stripComponents = 1
@@ -59,14 +57,13 @@
 
 [".local/bin/dust"]
   type = "archive-file"
-  url = {{ gitHubLatestReleaseAssetURL "bootandy/dust" (printf "dust-*-%s-*-%s*.tar.gz" .alterArch .chezmoi.os) | quote }}
+  url = {{ gitHubReleaseAssetURL "cargo-bins/cargo-quickinstall" "du-dust-0.8.5" (printf "du-dust-*-%s-*-%s.tar.gz" .alterArch $os_with_cstdlib) | quote }}
   executable = true
-  stripComponents = 1
   path = "dust"
 
 [".local/bin/zoxide"]
   type = "archive-file"
-  url = {{ gitHubReleaseAssetURL "cargo-bins/cargo-quickinstall" "zoxide-0.9.7" (printf "zoxide-*-%s-*-%s-%s.tar.gz" .alterArch .chezmoi.os .cStdLib) | quote }}
+  url = {{ gitHubReleaseAssetURL "cargo-bins/cargo-quickinstall" "zoxide-0.9.7" (printf "zoxide-*-%s-*-%s.tar.gz" .alterArch $os_with_cstdlib) | quote }}
   executable = true
   path = "zoxide"
 
@@ -115,7 +112,11 @@
 
 [".local/bin/jq"]
   type = "file"
+{{- if eq .chezmoi.os "darwin" }}
+  url = {{ gitHubLatestReleaseAssetURL "jqlang/jq" (printf "jq-macos-%s" .chezmoi.arch) | quote }}
+{{- else }}
   url = {{ gitHubLatestReleaseAssetURL "jqlang/jq" (printf "jq-%s-%s" .chezmoi.os .chezmoi.arch) | quote }}
+{{- end}}
   executable = true
 
 [".local/bin/yq"]

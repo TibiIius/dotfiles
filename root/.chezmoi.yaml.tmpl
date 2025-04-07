@@ -96,9 +96,7 @@ data:
   headless: {{ $headless }}
   homebrewSupported: {{ $homebrewSupported }}
   rustupSupported: {{ $rustupSupported }}
-{{- if eq .chezmoi.os "linux" }}
   cStdLib: {{ $cStdLib | quote }}
-{{- end }}
   alterArch: {{ $alterArch | quote }}
   packages:
     apt:

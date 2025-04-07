@@ -12,7 +12,7 @@ print_message "Installing packages using brew bundle"
 eval "$(${BREW_PATH} shellenv)"
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-brew bundle --no-upgrade --no-lock --file=/dev/stdin <<EOF
+brew bundle --no-upgrade --file=/dev/stdin <<EOF
   {{- range .packages.brew }}
     {{- if (index . "tap") }}
 tap "{{ .tap }}"
