@@ -105,7 +105,6 @@ data:
       - cargo-quickinstall
       - cargo-update
     brew:
-      - brew: tmux
   {{- if eq .chezmoi.os "darwin" }}
     {{- if not $headless }}
       - cask: visual-studio-code
@@ -114,10 +113,17 @@ data:
       - cask: google-chrome
       - cask: firefox
       - cask: zen-browser
+      - cask: audacity
+      - cask: darkmodebuddy
+      - cask: figma
     {{- end }}
+      - brew: tmux
       - brew: docker
       - brew: docker-compose
       - brew: docker-buildx
+      - brew: git
+      - brew: git-lfs
+      - brew: lima
     {{- if eq .machineType "work" }}
       {{- if not $headless }}
       - cask: slack

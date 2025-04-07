@@ -214,3 +214,33 @@
   path = "onefetch"
   {{- end }}
 {{- end }}
+
+[".local/bin/kubectx"]
+  type = "archive-file"
+{{- if eq .chezmoi.arch "arm64" }}
+  url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubectx_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+{{- else }}
+  url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubectx_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+{{- end}}
+  executable = true
+  path = "kubectx"
+
+[".local/bin/kubens"]
+  type = "archive-file"
+{{- if eq .chezmoi.arch "arm64" }}
+  url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubens_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+{{- else }}
+  url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubens_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+{{- end}}
+  executable = true
+  path = "kubens"
+
+[".local/bin/k9s"]
+  type = "archive-file"
+{{- if eq .chezmoi.os "darwin" }}
+  url = {{ gitHubLatestReleaseAssetURL "derailed/k9s" (printf "k9s_Darwin_%s.tar.gz" .chezmoi.arch) | quote }}
+{{- else if eq .chezmoi.os "linux" }}
+  url = {{ gitHubLatestReleaseAssetURL "derailed/k9s" (printf "k9s_Linux_%s.tar.gz" .chezmoi.arch) | quote }}
+{{- end}}
+  executable = true
+  path = "k9s"
