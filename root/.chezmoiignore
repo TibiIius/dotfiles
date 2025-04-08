@@ -31,3 +31,5 @@
 {{ if .ephemeral }}
 .gitconfig
 {{ end }}
+
+key.txt.age

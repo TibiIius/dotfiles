@@ -1,3 +1,4 @@
+
 {{/*
   This represents the chezmoi config used for the initializing machine.
   If possible, prompts for a choice of different machines. 
@@ -85,6 +86,11 @@
 
 
 {{/* Actual config */}}
+
+encryption: "age"
+age:
+  identity: "~/.config/chezmoi/key.txt"
+  recipient: "age1z0t73f090ns5q7cn38yl8m5m05jsycxl253wd4u3q6try0za6qfq684r0s"
 
 sourceDir: "{{ .chezmoi.sourceDir }}"
 
