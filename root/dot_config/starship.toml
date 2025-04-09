@@ -1,277 +1,424 @@
-# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
-add_newline = false
+add_newline = true
+
+command_timeout = 2000
 
 format = """
+$os\
+$username\
 $directory\
-$localip\
-$shlvl\
-$singularity\
-$kubernetes\
-$vcsh\
-$fossil_branch\
 $git_branch\
 $git_commit\
-$git_state\
 $git_status\
 $git_metrics\
-$hg_branch\
-$pijul_channel\
-$docker_context\
-$package\
+$git_state\
 $c\
-$cmake\
-$cobol\
-$daml\
-$dart\
-$deno\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$fennel\
-$golang\
-$guix_shell\
-$haskell\
-$haxe\
-$helm\
-$java\
-$julia\
-$kotlin\
-$gradle\
-$lua\
-$nim\
-$nodejs\
-$ocaml\
-$opa\
-$perl\
-$php\
-$pulumi\
-$purescript\
-$python\
-$raku\
-$rlang\
-$red\
-$ruby\
 $rust\
-$scala\
-$swift\
-$terraform\
-$vlang\
-$vagrant\
-$zig\
-$buf\
-$nix_shell\
-$conda\
-$meson\
-$spack\
-$memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$azure\
-$env_var\
-$crystal\
-$custom\
-$sudo\
-$cmd_duration\
-$jobs\
-$time\
-$status\
-$fill\
-$container\
-$battery\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+$package\
+$docker_context\
+$kubernetes\
 $shell\
+$container\
+$jobs\
+${custom.memory_usage}\
+${custom.battery}\
+${custom.keyboard_layout}\
+$time\
+$cmd_duration\
+$status\
 $line_break\
-$username\
-$hostname\
-$os\
-$character"""
+$character\
+"""
+
+palette = 'default'
+
+[palettes.default]
+
+color_ok = 'bright-green'
+color_danger = 'bright-red'
+color_caution = 'bright-yellow'
+
+color_os = 'red'
+color_username = 'red'
+color_directory = 'yellow'
+color_git = 'cyan'
+color_git_added = 'bright-green'
+color_git_deleted = 'bright-red'
+color_env = 'blue'
+color_kubernetes = 'purple'
+color_docker = 'blue'
+color_shell = ''
+color_container = ''
+color_other = ''
+color_time = ''
+color_duration = ''
+
+color_vimcmd_ok = 'green'
+color_vimcmd_replace = 'purple'
+color_vimcmd_visual = 'yellow'
+
+[palettes.gruvbox_dark]
+
+color_ok = '#b8bb26'
+color_danger = '#fb4934'
+color_caution = '#d79921'
+
+color_os = '#d65d0e'
+color_username = '#d65d0e'
+color_directory = '#d79921'
+color_git = '#689d6a'
+color_git_added = '#b8bb26'
+color_git_deleted = '#fb4934'
+color_env = '#458588'
+color_kubernetes = '#b16286'
+color_docker = '#458588'
+color_shell = '#a89984'
+color_container = '#cc241d'
+color_other = '#d5c4a1'
+color_time = '#fbf1c7'
+color_duration = '#fbf1c7'
+
+color_vimcmd_ok = '#8ec07c'
+color_vimcmd_replace = '#b16286'
+color_vimcmd_visual = '#d79921'
+
+[palettes.gruvbox_light]
+
+color_ok = '#79740e'
+color_danger = '#9d0006'
+color_caution = '#d79921'
+
+color_os = '#d65d0e'
+color_username = '#d65d0e'
+color_directory = '#d79921'
+color_git = '#689d6a'
+color_git_added = '#79740e'
+color_git_deleted = '#9d0006'
+color_env = '#458588'
+color_kubernetes = '#b16286'
+color_docker = '#458588'
+color_shell = '#7c6f64'
+color_container = '#cc241d'
+color_other = '#504945'
+color_time = '#282828'
+color_duration = '#282828'
+
+color_vimcmd_ok = '#689d6a'
+color_vimcmd_replace = '#b16286'
+color_vimcmd_visual = '#d79921'
+
+[os]
+disabled = false
+style = "fg:color_os"
+format = '[$symbol]($style)'
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[username]
+show_always = true
+style_user = "fg:color_username"
+style_root = "bold fg:color_danger"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_directory"
+read_only_style = "fg:color_directory"
+repo_root_style = "bold fg:color_directory"
+format = "[ $path ]($style)"
+read_only = " "
+home_symbol = "~"
+truncation_symbol = "…/"
+truncation_length = 0
+truncate_to_repo = true
+fish_style_pwd_dir_length = 0
+use_logical_path = true
+
+[git_branch]
+symbol = ""
+style = "fg:color_git"
+format = '( [$symbol $branch]($style) )'
+only_attached = true
+ignore_branches = []
+truncation_length = 25
+truncation_symbol = "..."
+always_show_remote = false
+disabled = false
+
+[git_commit]
+style = "fg:color_git"
+format = "( [($tag)(@$hash)]($style) )"
+commit_hash_length = 7
+only_detached = true
+tag_symbol = "󰓼 "
+tag_disabled = false
+disabled = false
+
+[git_status]
+style = "fg:color_git"
+format = '([$ahead_behind]($style) )([$all_status]($style) )'
+stashed = "*${count}"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+up_to_date = ""
+diverged = "⇡${ahead_count}⇣${behind_count}"
+conflicted = "=${count}"
+deleted = "×${count}"
+renamed = "»${count}"
+modified = "!${count}"
+staged = "+${count}"
+untracked = "?${count}"
+ignore_submodules = false
+disabled = false
+
+[git_metrics]
+format = '([([+$added]($added_style))([-$deleted]($deleted_style))](fg:color_git) )'
+added_style = "fg:color_git_added"
+deleted_style = "fg:color_git_deleted"
+only_nonzero_diffs = true
+disabled = false
+
+[git_state]
+style = "fg:color_danger"
+format = '([$state( $progress_current/$progress_total)]($style bold) )'
+rebase = "REBASING"
+merge = "MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+disabled = false
+
+[nodejs]
+symbol = ""
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[c]
+symbol = ""
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[rust]
+symbol = "󱘗"
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[golang]
+symbol = "󰟓"
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[php]
+symbol = ""
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[java]
+symbol = ""
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[kotlin]
+symbol = ""
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[haskell]
+symbol = ""
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[python]
+symbol = ""
+style = "fg:color_env"
+format = '( [$symbol( $version)( $virtualenv)]($style) )'
+version_format = '${raw}'
+
+[package]
+disabled = false
+symbol = "󰏗"
+style = "fg:color_env"
+format = '( [$symbol( $version)]($style) )'
+
+[docker_context]
+symbol = ""
+style = "fg:color_docker"
+format = '( [$symbol( $context)]($style) )'
+
+[kubernetes]
+symbol = "󱃾"
+style = "fg:color_kubernetes"
+format = '( [($symbol( $cluster))]($style) )'
+disabled = false
+
+[shell]
+disabled = false
+format = '[  $indicator ]($style)'
+bash_indicator = "bash"
+fish_indicator = "fish"
+zsh_indicator = "zsh"
+powershell_indicator = "powershell"
+pwsh_indicator = "pwsh"
+ion_indicator = "ion"
+elvish_indicator = "elvish"
+tcsh_indicator = "tcsh"
+xonsh_indicator = "xonsh"
+cmd_indicator = "cmd"
+nu_indicator = "nu"
+unknown_indicator = ""
+style = "fg:color_shell"
+
+[container]
+style = "fg:color_container"
+format = '( [$symbol $name]($style) )'
+
+[jobs]
+symbol = "󰒋"
+style = "fg:color_other"
+format = '( [$symbol( $number)]($style) )'
+symbol_threshold = 1
+number_threshold = 1
+
+[custom.memory_usage]
+command = "starship module memory_usage"
+when = '[ "${STARSHIP_COCKPIT_MEMORY_USAGE_ENABLED:-false}" = "true" ]'
+shell = "sh"
+format = "( $output )"
+disabled = false
+
+[memory_usage]
+threshold = 0
+symbol = "󰓅"
+style = "fg:color_other"
+format = '( [$symbol( ${ram})]($style) )'
+disabled = false
+
+[custom.battery]
+command = """
+battery_info=$(starship module battery)
+if [ -n "$battery_info" ]; then
+    percent=$(echo "$battery_info" | grep -o '[0-9]*%' | sed 's/%//')
+    if [ "$percent" -le "${STARSHIP_COCKPIT_BATTERY_THRESHOLD:-0}" ]; then
+        echo "$battery_info" | sed 's/%%/%/'
+    fi
+fi
+"""
+when = '[ "${STARSHIP_COCKPIT_BATTERY_ENABLED:-false}" = "true" ]'
+shell = "sh"
+format = "( $output )"
+disabled = false
 
 [battery]
-full_symbol = '󰁹'
-charging_symbol = '󰂄'
-discharging_symbol = '󰂃'
-unknown_symbol = '󰁽'
-empty_symbol = '󰂎'
-format = ' [$symbol $percentage]($style)'
+full_symbol = "󰁹"
+charging_symbol = "󰂄"
+discharging_symbol = "󰂃"
+unknown_symbol = "󰂑"
+empty_symbol = "󰂎"
+format = '( [$symbol( $percentage)]($style) )'
+disabled = false
 
 [[battery.display]]
 threshold = 10
-style = 'red'
+style = "bold fg:color_danger"
 
 [[battery.display]]
 threshold = 20
-style = 'yellow'
-
-[[battery.display]]
-threshold = 80
-style = 'green'
+style = "fg:color_caution"
 
 [[battery.display]]
 threshold = 100
-style = 'bold green'
-
-[character]
-success_symbol = '[❯](bold green)'
-error_symbol = '[❯](bold red)'
+style = "fg:color_other"
 
 [time]
 disabled = false
+time_format = "%R"
+style = "fg:color_time"
+format = '( [󰔛 $time]($style) )'
 
-[username]
-style_user = 'yellow'
-style_root = 'red'
-format = '[\[$user]($style)'
-disabled = false
-show_always = true
-
-[container]
-format = " [$symbol \\[$name\\]]($style)"
-
-[hostname]
-ssh_only = false
-ssh_symbol = "  "
-format = '[@$hostname](green)[$ssh_symbol](purple)[\]](green) '
+[cmd_duration]
+min_time = 2000
+format = '( [󱫑 $duration]($style) )'
+style = 'fg:color_duration'
+show_milliseconds = false
 disabled = false
 
-[fill]
-symbol = ' '
-style = 'white'
-
-[os]
-disabled = true
-format = "[$symbol]($style) "
-style = "white"
-
-[aws]
-symbol = " "
-
-[buf]
-symbol = " "
-
-[c]
-symbol = " "
-
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
-
-[directory]
-style = "bold green"
-before_repo_root_style = "blue"
-read_only_style = "bold cyan"
-truncate_to_repo = true
-fish_style_pwd_dir_length = 1
-
-[docker_context]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[fossil_branch]
-symbol = " "
-
-[git_branch]
-always_show_remote = true
-symbol = " "
-format = 'on [$symbol\[$remote_name\] $remote_branch(:$branch)]($style) '
-
-[git_metrics]
+[status]
 disabled = false
-added_style = "bold green"
-deleted_style = "bold red"
-format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+format = '( [$symbol( $common_meaning)( $signal_name)]($style) )'
+map_symbol = true
+pipestatus = true
+symbol = '󰅙'
+success_symbol = ''
+not_executable_symbol = '󰂭'
+not_found_symbol = '󰍉'
+sigint_symbol = '󰐊'
+signal_symbol = '󱐋'
+style = 'bold fg:color_danger'
+recognize_signal_code = true
 
-[git_status]
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+[line_break]
+disabled = false
 
-[golang]
-symbol = " "
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:color_ok)'
+error_symbol = '[❯](bold fg:color_danger)'
+vimcmd_symbol = '[❮](bold fg:color_vimcmd_ok)'
+vimcmd_replace_one_symbol = '[❮](bold fg:color_vimcmd_replace)'
+vimcmd_replace_symbol = '[❮](bold fg:color_vimcmd_replace)'
+vimcmd_visual_symbol = '[❮](bold fg:color_vimcmd_visual)'
 
-[guix_shell]
-symbol = " "
+[custom.keyboard_layout]
+command = """
 
-[haskell]
-symbol = " "
+# Set env variables if you want to use layout aliases (in uppercase)
+#     export STARSHIP_COCKPIT_KEYBOARD_LAYOUT_ABC=ENG
+#     export STARSHIP_COCKPIT_KEYBOARD_LAYOUT_UKRAINIAN=UKR
+# 
+# Implementations:
+#     macOS
 
-[haxe]
-symbol = "⌘ "
+if [ "$(uname -s)" = "Darwin" ]; then
+        input_source=$(defaults read ~/Library/Preferences/com.apple.HIToolbox.plist AppleCurrentKeyboardLayoutInputSourceID)
+        layout_id=$(echo "$input_source" | cut -d '.' -f4)
+        layout=$(printenv "STARSHIP_COCKPIT_KEYBOARD_LAYOUT_$(echo "$layout_id" | tr '[:lower:]' '[:upper:]')")
+        echo "$layout" || echo "$layout_id"
+fi
 
-[hg_branch]
-symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[lua]
-symbol = " "
-
-[nix_shell]
-symbol = " "
-
-[nodejs]
-symbol = " "
-
-[os.symbols]
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "﯑ "
-Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
-Linux = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = " "
-openSUSE = " "
-OracleLinux = " "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = " "
-Solus = "ﴱ "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = " "
-
-[python]
-symbol = " "
-
-[ruby]
-symbol = " "
-
-[scala]
-symbol = ""
-
-[spack]
-symbol = "🅢 "
+"""
+symbol = "󰌌"
+style = "fg:color_other"
+format = '( [$symbol $output]($style) )'
+when = '[ "${STARSHIP_COCKPIT_KEYBOARD_LAYOUT_ENABLED:-false}" = "true" ]'
+shell = "sh"
+disabled = false
