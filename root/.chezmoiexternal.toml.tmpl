@@ -220,7 +220,7 @@
 {{- if eq .chezmoi.arch "arm64" }}
   url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubectx_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
 {{- else }}
-  url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubectx_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+  url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubectx_*_%s_%s.tar.gz" .chezmoi.os .alterArch) | quote }}
 {{- end}}
   executable = true
   path = "kubectx"
@@ -230,7 +230,7 @@
 {{- if eq .chezmoi.arch "arm64" }}
   url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubens_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
 {{- else }}
-  url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubens_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+  url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "kubens_*_%s_%s.tar.gz" .chezmoi.os .alterArch) | quote }}
 {{- end}}
   executable = true
   path = "kubens"
