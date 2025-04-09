@@ -7,25 +7,17 @@ command_timeout = 2000
 format = """
 $os\
 $username\
+$hostname\
 $directory\
 $git_branch\
 $git_commit\
 $git_status\
 $git_metrics\
 $git_state\
-$c\
-$rust\
-$golang\
-$nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
-$python\
+$fill\
 $package\
 $docker_context\
 $kubernetes\
-$shell\
 $container\
 $jobs\
 ${custom.memory_usage}\
@@ -115,6 +107,12 @@ color_vimcmd_ok = '#689d6a'
 color_vimcmd_replace = '#b16286'
 color_vimcmd_visual = '#d79921'
 
+[hostname]
+ssh_only = false
+ssh_symbol = "  "
+style = "fg:color_username"
+format = '[@$hostname$ssh_symbol]($style) '
+
 [os]
 disabled = false
 style = "fg:color_os"
@@ -147,7 +145,7 @@ Pop = ""
 show_always = true
 style_user = "fg:color_username"
 style_root = "bold fg:color_danger"
-format = '[ $user ]($style)'
+format = '[ $user]($style)'
 
 [directory]
 style = "fg:color_directory"
@@ -156,21 +154,21 @@ repo_root_style = "bold fg:color_directory"
 format = "[ $path ]($style)"
 read_only = " "
 home_symbol = "~"
-truncation_symbol = "…/"
-truncation_length = 0
-truncate_to_repo = true
-fish_style_pwd_dir_length = 0
-use_logical_path = true
+truncate_to_repo = false
+fish_style_pwd_dir_length = 10
+truncation_length = 10
+truncation_symbol = "../"
+use_logical_path = false
 
 [git_branch]
 symbol = ""
 style = "fg:color_git"
-format = '( [$symbol $branch]($style) )'
+format = '[$symbol \[$remote_name\] $remote_branch(:$branch)]($style) '
 only_attached = true
 ignore_branches = []
 truncation_length = 25
 truncation_symbol = "..."
-always_show_remote = false
+always_show_remote = true
 disabled = false
 
 [git_commit]
@@ -183,7 +181,7 @@ tag_disabled = false
 disabled = false
 
 [git_status]
-style = "fg:color_git"
+style = "fg:red"
 format = '([$ahead_behind]($style) )([$all_status]($style) )'
 stashed = "*${count}"
 ahead = "⇡${count}"
