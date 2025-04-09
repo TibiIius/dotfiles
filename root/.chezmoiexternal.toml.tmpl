@@ -35,7 +35,7 @@
 
 [".local/bin/atuin"]
   type = "archive-file"
-  url = {{ gitHubLatestReleaseAssetURL "atuinsh/atuin" (printf "atuin-%s-*-%s.tar.gz" .alterArch $os_with_cstdlib) | quote }}
+  url = {{ gitHubReleaseAssetURL "atuinsh/atuin" "v18.4.0" (printf "atuin-%s-*-%s.tar.gz" .alterArch $os_with_cstdlib) | quote }}
   executable = true
   path = "atuin"
   stripComponents = 1

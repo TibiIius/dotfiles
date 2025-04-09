@@ -6,7 +6,7 @@ source {{ .chezmoi.sourceDir }}/.helper.sh
 {{/* AppImages only run on Linux */}}
 {{ if eq .chezmoi.os "linux" }}
 
-APPIMAGE_LINK={{ gitHubLatestReleaseAssetURL "neovim/neovim" (printf "nvim-%s-%s.appimage" .chezmoi.os .alterArch) | quote }}
+APPIMAGE_LINK={{ gitHubReleaseAssetURL "neovim/neovim" "Nvim v0.10.4" (printf "nvim-%s-%s.appimage" .chezmoi.os .alterArch) | quote }}
 CURL_CMD="curl -s -L ${APPIMAGE_LINK}"
 TARGET_DIR="${HOME}/.local/share/nvim-appimage"
 
