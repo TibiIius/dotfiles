@@ -1,9 +1,11 @@
 [tools]
-node = "latest"
 rust = "latest"
+{{- if ne .machineType "server" }}
+node = "latest"
 python = "latest"
-{{- if ne .machineType "work" }}
+  {{- if ne .machineType "work" }}
 dotnet = "latest"
+  {{- end }}
 {{- end }}
 go = "latest"
 {{- if eq .machineType "work" }}
