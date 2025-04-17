@@ -6,8 +6,8 @@ python = "latest"
   {{- if ne .machineType "work" }}
 dotnet = "latest"
   {{- end }}
-{{- end }}
 go = "latest"
+{{- end }}
 {{- if eq .machineType "work" }}
 ruby = "latest"
 {{- end }}
@@ -41,6 +41,7 @@ xh = "latest"
 "ubi:imsnif/bandwhich" = "latest"
 "ubi:Canop/broot" = "latest"
 "cargo:joshuto" = "latest"
+  {{- if ne .machineType "server" }}
 minikube = "latest"
 kubectl = "latest"
 talosctl = "latest"
@@ -49,6 +50,7 @@ kubectx = "latest"
 kubens = "latest"
 k9s = "latest"
 "ubi:o2sh/onefetch" = "latest"
+  {{- end }}
 {{- end }}
 
 
