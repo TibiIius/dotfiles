@@ -141,7 +141,7 @@ if [[ $(command -v tmux) ]]; then
 
 {{ if eq .machineType "server" }}
   ## SSH connection
-  if [[ "${SSH_CONNECTION}" ]] && [[ -z "${VSCODE_INJECTION}" ]] || [[ ! "${TERM_PROGRAM}" = "vscode" ]]; then
+  if [[ "${SSH_CONNECTION}" ]] && [[ ! "${TERM_PROGRAM}" = "vscode" ]]; then
     # Create a new SSH Tmux session if there is none
     if ! $(${TMUX_EXEC} has-session -t ssh); then
       ${TMUX_EXEC} new-session -s ssh -d
