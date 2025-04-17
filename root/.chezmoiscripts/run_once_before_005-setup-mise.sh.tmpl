@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+source {{ .chezmoi.sourceDir }}/.helper.sh
+
+print_message "Installing mise..."
+
+mkdir -p $HOME/.local/bin
+curl https://mise.run | sh

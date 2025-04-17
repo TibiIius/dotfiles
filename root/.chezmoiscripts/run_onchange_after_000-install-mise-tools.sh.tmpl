@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+source {{ .chezmoi.sourceDir }}/.helper.sh
+
+# Package hash: {{ include "dot_config/mise/config.toml.tmpl" | sha256sum }}
+
+print_message "Installing mise tools from ~/.config/mise/config.toml..."
+
+$HOME/.local/bin/mise install
