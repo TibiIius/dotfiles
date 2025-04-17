@@ -24,6 +24,10 @@ fi
 # POSIX way to get script's dir: https://stackoverflow.com/a/29834779/12156188
 script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 
+pushd ${script_dir}
+git submodule update --init --recursive
+popd
+
 set -- init --apply --source="${script_dir}"
 
 echo "Running 'chezmoi $*'" >&2
