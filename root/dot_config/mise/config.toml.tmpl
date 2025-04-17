@@ -27,17 +27,11 @@ fd = "latest"
 fzf = "latest"
 jq = "latest"
 yq = "latest"
-{{- if ne .machineType "server" }}
-hexyl = "latest"
-"cargo:flamegraph" = "latest"
-"cargo:cross" = "latest"
-ripgrep-all = "latest"
-hyperfine = "latest"
-tokei = "latest"
-websocat = "latest"
-"ubi:doy/rbw" = "latest"
-{{- end }}
 xh = "latest"
+{{- if ne .machineType "server" }}
+tokei = "latest"
+"ubi:o2sh/onefetch" = "latest"
+{{- end }}
 {{- if not .ephemeral }}
 "ubi:imsnif/bandwhich" = "latest"
 "ubi:Canop/broot" = "latest"
@@ -50,7 +44,13 @@ helm = "latest"
 kubectx = "latest"
 kubens = "latest"
 k9s = "latest"
-"ubi:o2sh/onefetch" = "latest"
+hexyl = "latest"
+"cargo:flamegraph" = "latest"
+"cargo:cross" = "latest"
+ripgrep-all = "latest"
+hyperfine = "latest"
+websocat = "latest"
+"ubi:doy/rbw" = "latest"
   {{- end }}
 {{- end }}
 
