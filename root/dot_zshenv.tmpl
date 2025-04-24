@@ -4,7 +4,7 @@ if [[ "${TERM_PROGRAM:-unset}" == "vscode" ]]; then
 else
   export VISUAL=nvim
 fi
-export EDITOR=nvim
+export EDITOR=$VISUAL
 export BROWSER=firefox
 
 {{ if not (eq .machineType "work") }}
