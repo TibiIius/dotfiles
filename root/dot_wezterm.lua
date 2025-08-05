@@ -13,9 +13,9 @@ end
 
 function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return "Gruvbox dark, pale (base16)"
+		return "MaterialDarker"
 	else
-		return "Gruvbox light, hard (base16)"
+		return "Mexico Light (base16)"
 	end
 end
 
