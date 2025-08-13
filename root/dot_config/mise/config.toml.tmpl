@@ -8,9 +8,6 @@ dotnet = "latest"
   {{- end }}
 go = "latest"
 {{- end }}
-{{- if eq .machineType "work" }}
-ruby = "latest"
-{{- end }}
 {{/* From here on out, we have devtools */}}
 neovim = "0.10"
 sops = "latest"
@@ -29,6 +26,7 @@ fzf = "latest"
 jq = "latest"
 yq = "latest"
 xh = "latest"
+git-lfs = "latest"
 {{- if ne .machineType "server" }}
 tokei = "latest"
 "ubi:o2sh/onefetch" = "latest"
