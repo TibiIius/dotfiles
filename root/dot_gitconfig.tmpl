@@ -1,3 +1,5 @@
+[core]
+	pager = delta
 [user]
 	name = {{ .name | quote }}
 	email = {{ .email | quote }}
@@ -37,6 +39,7 @@
 [merge]
 	keepBackup = false
 	tool = vscode
+	conflictStyle = zdiff3
 [mergetool "vim"]
 	cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 	path = ''
@@ -47,4 +50,11 @@
 [mergetool "vscode"]
 	prompt = false
 	cmd = code --wait \"$MERGED\"
-
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	side-by-side = true
+	hyperlinks = true
+[pager]
+	blame = delta
