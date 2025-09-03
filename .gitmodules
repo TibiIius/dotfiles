@@ -1,6 +1,6 @@
 [submodule "root/dot_config/external_nvim"]
 	path = root/dot_config/external_nvim
-	url = git@github.com:TibiIius/kickstart.nvim.git
+	url = git@github.com:TibiIius/kickstart-modular.nvim.git
 	branch = master
 [submodule "root/dot_tmux/plugins/external_tpm"]
 	path = root/dot_tmux/plugins/external_tpm
