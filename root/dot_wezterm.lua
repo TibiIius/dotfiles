@@ -79,8 +79,10 @@ config = {
 	font = wezterm.font("Liga SFMono Nerd Font", {
 		bold = false,
 		italic = false,
+		weight = "Regular",
 	}),
 	font_size = 13.0,
+	line_height = 1.4,
 	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = false,
 	tab_bar_at_bottom = true,
