@@ -1,6 +1,9 @@
 # Antidote clone location
 export ANTIDOTE_CLONE_LOCATION=${HOME}/.antidote
 
+# fzf integration
+[[ $(command -v fzf) ]] && source <(fzf --zsh)
+
 # Source antidote.
 source ${ANTIDOTE_CLONE_LOCATION}/antidote.zsh
 
@@ -246,8 +249,6 @@ export DBX_CONTAINER_MANAGER=docker
 export K9S_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}"/k9s
 source <(kubectl completion zsh)
 
-# fzf integration
-[[ $(command -v fzf) ]] && source <(fzf --zsh)
 
 # yazi integration
 function y() {
