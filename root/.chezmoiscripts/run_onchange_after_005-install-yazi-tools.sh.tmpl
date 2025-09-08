@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+source {{ .chezmoi.sourceDir }}/.helper.sh
+
+# Package hash: {{ include "dot_config/yazi/package.toml.tmpl" | sha256sum }}
+
+print_message "Installing yazi tools from ~/.config/yazi/package.toml..."
+
+ya pkg install
