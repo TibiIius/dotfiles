@@ -1,9 +1,6 @@
 # Antidote clone location
 export ANTIDOTE_CLONE_LOCATION=${HOME}/.antidote
 
-# fzf integration
-[[ $(command -v fzf) ]] && source <(fzf --zsh)
-
 # Source antidote.
 source ${ANTIDOTE_CLONE_LOCATION}/antidote.zsh
 
@@ -12,6 +9,9 @@ autoload -Uz compinit && compinit
 # mise
 [[ $(command -v mise) ]] && eval "$(mise activate zsh)"
 export MISE_NODE_COREPACK=true
+
+# fzf/skim and vi mode compat
+ZVM_INIT_MODE=sourcing
 
 # Load from ~/.zsh_plugins.txt
 antidote load
@@ -263,6 +263,9 @@ function y() {
 [[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
 
 [[ $(command -v docker) ]] && eval "$(docker completion zsh)"
+
+# fzf integration
+[[ $(command -v fzf) ]] && source <(fzf --zsh)
 
 # Load completions
 fpath+=~/.zfunc
