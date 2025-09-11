@@ -23,6 +23,8 @@ config = {
 	color_scheme = scheme_for_appearance(get_appearance()),
 	set_environment_variables = {
 		PATH = "/opt/homebrew/bin",
+		SYSTEM_APPEARANCE = get_appearance(),
+		WSL_ENV = "TERMINFO_DIRS:SYSTEM_APPEARANCE",
 	},
 	leader = {
 		key = "phys:G",
@@ -30,6 +32,11 @@ config = {
 		timeout_milliseconds = 10000,
 	},
 	keys = { -- ... add these new entries to your config.keys table
+		{
+			key = "l",
+			mods = "CMD|SHIFT",
+			action = wezterm.action.ShowLauncher,
+		},
 		{
 			-- I'm used to tmux bindings, so am using the quotes (") key to
 			-- split horizontally, and the percent (%) key to split vertically.
@@ -91,7 +98,7 @@ config = {
 	window_background_opacity = 1.00,
 	macos_window_background_blur = 100,
 	win32_system_backdrop = "Tabbed",
-	front_end = "OpenGL",
+	front_end = "WebGpu",
 	window_frame = {
 		font = wezterm.font({
 			family = "Liga SFMono Nerd Font",
