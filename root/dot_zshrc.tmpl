@@ -264,6 +264,9 @@ function y() {
 
 [[ $(command -v docker) ]] && eval "$(docker completion zsh)"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # fzf integration
 [[ $(command -v fzf) ]] && source <(fzf --zsh)
 
