@@ -5,7 +5,7 @@ mkdir -p $HOME/.zfunc
 [[ $(command -v rustup) ]]  && rustup completions zsh cargo > $HOME/.zfunc/_cargo
 [[ $(command -v podman) ]]  && podman completion -f $HOME/.zfunc/_podman zsh
 [[ $(command -v poetry) ]]  && poetry completions zsh > ~/.zfunc/_poetry
-[[ $(command -v rtx) ]]     && rtx completion zsh > ~/.zfunc/_rtx
+[[ $(command -v mise) ]]    && mise completion zsh > ~/.zfunc/_mise
 [[ $(command -v procs) ]]   && procs --gen-completion-out zsh > ~/.zfunc/_procs
 [[ $(command -v chezmoi) ]] && chezmoi completion zsh > ~/.zfunc/_chezmoi
-[[ $(command -v poe) ]] && poe _zsh_completion > ~/.zfunc/_poe
+[[ $(command -v poe) ]]     && poe _zsh_completion > ~/.zfunc/_poe
