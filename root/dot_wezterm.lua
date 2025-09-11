@@ -115,7 +115,7 @@ config = {
 		bottom = 6,
 	},
 	-- term = "wezterm",
-	window_decorations = "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE",
+	window_decorations = "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR",
 	native_macos_fullscreen_mode = true,
 	colors = {
 		tab_bar = {
