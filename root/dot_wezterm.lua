@@ -22,7 +22,7 @@ end
 config = {
 	color_scheme = scheme_for_appearance(get_appearance()),
 	set_environment_variables = {
-		PATH = "/opt/homebrew/bin",
+		PATH = "/opt/homebrew/bin" .. os.getenv(),
 		SYSTEM_APPEARANCE = get_appearance(),
 		WSL_ENV = "TERMINFO_DIRS:SYSTEM_APPEARANCE",
 	},
@@ -88,7 +88,7 @@ config = {
 		italic = false,
 		weight = "Regular",
 	}),
-	font_size = 13.0,
+	font_size = 11.0,
 	line_height = 1.4,
 	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = false,
