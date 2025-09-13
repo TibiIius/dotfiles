@@ -157,7 +157,7 @@ home_symbol = "~"
 truncate_to_repo = false
 fish_style_pwd_dir_length = 10
 truncation_length = 10
-truncation_symbol = "../"
+truncation_symbol = "…/"
 use_logical_path = false
 
 [git_branch]
@@ -181,7 +181,7 @@ tag_disabled = false
 disabled = false
 
 [git_status]
-style = "fg:red"
+style = "fg:color_git"
 format = '([$ahead_behind]($style) )([$all_status]($style) )'
 stashed = "*${count}"
 ahead = "⇡${count}"
