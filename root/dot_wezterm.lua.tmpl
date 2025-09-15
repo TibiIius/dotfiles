@@ -22,7 +22,7 @@ end
 config = {
 	color_scheme = scheme_for_appearance(get_appearance()),
 	set_environment_variables = {
-		PATH = "/opt/homebrew/bin" .. os.getenv(),
+		PATH = "/opt/homebrew/bin" .. os.getenv("PATH"),
 		SYSTEM_APPEARANCE = get_appearance(),
 		WSL_ENV = "TERMINFO_DIRS:SYSTEM_APPEARANCE",
 	},
@@ -88,7 +88,11 @@ config = {
 		italic = false,
 		weight = "Regular",
 	}),
+  {{- if eq .chezmoi.os "darwin" }}
+	font_size = 13.0,
+  {{- else }}
 	font_size = 11.0,
+  {{- end }}
 	line_height = 1.4,
 	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = false,
@@ -115,7 +119,11 @@ config = {
 		bottom = 6,
 	},
 	-- term = "wezterm",
+  {{- if eq .chezmoi.os "darwin" }}
 	window_decorations = "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR",
+  {{- else }}
+	window_decorations = "TITLE | RESIZE",
+  {{- end }}
 	native_macos_fullscreen_mode = true,
 	colors = {
 		tab_bar = {
