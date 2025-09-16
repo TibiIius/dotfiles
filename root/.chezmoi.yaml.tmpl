@@ -64,14 +64,6 @@
   {{- $cStdLib = "gnu" -}}
 {{- end -}}
 
-{{- $sshSigningKey := "" -}}
-{{/* Set SSH signing key */}}
-{{- if stdinIsATTY -}}
-  {{- $sshSigningKey = promptStringOnce . "sshSigningKey" "Enter public SSH key" -}}
-{{- end -}}
-
-
-
 {{/* Sometimes the CPU arch uses synonyms different from Chezmoi */}}
 {{ $alterArch := "" }}
 {{ if eq .chezmoi.arch "amd64" }}
@@ -144,9 +136,6 @@ data:
       {{- end }}
     {{- end }}
   {{- end }}
-{{- if ne $sshSigningKey "" }}
-  ssh_signing_key: {{ $sshSigningKey | quote }}
-{{- end }}
 
 merge:
   command: "nvim"

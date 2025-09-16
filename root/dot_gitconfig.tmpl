@@ -3,16 +3,13 @@
 [user]
 	name = {{ .name | quote }}
 	email = {{ .email | quote }}
-{{- if ne .ssh_signing_key "" }}
 	signingkey = {{ .ssh_signing_key | quote }}
 [commit]
 	gpgsign = true
-{{- else }}
-[commit]
-	gpgsign = false
-{{- end }}
 [gpg]
     format = ssh
+[gpg "ssh"]
+    defaultKeyCommand = "ssh-add -L"
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
