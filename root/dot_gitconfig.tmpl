@@ -3,11 +3,16 @@
 [user]
 	name = {{ .name | quote }}
 	email = {{ .email | quote }}
-{{ if not (eq .machineType "work") }}
-	signingkey = 4B3B63F9A1CB361C
+{{- if ne .ssh_signing_key "" }}
+	signingkey = {{ .ssh_signing_key | quote }}
+[commit]
+	gpgsign = true
+{{- else }}
 [commit]
 	gpgsign = false
-{{ end }}
+{{- end }}
+[gpg]
+    format = ssh
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -16,11 +21,11 @@
 [log]
 	decorate = true
 [push]
-{{ if not (eq .machineType "work") }}
+{{- if not (eq .machineType "work") }}
 	followTags = true
-{{ else }}
+{{- else }}
 	default = simple
-{{ end }}
+{{- end }}
 [rebase]
 	autostash = true
 [pull]
