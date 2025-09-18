@@ -98,7 +98,9 @@ config = {
 	hide_tab_bar_if_only_one_tab = false,
 	tab_bar_at_bottom = true,
 	scroll_to_bottom_on_input = true,
-	-- default_prog = { "nu" },
+  {{- if eq .chezmoi.os "windows" }}
+	default_prog = { "pwsh.exe" },
+  {{- end }}
 	window_background_opacity = 1.00,
 	macos_window_background_blur = 100,
 	win32_system_backdrop = "Tabbed",
@@ -108,7 +110,11 @@ config = {
 			family = "Liga SFMono Nerd Font",
 			weight = "Regular",
 		}),
+  {{- if eq .chezmoi.os "darwin" }}
 		font_size = 13.0,
+  {{- else }}
+		font_size = 11.0,
+  {{- end }}
 		active_titlebar_bg = "none",
 		inactive_titlebar_bg = "none",
 	},
@@ -122,7 +128,14 @@ config = {
   {{- if eq .chezmoi.os "darwin" }}
 	window_decorations = "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR",
   {{- else }}
-	window_decorations = "TITLE | RESIZE",
+	window_decorations = "INTEGRATED_BUTTONS | TITLE | RESIZE",
+  {{- end }}
+  {{- if eq .chezmoi.os "darwin" }}
+	integrated_title_button_style = "MacOsNative",
+  {{- else if eq .chezmoi.os "linux" }}
+	integrated_title_button_style = "Gnome",
+  {{- else  }}
+	integrated_title_button_style = "Windows",
   {{- end }}
 	native_macos_fullscreen_mode = true,
 	colors = {
