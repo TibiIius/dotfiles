@@ -28,18 +28,21 @@
 	rebase = true
 [diff]
 	prompt = false
-	tool = vscode
+	tool = nvim
 [difftool]
 	prompt = false
 [difftool "vim"]
 	prompt = false
 	cmd = vim -f -d \"$LOCAL\" \"$REMOTE\"
+[difftool "nvim"]
+	prompt = false
+	cmd = nvim -f -d \"$LOCAL\" \"$REMOTE\"
 [difftool "vscode"]
 	prompt = false
 	cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
 [merge]
 	keepBackup = false
-	tool = vscode
+	tool = nvim
 [mergetool "vim"]
 	cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 	path = ''
@@ -47,6 +50,12 @@
 	keepBackup = false
 	keepTemporaries = false
 	trustExitCode = false
+[mergetool "nvim"]
+	cmd = nvim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+	path = ''
+	prompt = false
+	keepBackup = false
+	keepTemporaries = false
 [mergetool "vscode"]
 	prompt = false
 	cmd = code --wait \"$MERGED\"
