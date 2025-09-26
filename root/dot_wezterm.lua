@@ -1,23 +1,62 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
-local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
 local config = wezterm.config_builder()
 
-function get_appearance()
+local function get_appearance()
 	if wezterm.gui then
 		return wezterm.gui.get_appearance()
 	end
 	return "Dark"
 end
 
-function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Catppuccin Macchiato"
 	else
 		return "Catppuccin Latte"
 	end
 end
+
+local function is_os(os)
+	return string.lower(wezterm.target_triple):find(os) ~= nil
+end
+
+tabline.setup({
+	options = {
+		icons_enabled = true,
+		theme = scheme_for_appearance(get_appearance()),
+		tabs_enabled = true,
+		section_separators = {
+			left = wezterm.nerdfonts.pl_left_hard_divider,
+			right = wezterm.nerdfonts.pl_right_hard_divider,
+		},
+		component_separators = {
+			left = wezterm.nerdfonts.pl_left_soft_divider,
+			right = wezterm.nerdfonts.pl_right_soft_divider,
+		},
+		tab_separators = {
+			left = wezterm.nerdfonts.pl_left_hard_divider,
+			right = wezterm.nerdfonts.pl_right_hard_divider,
+		},
+	},
+	sections = {
+		tabline_a = { "mode" },
+		tabline_b = { "workspace" },
+		tab_active = {
+			"index",
+			{ "process", padding = { left = 0, right = 1 } },
+		},
+		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+		tabline_x = { "cpu", "ram" },
+		tabline_y = { "datetime", "battery" },
+		tabline_z = { "domain" },
+	},
+	extensions = {},
+})
+
+tabline.apply_to_config(config)
 
 config = {
 	color_scheme = scheme_for_appearance(get_appearance()),
@@ -88,19 +127,14 @@ config = {
 		italic = false,
 		weight = "Regular",
 	}),
-  {{- if eq .chezmoi.os "darwin" }}
-	font_size = 13.0,
-  {{- else }}
-	font_size = 11.0,
-  {{- end }}
+	font_size = is_os("darwin") and 13.0 or 11.0,
 	line_height = 1.4,
 	use_fancy_tab_bar = false,
+	show_new_tab_button_in_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = false,
-	tab_bar_at_bottom = true,
+	tab_bar_at_bottom = false,
 	scroll_to_bottom_on_input = true,
-  {{- if eq .chezmoi.os "windows" }}
-	default_prog = { "pwsh.exe" },
-  {{- end }}
+	default_prog = is_os("windows") and { "pwsh.exe" } or config.default_prog,
 	window_background_opacity = 1.00,
 	macos_window_background_blur = 100,
 	win32_system_backdrop = "Tabbed",
@@ -110,13 +144,7 @@ config = {
 			family = "Liga SFMono Nerd Font",
 			weight = "Regular",
 		}),
-  {{- if eq .chezmoi.os "darwin" }}
-		font_size = 13.0,
-  {{- else }}
-		font_size = 11.0,
-  {{- end }}
-		active_titlebar_bg = "none",
-		inactive_titlebar_bg = "none",
+		font_size = is_os("darwin") and 13.0 or 11.0,
 	},
 	window_padding = {
 		left = 6,
@@ -125,54 +153,12 @@ config = {
 		bottom = 6,
 	},
 	-- term = "wezterm",
-  {{- if eq .chezmoi.os "darwin" }}
-	window_decorations = "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR",
-  {{- else }}
-	window_decorations = "INTEGRATED_BUTTONS | TITLE | RESIZE",
-  {{- end }}
-  {{- if eq .chezmoi.os "darwin" }}
-	integrated_title_button_style = "MacOsNative",
-  {{- else if eq .chezmoi.os "linux" }}
-	integrated_title_button_style = "Gnome",
-  {{- else  }}
-	integrated_title_button_style = "Windows",
-  {{- end }}
+	window_decorations = is_os("darwin")
+			and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
+		or "INTEGRATED_BUTTONS | TITLE | RESIZE",
+	integrated_title_button_style = is_os("darwin") and "MacOsNative" or is_os("linux") and "Gnome" or "Windows",
 	native_macos_fullscreen_mode = true,
-	colors = {
-		tab_bar = {
-			inactive_tab_edge = "#575757",
-			background = "none",
-			-- Inactive tabs are the tabs that do not have focus
-			inactive_tab = {
-				bg_color = "none",
-				fg_color = "#808080",
-			},
-			inactive_tab_hover = {
-				bg_color = "rgba(51, 51, 51, 1)",
-				fg_color = "#808080",
-				italic = true,
-			},
-			active_tab = {
-				-- bg_color = '#333333',
-				bg_color = "none",
-				fg_color = "#c0c0c0",
-				intensity = "Bold",
-				italic = true,
-			},
-			new_tab = {
-				bg_color = "none",
-				fg_color = "#808080",
-			},
-			new_tab_hover = {
-				bg_color = "rgba(51, 51, 51, 1)",
-				fg_color = "#808080",
-				italic = true,
-			},
-		},
-	},
 }
-
-bar.apply_to_config(config)
 
 -- and finally, return the configuration to wezterm
 return config
