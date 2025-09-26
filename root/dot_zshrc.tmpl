@@ -271,6 +271,9 @@ eval "$(direnv hook zsh)"
 # fzf integration
 [[ $(command -v fzf) ]] && source <(fzf --zsh)
 
+# load ssh agent
+[[ $(ps aux | grep -i 'ssh-agent -s' | wc -l) -lt 2 ]] && eval "$(ssh-agent -s)" && ssh-add
+
 # Load completions
 fpath+=~/.zfunc
 {{ if eq .chezmoi.os "linux" }}
