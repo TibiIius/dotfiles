@@ -27,37 +27,37 @@
 [pull]
 	rebase = true
 [diff]
-	prompt = false
-	tool = nvim
+	prompt = true
+	tool = nvimdiff
 [difftool]
-	prompt = false
+	prompt = true
 [difftool "vim"]
-	prompt = false
+	prompt = true
 	cmd = vim -f -d \"$LOCAL\" \"$REMOTE\"
 [difftool "nvim"]
-	prompt = false
+	prompt = true
 	cmd = nvim -f -d \"$LOCAL\" \"$REMOTE\"
 [difftool "vscode"]
-	prompt = false
+	prompt = true
 	cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
 [merge]
 	keepBackup = false
-	tool = nvim
+	tool = nvimdiff
 [mergetool "vim"]
 	cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 	path = ''
-	prompt = false
+	prompt = true
 	keepBackup = false
 	keepTemporaries = false
 	trustExitCode = false
 [mergetool "nvim"]
 	cmd = nvim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 	path = ''
-	prompt = false
+	prompt = true
 	keepBackup = false
 	keepTemporaries = false
 [mergetool "vscode"]
-	prompt = false
+	prompt = true
 	cmd = code --wait \"$MERGED\"
 [interactive]
 	diffFilter = delta --color-only
