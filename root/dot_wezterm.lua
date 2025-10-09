@@ -10,7 +10,6 @@ local function get_appearance()
 	end
 	return "Dark"
 end
-
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Catppuccin Macchiato"
@@ -22,6 +21,29 @@ end
 local function is_os(os)
 	return string.lower(wezterm.target_triple):find(os) ~= nil
 end
+
+wezterm.on("window-config-reloaded", function(window, pane)
+	local appearance = wezterm.gui.get_appearance()
+	local appearance_lower = appearance:lower()
+	local tmp_folder = os.getenv("TMPDIR")
+		or os.getenv("TMP")
+		or is_os("windows") and (string.format("%s\\Temp", os.getenv("USERPROFILE")))
+		or "/tmp"
+	io.open(string.format("%s/.wezterm_appearance", tmp_folder), "w"):write(appearance):close()
+	local config_path = os.getenv("XDG_CONFIG_HOME")
+		or (os.getenv("HOME") and string.format("%s/.config", os.getenv("HOME")))
+		or is_os("windows") and os.getenv("APPDATA")
+		or nil
+	if not config_path then
+		return
+	end
+
+	local zsh_fsh_for_theme = io.open(config_path .. "/fsh/theme-" .. appearance_lower, "r")
+	if zsh_fsh_for_theme then
+		io.open(config_path .. "/fsh/theme.ini", "w"):write(zsh_fsh_for_theme:read("*a")):close()
+		zsh_fsh_for_theme:close()
+	end
+end)
 
 tabline.setup({
 	options = {
@@ -49,7 +71,7 @@ tabline.setup({
 			{ "process", padding = { left = 0, right = 1 } },
 		},
 		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-		tabline_x = { "cpu", "ram" },
+		tabline_x = {},
 		tabline_y = { "datetime", "battery" },
 		tabline_z = { "domain" },
 	},

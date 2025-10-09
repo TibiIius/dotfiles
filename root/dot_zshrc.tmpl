@@ -274,6 +274,9 @@ eval "$(direnv hook zsh)"
 # load ssh agent
 [[ $(ps aux | grep -i 'ssh-agent -s' | wc -l) -lt 2 ]] && eval "$(ssh-agent -s)" && ssh-add
 
+# FSH theme
+fast-theme XDG:theme
+
 # Load completions
 fpath+=~/.zfunc
 {{ if eq .chezmoi.os "linux" }}
