@@ -165,4 +165,4 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-l = ['join-with right', 'mode main']
 
 [workspace-to-monitor-force-assignment]
-    10 = ['secondary', 'dell']
+    1 = ['secondary', 'dell']
