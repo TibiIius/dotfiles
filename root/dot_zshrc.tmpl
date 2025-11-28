@@ -111,6 +111,9 @@ alias ce='chezmoi edit --apply'
 ## Marp with Docker
 alias marp-convert="docker run --rm -v \"./:/home/marp/app/:Z\" -e LANG=$LANG -e MARP_USER=\"${UID}:${GID}\" marpteam/marp-cli"
 alias marp-serve="docker run --rm --init -v \"./:/home/marp/app:Z\" -e LANG=$LANG -e MARP_USER=\"${UID}:${GID}\" -p 8080:8080 -p 37717:37717 marpteam/marp-cli -s"
+# kubectl
+alias kcn='kubens'
+alias kcx='kubectx'
 
 # Updating stuff
 update_tools() {
@@ -249,7 +252,6 @@ export DBX_CONTAINER_MANAGER=docker
 # K8s
 export K9S_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}"/k9s
 source <(kubectl completion zsh)
-
 
 # yazi integration
 function y() {
