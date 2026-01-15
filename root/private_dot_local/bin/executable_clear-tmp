@@ -2,6 +2,7 @@
 
 FOLDER_TO_CLEAN=""
 FILES_TO_KEEP="3"
+WATCH=false
 
 print_help() {
 cat <<EOF
@@ -9,6 +10,7 @@ Usage:
 
 -f|--folder:	Specify which folder to watch (required)
 -k|--keep:	Specify how many files to keep (default 3)
+-w|--watch:	Whether the folder should be continuously watched (default false)
 EOF
 }
 
@@ -28,6 +30,10 @@ while [[ $# -gt 0 ]]; do
       FILES_TO_KEEP="$2"
       shift # past argument
       shift # past value
+      ;;
+    -w|--watch)
+      WATCH=true
+      shift # past argument
       ;;
     --help)
       print_help
@@ -60,20 +66,27 @@ count_files() {
   find "$FOLDER_TO_CLEAN" -maxdepth 1 -type f | wc -l
 }
 
-COUNT=$(count_files)
+cleanup() {
+  local count
+  count=$(count_files)
 
-if [[ $COUNT -le $FILES_TO_KEEP ]]; then
-  echo "There's less than or exactly ${FILES_TO_KEEP} files in ${FOLDER_TO_CLEAN}, not doing anything"
-  exit 0
+  while [[ $count -gt $FILES_TO_KEEP ]]; do 
+      local oldest_file
+      oldest_file=$(find "$FOLDER_TO_CLEAN" -maxdepth 1 -type f -printf '%T@ %p\n' \
+                    | sort -n | head -n 1 | cut -d' ' -f2-)
+      echo "Removing: $oldest_file"
+      rm -- "$oldest_file"
+      count=$(count_files)
+  done
+}
+
+if "$WATCH"; then
+  echo "Watching $FOLDER_TO_CLEAN (keeping $FILES_TO_KEEP newest files)"
+  while true; do
+    cleanup
+    sleep 1
+  done
+else
+  echo "Removing all but the newest ${FILES_TO_KEEP} files form ${FOLDER_TO_CLEAN}"
+  cleanup
 fi
-
-echo "Removing all but the newest ${FILES_TO_KEEP} files form ${FOLDER_TO_CLEAN}"
-
-while [[ $COUNT -gt $FILES_TO_KEEP ]]; do 
-  OLDEST_FILE=$(find "$FOLDER_TO_CLEAN" -maxdepth 1 -type f -printf '%T@ %p\n' \
-                | sort -n | head -n 1 | cut -d' ' -f2-)
-  echo "Removing: $OLDEST_FILE"
-  rm -- "$OLDEST_FILE"
-  COUNT=$(count_files)
-done
-
