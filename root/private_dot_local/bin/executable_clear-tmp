@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+FOLDER_TO_CLEAN=""
+FILES_TO_KEEP="3"
+
+print_help() {
+cat <<EOF
+Usage:
+
+-f|--folder:	Specify which folder to watch (required)
+-k|--keep:	Specify how many files to keep (default 3)
+EOF
+}
+
+if [[ $# -eq 0 ]]; then
+  print_help
+  exit 1
+fi
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -f|--folder)
+      FOLDER_TO_CLEAN="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -k|--keep)
+      FILES_TO_KEEP="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    --help)
+      print_help
+      exit 0
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      print_help
+      exit 1
+      ;;
+    *)
+      print_help
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -z $FOLDER_TO_CLEAN ]]; then
+  echo "Required arg -f|--folder not passed"
+  print_help
+  exit 1
+fi
+
+if [[ ! -d "$FOLDER_TO_CLEAN" ]]; then
+  echo "Error: Folder does not exist: $FOLDER_TO_CLEAN"
+  exit 1
+fi
+
+count_files() {
+  find "$FOLDER_TO_CLEAN" -maxdepth 1 -type f | wc -l
+}
+
+COUNT=$(count_files)
+
+if [[ $COUNT -le $FILES_TO_KEEP ]]; then
+  echo "There's less than or exactly ${FILES_TO_KEEP} files in ${FOLDER_TO_CLEAN}, not doing anything"
+  exit 0
+fi
+
+echo "Removing all but the newest ${FILES_TO_KEEP} files form ${FOLDER_TO_CLEAN}"
+
+while [[ $COUNT -gt $FILES_TO_KEEP ]]; do 
+  OLDEST_FILE=$(find "$FOLDER_TO_CLEAN" -maxdepth 1 -type f -printf '%T@ %p\n' \
+                | sort -n | head -n 1 | cut -d' ' -f2-)
+  echo "Removing: $OLDEST_FILE"
+  rm -- "$OLDEST_FILE"
+  COUNT=$(count_files)
+done
+
