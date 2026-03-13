@@ -82,13 +82,13 @@ alias gitsmu='git submodule update --init'
 alias gitsmui='git submodule update --init'
 alias gitmr='git merge'
 alias gitmrt='git mergetool'
-alias gitshortlog='git shortlog -sn --all --no-merges --since="1 year ago" | cat'
 ## Devcontainer
 alias dec='devcontainer --workspace-folder $(pwd)'
 alias decu='devcontainer up --workspace-folder $(pwd)'
 alias dece='devcontainer exec --workspace-folder $(pwd)'
 alias deca='devcontainer exec --workspace-folder $(pwd) /bin/zsh'
 ## Misc
+alias e='$EDITOR'
 alias dui='dua i'
 alias 7z='7zz' # 7zz is the official 7zip binary for unix, 7z is for the unmaintained p7zip
 alias dpod='devpod'
@@ -115,6 +115,12 @@ alias marp-serve="docker run --rm --init -v \"./:/home/marp/app:Z\" -e LANG=$LAN
 # kubectl
 alias kcn='kubens'
 alias kcx='kubectx'
+
+gitshortlog() {
+    local _since="${1:-1}"
+    _since="${_since} year ago"
+    git shortlog -sn --all --no-merges --since="${_since}"
+}
 
 # Updating stuff
 update_tools() {
