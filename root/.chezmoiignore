@@ -24,7 +24,7 @@
 
 {{ if or .ephemeral .headless }}
 .wezterm.lua
-.local
+.local/*
 !.local/bin
 {{ end }}
 

@@ -1,0 +1,9 @@
+#/usr/bin/env sh
+
+if [ ! -z "$CONAN_VERSION" ]; then
+  with_conan="conan==${CONAN_VERSION}"
+else
+  with_conan="conan"
+fi
+
+uv run --with pip-system-certs --with "${with_conan}" conan "$@"
