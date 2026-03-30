@@ -31,10 +31,10 @@
 	tool = nvimdiff
 [difftool]
 	prompt = false
-[difftool "vim"]
+[difftool "vimdiff"]
 	prompt = false
 	cmd = vim -f -d \"$LOCAL\" \"$REMOTE\"
-[difftool "nvim"]
+[difftool "nvimdiff"]
 	prompt = false
 	cmd = nvim -f -d \"$LOCAL\" \"$REMOTE\"
 [difftool "vscode"]
@@ -43,19 +43,19 @@
 [merge]
 	keepBackup = false
 	tool = nvimdiff
-[mergetool "vim"]
-	cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+[mergetool "vimdiff"]
+	cmd = vim -f -d
 	path = ''
 	prompt = false
 	keepBackup = false
 	keepTemporaries = false
 	trustExitCode = false
-[mergetool "nvim"]
-	cmd = nvim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
-	path = ''
+	layout = "LOCAL,MERGED,REMOTE + (LOCAL/BASE/REMOTE),MERGED + LOCAL,BASE,REMOTE / MERGED + @LOCAL,BASE,REMOTE + @LOCAL,REMOTE + (LOCAL/REMOTE),MERGED + LOCAL,REMOTE / MERGED "
+[mergetool "nvimdiff"]
 	prompt = false
 	keepBackup = false
 	keepTemporaries = false
+	layout = "LOCAL,MERGED,REMOTE + (LOCAL/BASE/REMOTE),MERGED + LOCAL,BASE,REMOTE / MERGED + @LOCAL,BASE,REMOTE + @LOCAL,REMOTE + (LOCAL/REMOTE),MERGED + LOCAL,REMOTE / MERGED "
 [mergetool "vscode"]
 	prompt = false
 	cmd = code --wait \"$MERGED\"
