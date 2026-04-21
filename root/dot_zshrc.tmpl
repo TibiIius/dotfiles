@@ -122,6 +122,22 @@ gitshortlog() {
     git shortlog -sn --all --no-merges --since="${_since}"
 }
 
+s256() {
+    if [[ -z $1 ]]; then
+        echo "Usage: s256 <string>"
+        return 1
+    fi
+    echo -n "$1" | sha256sum
+}
+
+s256r() {
+    if [[ -z $1 ]]; then
+        echo "Usage: s256r <url>"
+        return 1
+    fi
+    curl -L "$1" | sha256sum
+}
+
 # Updating stuff
 update_tools() {
     if ! sudo ls &> /dev/null; then
