@@ -17,6 +17,15 @@ local function scheme_for_appearance(appearance)
 		return "Catppuccin Latte"
 	end
 end
+local function bg_for_appearance(appearance)
+	if appearance:find("Dark") then
+		-- return "black" -- for OLED
+		return wezterm.color.get_builtin_schemes()[scheme_for_appearance(appearance)].background
+	else
+		-- return wezterm.color.get_builtin_schemes()[scheme_for_appearance(appearance)].background -- i prefer pure white for now
+		return "white"
+	end
+end
 
 local function is_os(os)
 	return string.lower(wezterm.target_triple):find(os) ~= nil
@@ -26,14 +35,14 @@ wezterm.on("window-config-reloaded", function(window, pane)
 	local appearance = wezterm.gui.get_appearance()
 	local appearance_lower = appearance:lower()
 	local tmp_folder = os.getenv("TMPDIR")
-			or os.getenv("TMP")
-			or is_os("windows") and (string.format("%s\\Temp", os.getenv("USERPROFILE")))
-			or "/tmp"
+		or os.getenv("TMP")
+		or is_os("windows") and (string.format("%s\\Temp", os.getenv("USERPROFILE")))
+		or "/tmp"
 	io.open(string.format("%s/.wezterm_appearance", tmp_folder), "w"):write(appearance):close()
 	local config_path = os.getenv("XDG_CONFIG_HOME")
-			or (os.getenv("HOME") and string.format("%s/.config", os.getenv("HOME")))
-			or is_os("windows") and os.getenv("APPDATA")
-			or nil
+		or (os.getenv("HOME") and string.format("%s/.config", os.getenv("HOME")))
+		or is_os("windows") and os.getenv("APPDATA")
+		or nil
 	if not config_path then
 		return
 	end
@@ -46,9 +55,20 @@ wezterm.on("window-config-reloaded", function(window, pane)
 end)
 
 tabline.setup({
+	theme = scheme_for_appearance(get_appearance()),
 	options = {
+		theme_overrides = {
+			normal_mode = {
+				b = { bg = bg_for_appearance(get_appearance()) },
+				c = { bg = bg_for_appearance(get_appearance()) },
+			},
+			tab = {
+				active = { bg = bg_for_appearance(get_appearance()) },
+				inactive = { bg = bg_for_appearance(get_appearance()) },
+				inactive_hover = { bg = bg_for_appearance(get_appearance()) },
+			},
+		},
 		icons_enabled = true,
-		theme = scheme_for_appearance(get_appearance()),
 		tabs_enabled = true,
 		section_separators = {
 			left = wezterm.nerdfonts.pl_left_hard_divider,
@@ -78,10 +98,11 @@ tabline.setup({
 	extensions = {},
 })
 
-tabline.apply_to_config(config)
-
 config = {
 	color_scheme = scheme_for_appearance(get_appearance()),
+	colors = {
+		background = bg_for_appearance(get_appearance()),
+	},
 	set_environment_variables = {
 		PATH = "/opt/homebrew/bin" .. os.getenv("PATH"),
 		SYSTEM_APPEARANCE = get_appearance(),
@@ -177,10 +198,21 @@ config = {
 	-- term = "wezterm",
 	window_decorations = is_os("darwin")
 			and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
-			or "INTEGRATED_BUTTONS | TITLE | RESIZE",
+		or "INTEGRATED_BUTTONS | TITLE | RESIZE",
 	integrated_title_button_style = is_os("darwin") and "MacOsNative" or is_os("linux") and "Gnome" or "Windows",
 	native_macos_fullscreen_mode = true,
 }
 
--- and finally, return the configuration to wezterm
+tabline.apply_to_config(config)
+
+config.window_padding = {
+	left = 6,
+	right = 6,
+	top = 6,
+	bottom = 6,
+}
+config.window_decorations = is_os("darwin")
+		and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
+	or "INTEGRATED_BUTTONS | TITLE | RESIZE"
+
 return config
