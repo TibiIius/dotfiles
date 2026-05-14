@@ -35,14 +35,14 @@ wezterm.on("window-config-reloaded", function(window, pane)
 	local appearance = wezterm.gui.get_appearance()
 	local appearance_lower = appearance:lower()
 	local tmp_folder = os.getenv("TMPDIR")
-		or os.getenv("TMP")
-		or is_os("windows") and (string.format("%s\\Temp", os.getenv("USERPROFILE")))
-		or "/tmp"
+			or os.getenv("TMP")
+			or is_os("windows") and (string.format("%s\\Temp", os.getenv("USERPROFILE")))
+			or "/tmp"
 	io.open(string.format("%s/.wezterm_appearance", tmp_folder), "w"):write(appearance):close()
 	local config_path = os.getenv("XDG_CONFIG_HOME")
-		or (os.getenv("HOME") and string.format("%s/.config", os.getenv("HOME")))
-		or is_os("windows") and os.getenv("APPDATA")
-		or nil
+			or (os.getenv("HOME") and string.format("%s/.config", os.getenv("HOME")))
+			or is_os("windows") and os.getenv("APPDATA")
+			or nil
 	if not config_path then
 		return
 	end
@@ -198,9 +198,10 @@ config = {
 	-- term = "wezterm",
 	window_decorations = is_os("darwin")
 			and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
-		or "INTEGRATED_BUTTONS | TITLE | RESIZE",
+			or "INTEGRATED_BUTTONS | TITLE | RESIZE",
 	integrated_title_button_style = is_os("darwin") and "MacOsNative" or is_os("linux") and "Gnome" or "Windows",
 	native_macos_fullscreen_mode = true,
+	enable_wayland = false
 }
 
 tabline.apply_to_config(config)
@@ -213,6 +214,6 @@ config.window_padding = {
 }
 config.window_decorations = is_os("darwin")
 		and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
-	or "INTEGRATED_BUTTONS | TITLE | RESIZE"
+		or "INTEGRATED_BUTTONS | TITLE | RESIZE"
 
 return config
