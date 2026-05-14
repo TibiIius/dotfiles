@@ -25,13 +25,13 @@
 			},
 			"models": {
 				"qwen/qwen3.6-35b-a3b": {
-					"name": "Qwen 3.5 35B A3B (5090)"
+					"name": "Qwen 3.6 35B A3B (5090)"
 				},
-				"qwen/qwen3-coder-next": {
-					"name": "Qwen 3 Coder Next (5090)"
+				"openai/gpt-oss-20b": {
+					"name": "GPT OSS 20B (5090)"
 				},
-				"qwen/qwen3-next-80b": {
-					"name": "Qwen 3 Next 80B (5090)"
+				"google/Gemma-4-31b": {
+					"name": "Gemma 4 31B (5090)"
 				}
 			}
 		}
