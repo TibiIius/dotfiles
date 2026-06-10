@@ -109,7 +109,7 @@ config = {
 		WSL_ENV = "TERMINFO_DIRS:SYSTEM_APPEARANCE",
 	},
 	leader = {
-		key = "phys:G",
+		key = "phys:H",
 		mods = "CTRL",
 		timeout_milliseconds = 10000,
 	},
