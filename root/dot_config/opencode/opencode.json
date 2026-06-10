@@ -25,13 +25,16 @@
 			},
 			"models": {
 				"qwen/qwen3.6-35b-a3b": {
-					"name": "Qwen 3.6 35B A3B (5090)"
+					"name": "Qwen 3.6 35B A3B (5090)",
+					"limit": {
+						"context": "262144"
+					}
 				},
 				"openai/gpt-oss-20b": {
 					"name": "GPT OSS 20B (5090)"
 				},
-				"google/Gemma-4-31b": {
-					"name": "Gemma 4 31B (5090)"
+				"google/gemma-4-26b-a4b": {
+					"name": "Gemma 4 26B A4B (5090)"
 				}
 			}
 		}
