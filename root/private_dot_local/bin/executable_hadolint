@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 DOCKER_RUN_COMMAND="$($HOME/.local/bin/flatpak-host-runner docker run -i --rm hadolint/hadolint hadolint)"
 
 dockerfile="$1"
