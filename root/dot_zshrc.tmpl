@@ -152,40 +152,6 @@ update_tools() {
     [[ $(command -v mise) ]] && mise self-update --yes && mise upgrade
 }
 
-# Tmux
-#if [[ $(command -v tmux) ]]; then
-#  # We check if ${TMUX_EXEC} exists, otherwise we encounter recoursion when sourcing again
-#  if [[ -z "${TMUX_EXEC}" ]]; then
-#    TMUX_EXEC=$(command -v tmux)
-#
-#    ## Function for convenience
-#    tmux() {
-#      if [ -z "$1" ]; then
-#        $TMUX_EXEC
-#      else
-#        if [ "$1" = "a" ] && ! $TMUX_EXEC has-session 2>/dev/null; then
-#          $TMUX_EXEC
-#        else
-#          $TMUX_EXEC $@
-#        fi
-#      fi
-#    }
-#  fi
-#
-#{{ if eq .machineType "server" }}
-#  ## SSH connection
-#  if [[ "${SSH_CONNECTION}" ]] && [[ ! "${TERM_PROGRAM}" = "vscode" ]]; then
-#    # Create a new SSH Tmux session if there is none
-#    if ! $(${TMUX_EXEC} has-session -t ssh); then
-#      ${TMUX_EXEC} new-session -s ssh -d
-#    fi
-#    if [[ -z "${TMUX}" ]]; then
-#      ${TMUX_EXEC} a -t ssh
-#    fi
-#  fi
-#{{ end }}
-#fi
-
 {{ if eq .chezmoi.os "darwin" }}
 # Filter some network stuff
 applevz_network() {
