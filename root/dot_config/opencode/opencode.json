@@ -11,7 +11,7 @@
 			},
 			"models": {
 				"google/gemma-4-e4b": {
-					"name": "Gemma 4-e4b (local)",
+					"name": "Gemma 4 E4B",
 					"limit": {
 						"context": 32192,
 						"output": 4096
@@ -27,42 +27,42 @@
 			},
 			"models": {
 				"qwen/qwen3-coder-30b": {
-					"name": "Qwen 3 Coder 30B (5090)",
+					"name": "Qwen 3 Coder 30B",
 					"limit": {
 						"context": 262144,
 						"output": 128000
 					}
 				},
 				"qwen/qwen3.6-35b-a3b": {
-					"name": "Qwen 3.6 35B A3B (5090)",
+					"name": "Qwen 3.6 35B A3B",
 					"limit": {
 						"context": 262144,
 						"output": 128000
 					}
 				},
 				"qwen/qwen3.6-27b": {
-					"name": "Qwen 3.6 27B (5090)",
+					"name": "Qwen 3.6 27B",
 					"limit": {
 						"context": 128000,
 						"output": 48000
 					}
 				},
 				"google/gemma-4-26b-a4b": {
-					"name": "Gemma 4 26B A4B (5090)",
+					"name": "Gemma 4 26B A4B",
 					"limit": {
 						"context": 178000,
 						"output": 96000
 					}
 				},
 				"google/gemma-4-26b-a4b-qat": {
-					"name": "Gemma 4 26B A4B QAT (5090)",
+					"name": "Gemma 4 26B A4B QAT",
 					"limit": {
 						"context": 226000,
 						"output": 96000
 					}
 				},
 				"google/gemma-4-31b-qat": {
-					"name": "Gemma 4 31B QAT (5090)",
+					"name": "Gemma 4 31B QAT",
 					"limit": {
 						"context": 48000,
 						"output": 8192
