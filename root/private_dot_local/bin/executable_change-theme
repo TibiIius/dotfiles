@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 
 dark_theme() {
-  sed -i "s/let g:material_theme_style = 'lighter'/let g:material_theme_style = 'palenight'/g" /home/tim/.config/nvim/colors.vim
   gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 }
 
 light_theme() {
-  sed -i "s/let g:material_theme_style = 'palenight'/let g:material_theme_style = 'lighter'/g" /home/tim/.config/nvim/colors.vim
   gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
 }
 
 check_files() {
-  # neovim
-  [[ ! -f /home/tim/.config/nvim/colors.vim ]] && printf "let g:material_theme_style = 'darker'\ncolorscheme material\nif has(\"termguicolors\") \" set true colors\n  set t_8f=\[[38;2;%lu;%lu;%lum\n  set t_8b=\[[48;2;%lu;%lu;%lum\n  set termguicolors\nendif" > /home/tim/.config/nvim/colors.vim
 }
 
 main() {
