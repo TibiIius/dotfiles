@@ -35,14 +35,14 @@ wezterm.on("window-config-reloaded", function(window, pane)
 	local appearance = wezterm.gui.get_appearance()
 	local appearance_lower = appearance:lower()
 	local tmp_folder = os.getenv("TMPDIR")
-			or os.getenv("TMP")
-			or is_os("windows") and (string.format("%s\\Temp", os.getenv("USERPROFILE")))
-			or "/tmp"
+		or os.getenv("TMP")
+		or is_os("windows") and (string.format("%s\\Temp", os.getenv("USERPROFILE")))
+		or "/tmp"
 	io.open(string.format("%s/.wezterm_appearance", tmp_folder), "w"):write(appearance):close()
 	local config_path = os.getenv("XDG_CONFIG_HOME")
-			or (os.getenv("HOME") and string.format("%s/.config", os.getenv("HOME")))
-			or is_os("windows") and os.getenv("APPDATA")
-			or nil
+		or (os.getenv("HOME") and string.format("%s/.config", os.getenv("HOME")))
+		or is_os("windows") and os.getenv("APPDATA")
+		or nil
 	if not config_path then
 		return
 	end
@@ -51,6 +51,20 @@ wezterm.on("window-config-reloaded", function(window, pane)
 	if zsh_fsh_for_theme then
 		io.open(config_path .. "/fsh/theme.ini", "w"):write(zsh_fsh_for_theme:read("*a")):close()
 		zsh_fsh_for_theme:close()
+	end
+
+	local success, _, stderr = wezterm.run_child_process({
+		os.getenv("HOME") .. "/.local/bin/mise",
+		"x",
+		"zellij@latest",
+		"--",
+		"zellij",
+		"action",
+		"set-" .. appearance_lower .. "-theme",
+	})
+
+	if not success then
+		wezterm.log_error("could not change zellij theme: " .. stderr)
 	end
 end)
 
@@ -91,7 +105,7 @@ tabline.setup({
 			{ "process", padding = { left = 0, right = 1 } },
 		},
 		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-		tabline_x = {},
+		tabline_x = { "ram", "cpu" },
 		tabline_y = { "datetime", "battery" },
 		tabline_z = { "domain" },
 	},
@@ -104,7 +118,7 @@ config = {
 		background = bg_for_appearance(get_appearance()),
 	},
 	set_environment_variables = {
-		PATH = "/opt/homebrew/bin" .. os.getenv("PATH"),
+		PATH = "/opt/homebrew/bin" .. os.getenv("PATH") .. ":" .. os.getenv("HOME") .. "/.local/bin",
 		SYSTEM_APPEARANCE = get_appearance(),
 		WSL_ENV = "TERMINFO_DIRS:SYSTEM_APPEARANCE",
 	},
@@ -198,10 +212,10 @@ config = {
 	-- term = "wezterm",
 	window_decorations = is_os("darwin")
 			and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
-			or "INTEGRATED_BUTTONS | TITLE | RESIZE",
+		or "INTEGRATED_BUTTONS | TITLE | RESIZE",
 	integrated_title_button_style = is_os("darwin") and "MacOsNative" or is_os("linux") and "Gnome" or "Windows",
 	native_macos_fullscreen_mode = true,
-	enable_wayland = false
+	enable_wayland = false,
 }
 
 tabline.apply_to_config(config)
@@ -214,6 +228,6 @@ config.window_padding = {
 }
 config.window_decorations = is_os("darwin")
 		and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
-		or "INTEGRATED_BUTTONS | TITLE | RESIZE"
+	or "INTEGRATED_BUTTONS | TITLE | RESIZE"
 
 return config
