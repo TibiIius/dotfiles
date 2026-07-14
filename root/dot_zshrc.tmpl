@@ -1,10 +1,10 @@
 # Antidote clone location
 export ANTIDOTE_CLONE_LOCATION=${HOME}/.antidote
 
+autoload -Uz compinit && compinit
+
 # Source antidote.
 source ${ANTIDOTE_CLONE_LOCATION}/antidote.zsh
-
-autoload -Uz compinit && compinit
 
 # mise
 [[ $(command -v mise) ]] && eval "$(mise activate zsh)"
@@ -255,7 +255,7 @@ function y() {
 [[ -f $HOME/.zshrc.ds ]] && source $HOME/.zshrc.ds
 [[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
 
-[[ $(command -v docker) ]] && eval "$(docker completion zsh)"
+[[ $(command -v docker) ]] && zsh-defer 'eval "$(docker completion zsh)"'
 
 # direnv
 eval "$(direnv hook zsh)"
