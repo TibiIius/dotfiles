@@ -27,6 +27,7 @@
 [pull]
 	rebase = true
 [diff]
+	external = difft
 	prompt = false
 	tool = nvimdiff
 [difftool]
@@ -40,6 +41,8 @@
 [difftool "vscode"]
 	prompt = false
 	cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
+[difftool "difftastic"]
+	cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
 [merge]
 	keepBackup = false
 	tool = nvimdiff
