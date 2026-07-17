@@ -184,7 +184,7 @@ config = {
 		italic = false,
 		weight = "Regular",
 	}),
-	font_size = is_os("darwin") and 13.0 or 9.5,
+	font_size = is_os("darwin") and 15.0 or 11.5,
 	line_height = 1.4,
 	use_fancy_tab_bar = false,
 	show_new_tab_button_in_tab_bar = false,

@@ -119,6 +119,9 @@ alias marp-serve="docker run --rm --init -v \"./:/home/marp/app:Z\" -e LANG=$LAN
 alias kcn='kubens'
 alias kcx='kubectx'
 
+# Github PAT
+export GITHUB_TOKEN="$(gh auth token)"
+
 gitshortlog() {
     local _since="${1:-1}"
     _since="${_since} year ago"
@@ -237,6 +240,29 @@ git_fml() {
         echo "Index lock exists, aborting..."
         return 1
     fi
+}
+
+# Funcs
+
+checkout_branch() {
+for x in ./*; do
+  if [ -d "$x" ]; then
+    pushd ${x}
+    branch=${1:-master}
+    echo "Checking out branch ${branch} in ${x}"
+    git fetch --prune --all
+    git checkout ${branch}
+    git rebase
+    git submodule update --init
+    popd
+  fi
+done
+}
+
+cleanup_builds() {
+for x in $(fd build -t d --no-ignore-vcs); do
+  rm -rf ${x}
+done
 }
 
 # K8s
