@@ -12,6 +12,7 @@
 .config/atuin
 
 .local/share/*
+!.local/share/zellij
   {{ if not (or .headless .ephemeral) }}
   !.local/share/fonts
   {{ end }}

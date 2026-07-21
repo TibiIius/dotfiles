@@ -4,7 +4,7 @@ layout {
 	{{- if eq .chezmoi.os "linux" }}
             plugin location="file:~/repos/zjstatus/target/wasm32-wasip1/release/zjstatus.wasm" {
 	{{- else if eq .chezmoi.os "darwin" }}
-            plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+            plugin location="file:~/.local/share/zellij/plugins/zjstatus.wasm" {
 	{{- end }}
                 hide_frame_except_for_search "true"
 
