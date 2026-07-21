@@ -16,6 +16,8 @@
 	smudge = git-lfs smudge -- %f
 [log]
 	decorate = true
+[checkout]
+	defaultRemote = origin
 [push]
 {{- if not (eq .machineType "work") }}
 	followTags = true
