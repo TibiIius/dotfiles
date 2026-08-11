@@ -10,3 +10,6 @@ mkdir -p $HOME/.zfunc
 [[ $(command -v chezmoi) ]] && chezmoi completion zsh > ~/.zfunc/_chezmoi
 [[ $(command -v poe) ]]     && poe _zsh_completion > ~/.zfunc/_poe
 [[ $(command -v zellij) ]]  && zellij setup --generate-completion zsh > ~/.zfunc/_zellij
+
+# Extend PATH variable
+export PATH=$HOME/.local/bin:$HOME/.local/share/mise/shims:/usr/local/bin:$PATH
