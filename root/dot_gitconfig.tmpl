@@ -65,8 +65,8 @@
 	prompt = false
 	cmd = code --wait \"$MERGED\"
 [interactive]
-	diffFilter = delta --color-only --diff-so-fancy --detect-dark-light=always
+	diffFilter = delta --color-only --navigate=false
 [delta]
-	navigate = true  # use n and N to move between diff sections
+	navigate = false
 [pager]
 	blame = delta
