@@ -13,3 +13,6 @@ mkdir -p $HOME/.zfunc
 
 # Extend PATH variable
 export PATH=$HOME/.local/bin:$HOME/.local/share/mise/shims:/usr/local/bin:$PATH
+
+# Added by Toolbox App
+export PATH="$PATH:/home/tina/.local/share/JetBrains/Toolbox/scripts"
