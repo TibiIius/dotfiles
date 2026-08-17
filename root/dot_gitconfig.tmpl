@@ -65,8 +65,10 @@
 	prompt = false
 	cmd = code --wait \"$MERGED\"
 [interactive]
-	diffFilter = delta --color-only --navigate=false
+	diffFilter = delta --color-only --navigate=false --no-header
 [delta]
 	navigate = false
+	header-file-name = false
+	header-file-size = false
 [pager]
 	blame = delta
