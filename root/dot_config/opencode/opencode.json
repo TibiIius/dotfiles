@@ -12,6 +12,15 @@
 			"headers": {
 				"Authorization": "Bearer {env:GITHUB_TOKEN}"
 			}
+		},
+		"gitgo": {
+			"type": "local",
+			"command": ["gitgo", "mcp"]
+		},
+		"exa": {
+			"type": "remote",
+			"url": "https://mcp.exa.ai/mcp",
+			"enabled": true
 		}
 	},
 	"provider": {
@@ -54,7 +63,7 @@
 						"low": { "reasoningEffort": "low" },
 						"none": { "reasoningEffort": "none" }
 					}
-				},
+				}
 			}
 		},
 		"lmstudio-5090": {
@@ -89,7 +98,7 @@
 						"low": { "reasoningEffort": "low" },
 						"none": { "reasoningEffort": "none" }
 					}
-				},
+				}
 			}
 		},
 		"unsloth-studio-5090": {
@@ -117,10 +126,9 @@
 					"limit": {
 						"context": 130000,
 						"output": 48000
-					},
-				},
+					}
+				}
 			}
 		}
 	}
 }
-
