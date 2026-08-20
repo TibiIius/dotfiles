@@ -3,6 +3,17 @@
 	"lsp": true,
 	"instructions": ["instructions/*.md"],
 	"plugin": ["./plugins/falcode.js"],
+	"mcp": {
+		"github": {
+			"type": "remote",
+			"url": "https://api.githubcopilot.com/mcp/",
+			"enabled": true,
+			"oauth": false,
+			"headers": {
+				"Authorization": "Bearer {env:GITHUB_TOKEN}"
+			}
+		}
+	},
 	"provider": {
 		"lmstudio": {
 			"npm": "@ai-sdk/openai-compatible",
@@ -78,6 +89,35 @@
 						"low": { "reasoningEffort": "low" },
 						"none": { "reasoningEffort": "none" }
 					}
+				},
+			}
+		},
+		"unsloth-studio-5090": {
+			"npm": "@ai-sdk/openai-compatible",
+			"name": "Unsloth Studio (5090)",
+			"options": {
+				"baseURL": "http://192.168.178.195:8889/v1"
+			},
+			"models": {
+				"lmstudio-community/qwen3.8-27b": {
+					"name": "Qwen 3.8 27B",
+					"limit": {
+						"context": 120000,
+						"output": 48000
+					},
+					"variants": {
+						"xhigh": { "reasoningEffort": "xhigh" },
+						"medium": { "reasoningEffort": "medium" },
+						"low": { "reasoningEffort": "low" },
+						"none": { "reasoningEffort": "none" }
+					}
+				},
+				"unsloth/Qwen3-Coder-Next-GGUF": {
+					"name": "Qwen 3 Coder Next",
+					"limit": {
+						"context": 130000,
+						"output": 48000
+					},
 				},
 			}
 		}
