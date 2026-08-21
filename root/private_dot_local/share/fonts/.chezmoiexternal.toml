@@ -47,3 +47,9 @@ format = "zip"
 stripComponents = 1
 include = ["Inter Desktop/**"]
 url = "https://github.com/rsms/inter/releases/download/v3.19/Inter-3.19.zip"
+
+["Monaspace Nerdfonts"]
+type = "archive"
+format = "zip"
+stripComponents = 1
+url = "https://github.com/githubnext/monaspace/releases/download/v1.400/monaspace-nerdfonts-v1.400.zip"
