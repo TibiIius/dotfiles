@@ -181,14 +181,9 @@ config = {
 	},
 	font = wezterm.font_with_fallback({
 		{ family = "Monaspace Neon NF", weight = "Regular" },
-		{
-			family = "Liga SFMono Nerd Font",
-			bold = false,
-			italic = false,
-			weight = "Regular",
-		},
+		{ family = "Liga SFMono Nerd Font", weight = "Regular" },
 	}),
-	font_size = is_os("darwin") and 15.0 or 12,
+	font_size = is_os("darwin") and 16.0 or 12,
 	line_height = 1.3,
 	use_fancy_tab_bar = false,
 	show_new_tab_button_in_tab_bar = false,
