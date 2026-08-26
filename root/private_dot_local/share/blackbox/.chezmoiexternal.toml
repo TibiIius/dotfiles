@@ -1,0 +1,6 @@
+["catppuccin"]
+type = "archive"
+url = "https://github.com/catppuccin/tilix/archive/07e53fce36e2162242c8b70f15996841df8f7ce2.zip"
+include = ["*/themes/**"]
+stripComponents = 2
+targetPath = "./schemes"
