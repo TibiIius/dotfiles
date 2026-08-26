@@ -47,6 +47,7 @@
 	cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
 [merge]
 	keepBackup = false
+	keepTemporaries = false
 	tool = nvimdiff
 [mergetool "vimdiff"]
 	cmd = vim -f -d
