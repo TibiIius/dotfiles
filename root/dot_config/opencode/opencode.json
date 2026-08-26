@@ -24,83 +24,6 @@
 		}
 	},
 	"provider": {
-		"lmstudio": {
-			"npm": "@ai-sdk/openai-compatible",
-			"name": "LM Studio (local)",
-			"options": {
-				"baseURL": "http://127.0.0.1:1234/v1"
-			},
-			"models": {
-				"google/gemma-4-e4b": {
-					"name": "Gemma 4 E4B",
-					"limit": {
-						"context": 32192,
-						"output": 4096
-					}
-				},
-				"qwen/qwen3.5-9b": {
-					"name": "Qwen 3.5 9B",
-					"limit": {
-						"context": 24067,
-						"output": 4096
-					},
-					"variants": {
-						"xhigh": { "reasoningEffort": "xhigh" },
-						"medium": { "reasoningEffort": "medium" },
-						"low": { "reasoningEffort": "low" },
-						"none": { "reasoningEffort": "none" }
-					}
-				},
-				"qwen/qwen3.6-35b-a3b": {
-					"name": "Qwen 3.6 35B A3B",
-					"limit": {
-						"context": 31000,
-						"output": 8192
-					},
-					"variants": {
-						"xhigh": { "reasoningEffort": "xhigh" },
-						"medium": { "reasoningEffort": "medium" },
-						"low": { "reasoningEffort": "low" },
-						"none": { "reasoningEffort": "none" }
-					}
-				}
-			}
-		},
-		"lmstudio-5090": {
-			"npm": "@ai-sdk/openai-compatible",
-			"name": "LM Studio (5090)",
-			"options": {
-				"baseURL": "http://192.168.178.195:1234/v1"
-			},
-			"models": {
-				"qwen/qwen3.6-27b": {
-					"name": "Qwen 3.6 27B",
-					"limit": {
-						"context": 120000,
-						"output": 48000
-					},
-					"variants": {
-						"xhigh": { "reasoningEffort": "xhigh" },
-						"medium": { "reasoningEffort": "medium" },
-						"low": { "reasoningEffort": "low" },
-						"none": { "reasoningEffort": "none" }
-					}
-				},
-				"qwen/qwen3.8-27b": {
-					"name": "Qwen 3.8 27B",
-					"limit": {
-						"context": 120000,
-						"output": 48000
-					},
-					"variants": {
-						"xhigh": { "reasoningEffort": "xhigh" },
-						"medium": { "reasoningEffort": "medium" },
-						"low": { "reasoningEffort": "low" },
-						"none": { "reasoningEffort": "none" }
-					}
-				}
-			}
-		},
 		"unsloth-studio-5090": {
 			"npm": "@ai-sdk/openai-compatible",
 			"name": "Unsloth Studio (5090)",
@@ -108,11 +31,11 @@
 				"baseURL": "http://192.168.178.195:8889/v1"
 			},
 			"models": {
-				"lmstudio-community/qwen3.8-27b": {
+				"unsloth/Qwen3.8-27B-GGUF": {
 					"name": "Qwen 3.8 27B",
 					"limit": {
-						"context": 120000,
-						"output": 48000
+						"context": 192000,
+						"output": 64000
 					},
 					"variants": {
 						"xhigh": { "reasoningEffort": "xhigh" },
@@ -124,8 +47,15 @@
 				"unsloth/Qwen3-Coder-Next-GGUF": {
 					"name": "Qwen 3 Coder Next",
 					"limit": {
-						"context": 130000,
-						"output": 48000
+						"context": 262000,
+						"output": 96000
+					}
+				},
+				"ornith-ai/Ornith-1.5-35B-A3B-GGUF": {
+					"name": "Ornith 1.5 35B A3B",
+					"limit": {
+						"context": 262000,
+						"output": 96000
 					}
 				}
 			}
