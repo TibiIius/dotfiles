@@ -202,31 +202,22 @@ config = {
 		}),
 		font_size = is_os("darwin") and 13.0 or 9.5,
 	},
-	window_padding = {
-		left = 6,
-		right = 6,
-		top = 6,
-		bottom = 6,
-	},
 	-- term = "wezterm",
-	window_decorations = is_os("darwin")
-			and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
-		or "INTEGRATED_BUTTONS | TITLE | RESIZE",
 	integrated_title_button_style = is_os("darwin") and "MacOsNative" or is_os("linux") and "Gnome" or "Windows",
 	native_macos_fullscreen_mode = true,
-	enable_wayland = false,
+	enable_wayland = true,
 }
 
 tabline.apply_to_config(config)
 
 config.window_padding = {
-	left = 6,
-	right = 6,
-	top = 6,
-	bottom = 6,
+	left = 9,
+	right = 9,
+	top = 9,
+	bottom = 9,
 }
 config.window_decorations = is_os("darwin")
 		and "MACOS_FORCE_ENABLE_SHADOW | TITLE | RESIZE | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
-	or "INTEGRATED_BUTTONS | TITLE | RESIZE"
+	or "INTEGRATED_BUTTONS | RESIZE"
 
 return config
