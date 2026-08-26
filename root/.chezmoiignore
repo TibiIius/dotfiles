@@ -13,6 +13,7 @@
 
 .local/share/*
 !.local/share/zellij
+!.local/share/blackbox
   {{ if not (or .headless .ephemeral) }}
   !.local/share/fonts
   {{ end }}
