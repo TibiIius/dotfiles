@@ -4,6 +4,12 @@
 	"instructions": ["instructions/*.md"],
 	"plugin": ["./plugins/falcode.js"],
 	"mcp": {
+		{{- if not (eq .machineType "work") }}
+		"exa": {
+			"type": "remote",
+			"url": "https://mcp.exa.ai/mcp",
+			"enabled": true
+		},
 		"github": {
 			"type": "remote",
 			"url": "https://api.githubcopilot.com/mcp/",
@@ -13,14 +19,10 @@
 				"Authorization": "Bearer {env:GITHUB_TOKEN}"
 			}
 		},
+		{{ end }}
 		"gitgo": {
 			"type": "local",
 			"command": ["gitgo", "mcp"]
-		},
-		"exa": {
-			"type": "remote",
-			"url": "https://mcp.exa.ai/mcp",
-			"enabled": true
 		}
 	},
 	"provider": {
