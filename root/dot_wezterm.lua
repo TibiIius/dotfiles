@@ -204,6 +204,8 @@ config = {
 	},
 	-- term = "wezterm",
 	integrated_title_button_style = is_os("darwin") and "MacOsNative" or is_os("linux") and "Gnome" or "Windows",
+	integrated_title_button_alignment = "Left",
+	integrated_title_buttons = is_os("darwin") and { "Close", "Hide", "Maximize" } or is_os("linux") and { "Close" },
 	native_macos_fullscreen_mode = true,
 	enable_wayland = true,
 }
