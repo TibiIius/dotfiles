@@ -50,7 +50,6 @@ export GIT_EDITOR="${VISUAL}"
 [[ $(command -v dust) ]] && alias du='dust'
 [[ $(command -v yazi) ]] && alias ranger='yazi'
 ## Git aliases
-alias gg='gitgo'
 alias lgit='lazygit'
 alias gits='git status'
 alias gitco='git checkout'
@@ -83,6 +82,14 @@ alias gitsmu='git submodule update --init'
 alias gitsmui='git submodule update --init'
 alias gitmr='git merge'
 alias gitmrt='git mergetool'
+## Gitgo
+alias gg='gitgo'
+alias ggb='gitgo branch'
+alias ggm='gitgo mr'
+alias ggs='gitgo status'
+alias ggc='gitgo commit'
+alias ggcp='gitgo commit'
+alias ggt='gitgo template'
 ## Devcontainer
 alias dec='devcontainer --workspace-folder $(pwd)'
 alias decu='devcontainer up --workspace-folder $(pwd)'
