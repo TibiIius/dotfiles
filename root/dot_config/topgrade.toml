@@ -28,55 +28,7 @@ pre_sudo = true
 
 # Disable specific steps - same options as the command line flag
 # [possible values: am, android_studio, antigravity, app_man, aqua, asdf, atom, atuin, audit, auto_cpufreq, bin, bob, brew_cask, brew_formula, bun, bun_packages, cargo, certbot, chezmoi, chocolatey, choosenim, cinnamon_spices, clam_av_db, claude_code, claude_code_plugins, codex, colima, composer, conda, config_update, containers, cursor, cursor_agent, custom_commands, deb_get, deno, distrobox, dkp_pacman, dotnet, elan, emacs, falconf, firmware, flatpak, flutter, fossil, gcloud, gearlever, gem, getnf, ghcup, git_repos, github_cli_extensions, gnome_shell_extensions, go, guix, haxelib, helix, helix_db, helm, home_manager, hyprpm, install_release, jetbrains_aqua, jetbrains_clion, jetbrains_datagrip, jetbrains_dataspell, jetbrains_gateway, jetbrains_goland, jetbrains_idea, jetbrains_mps, jetbrains_phpstorm, jetbrains_pycharm, jetbrains_rider, jetbrains_rubymine, jetbrains_rustrover, jetbrains_toolbox, jetbrains_webstorm, jetpack, julia, juliaup, kakoune, krew, lensfun, lure, macports, mamba, mandb, mas, maza, micro, microsoft_office, microsoft_store, miktex, mise, myrepos, nix, nix_helper, node, ollama, opam, opencode, pacdef, pacstall, pearl, pi, pip3, pip_review, pip_review_local, pipupgrade, pipx, pipxu, pixi, pkg, pkgfile, pkgin, pkgit, platformio_core, pnpm, poetry, powershell, protonplus, protonup, pyenv, raco, rcm, remotes, restarts, rtcl, ruby_gems, rustup, rye, scoop, sdkman, self_update, sera, sheldon, shell, skills, snap, soar, sparkle, spicetify, stack, stew, system, tldr, tlmgr, tmux, toolbx, tpack, typst, uv, vagrant, vcpkg, vim, vite_plus, volta_packages, vscode, vscode_insiders, vscodium, vscodium_insiders, waydroid, windsurf, winget, wsl, wsl_update, xcodes, yadm, yarn, yazi, zerobrew, zigup, zvm]
-disable = [
-  "pip3",
-  "skills",
-  "pip_review",
-  "pip_review_local",
-  "pipupgrade",
-  "pipx",
-  "pipxu",
-  "helix_db",
-  "atuin",
-  "android_studio",
-  "bun",
-  "bun_packages",
-  "cargo",
-  "colima",
-  "deno",
-  "gem",
-  "gnome_shell_extensions",
-  "go",
-  "helix",
-  "helm",
-  "rustup",
-  "jetbrains_aqua",
-  "jetbrains_clion",
-  "jetbrains_datagrip",
-  "jetbrains_dataspell",
-  "jetbrains_gateway",
-  "jetbrains_goland",
-  "jetbrains_idea",
-  "jetbrains_mps",
-  "jetbrains_phpstorm",
-  "jetbrains_pycharm",
-  "jetbrains_rider",
-  "jetbrains_rubymine",
-  "jetbrains_rustrover",
-  "jetbrains_webstorm",
-  "platformio_core",
-  "pnpm",
-  "poetry",
-  "pyenv",
-  "ruby_gems",
-  "tmux",
-  "toolbx",
-  "uv",
-  "typst",
-  "vagrant",
-  "yarn",
-  "yazi"
-]
+disable = ["flutter", "node", "containers", "pnpm", "pip3", "skills", "pip_review", "pip_review_local", "pipupgrade", "pipx", "pipxu", "helix_db", "atuin", "android_studio", "bun", "bun_packages", "cargo", "colima", "deno", "gem", "gnome_shell_extensions", "go", "helix", "helm", "rustup", "jetbrains_aqua", "jetbrains_clion", "jetbrains_datagrip", "jetbrains_dataspell", "jetbrains_gateway", "jetbrains_goland", "jetbrains_idea", "jetbrains_mps", "jetbrains_phpstorm", "jetbrains_pycharm", "jetbrains_rider", "jetbrains_rubymine", "jetbrains_rustrover", "jetbrains_webstorm", "platformio_core", "pnpm", "poetry", "pyenv", "ruby_gems", "tmux", "toolbx", "uv", "typst", "vagrant", "yarn", "yazi"]
 
 # Run these steps before all others
 first = ["chezmoi"]
@@ -539,7 +491,7 @@ bootc = true
 # (default: [] (all channels))
 # channels = ["stable"]
 
-[skills]
+# [skills]
 # Package runner to use to run the `skills` CLI when no local `skills`
 # binary is present in PATH.
 # Allowed values:
