@@ -1,7 +1,7 @@
 font-family = Monaspace Neon NF Regular
-font-size = 15
+font-size = {{ if (eq .chezmoi.os "linux") -}} 11 {{- else -}} 15 {{- end }}
 adjust-cell-height = 6
-background-opacity = 0.69
+background-opacity = {{ if (eq .chezmoi.os "linux") -}} 1 {{- else -}} 0.69 {{- end }}
 window-padding-x=9
 window-padding-y=9
 background-blur = macos-glass-regular
