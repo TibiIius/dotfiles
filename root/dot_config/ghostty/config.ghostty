@@ -1,0 +1,8 @@
+font-family = Monaspace Neon NF Regular
+font-size = 15
+adjust-cell-height = 6
+background-opacity = 0.69
+window-padding-x=9
+window-padding-y=9
+background-blur = macos-glass-regular
+theme = dark:Catppuccin Macchiato,light:Catppuccin Latte
