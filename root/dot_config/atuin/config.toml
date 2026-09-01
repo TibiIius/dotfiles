@@ -125,6 +125,9 @@ sync_address = "https://atuin.timfb.dev"
 # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
 enter_accept = true
 
+[ai]
+enabled = false
+
 #[stats]
 # Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl
 #common_subcommands = [
