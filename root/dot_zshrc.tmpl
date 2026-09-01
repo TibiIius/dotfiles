@@ -1,6 +1,12 @@
 # Antidote clone location
 export ANTIDOTE_CLONE_LOCATION=${HOME}/.antidote
 
+# oh-my-zsh plugins expect this; it is normally set by oh-my-zsh.sh, which
+# antidote does not source. Without it plugins write to /completions/...
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
+mkdir -p "$ZSH_CACHE_DIR/completions"
+fpath+=("$ZSH_CACHE_DIR/completions")
+
 autoload -Uz compinit && compinit
 
 # Source antidote.
@@ -276,7 +282,9 @@ done
 
 # K8s
 export K9S_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}"/k9s
-source <(kubectl completion zsh)
+# kubectl completion is provided by the ohmyzsh kubectl plugin (cached in
+# $ZSH_CACHE_DIR/completions), no need to shell out on every startup.
+#source <(kubectl completion zsh)
 
 # yazi integration
 function y() {
