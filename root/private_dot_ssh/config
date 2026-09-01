@@ -1,0 +1,8 @@
+Include /Users/tim/.colima/ssh_config
+Include /Users/tim/.ssh/conf.d/*.conf
+
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  SendEnv SYSTEM_APPEARANCE
+  SetEnv TERM=xterm-256color
