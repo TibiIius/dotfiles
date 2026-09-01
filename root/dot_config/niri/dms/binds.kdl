@@ -1,0 +1,6 @@
+binds {
+    Mod+BackSpace hotkey-overlay-title="Power Menu: Toggle" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+    Mod+space hotkey-overlay-title="Default Launcher: Toggle" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Print hotkey-overlay-title="Screencap" { spawn "dms" "ipc" "call" "screenCaptureToolbar" "toggle"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
+}
