@@ -1,0 +1,22 @@
+contexts:
+  default:
+    defaultProvider: docker
+    options:
+      DOTFILES_URL:
+        userProvided: true
+        value: https://github.com/tibiiius/dotfiles
+      SSH_CONFIG_PATH:
+        userProvided: true
+        value: ~/.ssh/conf.d/devsy.conf
+    providers:
+      docker:
+        creationTimestamp: "2026-07-15T16:17:23Z"
+        initialized: true
+        options:
+          DOCKER_BUILDER: {}
+          DOCKER_HOST: {}
+          DOCKER_PATH:
+            value: docker
+          INACTIVITY_TIMEOUT: {}
+defaultContext: default
+schemaVersion: 1
