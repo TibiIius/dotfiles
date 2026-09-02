@@ -1,5 +1,5 @@
-Include /Users/tim/.colima/ssh_config
-Include /Users/tim/.ssh/conf.d/*.conf
+Include $HOME/.colima/ssh_config
+Include $HOME/.ssh/conf.d/*.conf
 
 Host *
 {{- if (eq .chezmoi.os "darwin") }}
