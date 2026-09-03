@@ -11,5 +11,6 @@ output "DP-2" {
     mode "3440x1440@164.999"
     scale 1
     position x=1624 y=1447
+    focus-at-startup
 }
 
