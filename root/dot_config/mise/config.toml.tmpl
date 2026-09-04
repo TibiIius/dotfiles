@@ -1,5 +1,5 @@
 [tools]
-rust = "latest"
+rust = { version = "latest", profile = "minimal" }
 tree-sitter = "latest"
 {{- if ne .machineType "server" }}
 node = "latest"
@@ -56,7 +56,9 @@ watchexec = "latest"
 "github:domcyrus/rustnet" = "latest"
 "github:Canop/broot" = "latest"
 yazi = "latest"
+{{- if ne .chezmoi.os "darwin" }}
 "github:doy/rbw" = "latest"
+{{- end }}
   {{- if ne .machineType "server" }}
 minikube = "latest"
 "aqua:loft-sh/devpod" = "latest"
