@@ -14,6 +14,13 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[filter "sops"]
+	required = true
+	smudge = sops decrypt --input-type json --output-type binary --filename-override "%f"
+	clean = ~/.local/bin/sops-clean %f
+[diff "sops"]
+	textconv = sh -c 'sops decrypt --input-type json "$0" 2>/dev/null || cat "$0"'
+	cachetextconv = false
 [log]
 	decorate = true
 [checkout]

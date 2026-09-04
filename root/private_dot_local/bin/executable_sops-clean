@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+file=$1
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null) || exit 1
+git_path=${file#"$repo_root"/}
+
+input=$(base64)
+decode_input() {
+    printf '%s' "$input" | base64 -D
+}
+
+if decrypted=$(git cat-file -p "HEAD:$git_path" 2>/dev/null |
+        sops decrypt --input-type json --output-type binary --filename-override "$file" 2>/dev/null |
+        base64) &&
+    [[ $input == "$decrypted" ]]; then
+    git cat-file -p "HEAD:$git_path"
+else
+    decode_input | sops encrypt --input-type binary --output-type json --filename-override "$file"
+fi
