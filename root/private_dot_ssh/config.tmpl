@@ -1,5 +1,5 @@
-Include $HOME/.colima/ssh_config
-Include $HOME/.ssh/conf.d/*.conf
+Include {{ .chezmoi.homeDir }}/.colima/ssh_config
+Include {{ .chezmoi.homeDir }}/.ssh/conf.d/*.conf
 
 Host *
 {{- if (eq .chezmoi.os "darwin") }}
