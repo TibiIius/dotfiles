@@ -21,3 +21,18 @@ window-rule {
     tiled-state true
     draw-border-with-background false
 }
+
+layer-rule {
+    background-effect {
+        xray false
+    }
+}
+
+window-rule {
+    match app-id="^com.danklinux.dms$"
+    background-effect {
+        xray false
+    }
+}
+
+// bar-xray off
