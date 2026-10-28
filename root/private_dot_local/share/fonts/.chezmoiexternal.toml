@@ -1,18 +1,18 @@
 ["JetBrains Mono Nerd Font Complete.ttf"]
 type = "file"
-url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf"
+url = "https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/JetBrainsMono/Ligatures/JetBrainsMonoNerdFont-Regular.ttf"
 
 ["JetBrains Mono Nerd Font Complete Mono.ttf"]
 type = "file"
-url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFontMono-Regular.ttf"
+url = "https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/JetBrainsMono/Ligatures/JetBrainsMonoNerdFontMono-Regular.ttf"
 
 ["Ubuntu Mono Nerd Font Complete.ttf"]
 type = "file"
-url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/UbuntuMonoNerdFont-Regular.ttf"
+url = "https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/UbuntuMono/UbuntuMonoNerdFont-Regular.ttf"
 
 ["Ubuntu Mono Nerd Font Complete Mono.ttf"]
 type = "file"
-url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/UbuntuMono/Regular/UbuntuMonoNerdFontMono-Regular.ttf"
+url = "https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/UbuntuMono/UbuntuMonoNerdFontMono-Regular.ttf"
 
 ["Monaspace Nerdfonts"]
 type = "archive"
