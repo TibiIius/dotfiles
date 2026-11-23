@@ -144,10 +144,6 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "o" {
-            LaunchOrFocusPlugin "falcode-zellij-sessions" {
-                floating true
-                state_dir "{{ .chezmoi.homeDir }}/.local/state/falcode-zellij"
-            }
             SwitchToMode "normal"
         }
     }
@@ -329,7 +325,6 @@ plugins {
         welcome_screen true
     }
     vim-zellij-navigator location="file:~/.local/share/zellij/plugins/vim-zellij-navigator.wasm"
-    falcode-zellij-sessions location="file:~/.local/share/zellij/plugins/falcode-zellij-sessions.wasm"
 }
 
 // Plugins to load in the background when a new session starts
